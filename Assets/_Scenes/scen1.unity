@@ -246,7 +246,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1364925421}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &171164049
 BoxCollider:
@@ -742,7 +742,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 100
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.01
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1128,10 +1128,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1686072473}
-  distance: 10
-  height: 5
-  heightDamping: 2
-  rotationDamping: 3
+  distance: 15
+  height: 10
+  heightDamping: 0.01
+  rotationDamping: 0.01
 --- !u!1 &731181622
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,7 +1465,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 100
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.01
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1586,7 +1586,7 @@ MonoBehaviour:
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
-  m_ComponentOwner: {fileID: 0}
+  m_ComponentOwner: {fileID: 2121560826}
 --- !u!4 &1156261615
 Transform:
   m_ObjectHideFlags: 0
@@ -1966,10 +1966,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicleThrot: {fileID: 1364925418}
   vehicleSteer: {fileID: 1364925422}
-  targeLinearVel: 0
+  targeLinearVel: 1
+  Plin: 5
   targetAngularVel: 0
-  linearVel: 0
-  angularVel: 0
+  Pang: 0
 --- !u!114 &1364925417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2006,6 +2006,9 @@ MonoBehaviour:
   - {fileID: 1543769205}
   - {fileID: 574371511}
   - {fileID: 1706398969}
+  throttleCommand: 0
+  BreakCommand: 0
+  ForwardVel: 0
 --- !u!114 &1364925419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2046,8 +2049,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -5, z: -99.1}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
-  - {fileID: 1686072473}
   - {fileID: 171164048}
+  - {fileID: 1686072473}
   - {fileID: 593709246}
   - {fileID: 1344369967}
   - {fileID: 194419702}
@@ -2289,7 +2292,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 100
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.01
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -2600,12 +2603,12 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1686072472}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.38, z: 0.19}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.38, z: 0.18999863}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1364925421}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1694171110
 GameObject:
@@ -2823,7 +2826,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 100
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.01
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0

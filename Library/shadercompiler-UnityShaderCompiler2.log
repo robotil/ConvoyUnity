@@ -1,8 +1,10 @@
 Base path: /opt/Unity/Editor/Data
 Cmd: initializeCompiler
 Cmd: compileComputeKernel
-  api=15 insize=1435 outsize=3501 ok=1
+  api=15 insize=1435 outsize=5221 ok=1
 Cmd: compileComputeKernel
   api=18 insize=3273 outsize=14837 ok=1
 Cmd: compileComputeKernel
-  api=15 insize=2343 outsize=5041 ok=1
+  api=15 insize=1526 outsize=5489 ok=1
+
+Quitting shader compiler process

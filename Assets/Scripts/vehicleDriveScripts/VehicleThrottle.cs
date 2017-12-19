@@ -43,6 +43,8 @@ public class VehicleThrottle : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
+        
         ForwardVel = myref.InverseTransformVector(rb.velocity).z;
         if (ManualInput)
         {
@@ -65,6 +67,7 @@ public class VehicleThrottle : MonoBehaviour
         }
 
         Apply(throttleCommand,  BreakCommand);
+        throttleCommand = 0; BreakCommand = 0;
     }
 
 

@@ -61,7 +61,6 @@
 -r:/opt/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll
 -r:Assets/Plugins/websocket-sharp.dll
 -r:/home/robil/.config/unity3d/cache/packages/packages.unity.com/com.unity.analytics@1.0.1/UnityEngine.Analytics.dll
--r:/home/robil/.config/unity3d/cache/packages/packages.unity.com/com.unity.ads@1.0.7/UnityEngine.Advertisements.dll
 -r:/home/robil/.config/unity3d/cache/packages/packages.unity.com/com.unity.purchasing@1.0.1/UnityEngine.Purchasing.dll
 -r:/opt/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll
 -r:/opt/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Common.dll
