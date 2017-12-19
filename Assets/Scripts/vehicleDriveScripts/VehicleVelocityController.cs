@@ -11,13 +11,11 @@ public class VehicleVelocityController : MonoBehaviour
     public VehicleSteering vehicleSteer;
 
 
-    public float targeLinearVel, Plin;
+    public float targeLinearVel=0, P_lin=1;
     float curentLinearVel, ErrorLinVel, throttelCmd;
-    public float targetAngularVel, Pang;
+    public float targetAngularVel=0, P_ang=1;
     float curentAngularVel, ErrorAngVel, SteerCmd;
 
-    
-    float maxSteerAng;
 
     Rigidbody rb;
     Transform myref;
@@ -29,15 +27,11 @@ public class VehicleVelocityController : MonoBehaviour
         myref = gameObject.transform;
         rb = GetComponent<Rigidbody>();
 
-        curentLinearVel =  rb.velocity.z; 
-        curentAngularVel = rb.angularVelocity.y; 
+        // curentLinearVel =  rb.velocity.z; 
+        // curentAngularVel = rb.angularVelocity.y; 
         
-
         vehicleThrot = GetComponent<VehicleThrottle>();
         vehicleSteer = GetComponent<VehicleSteering>();
-
-        maxSteerAng = vehicleSteer.MaxSteering;
-
     }
 
 
@@ -49,12 +43,12 @@ public class VehicleVelocityController : MonoBehaviour
 
 
         ErrorLinVel = targeLinearVel - curentLinearVel;
-        throttelCmd = Plin * ErrorLinVel;
+        throttelCmd = P_lin * ErrorLinVel;
         vehicleThrot.throttleCommand = throttelCmd;
 
 
         ErrorAngVel = targetAngularVel - curentAngularVel;
-        SteerCmd = Pang * ErrorAngVel;
+        SteerCmd = P_ang * ErrorAngVel;
         vehicleSteer.steeringCommand = SteerCmd;
 
     }

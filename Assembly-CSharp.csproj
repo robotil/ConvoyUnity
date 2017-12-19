@@ -162,6 +162,7 @@
      <Compile Include="Assets\Scripts\vehicleDriveScripts\VehicleSteering.cs" />
      <Compile Include="Assets\Scripts\vehicleDriveScripts\VehicleThrottle.cs" />
      <Compile Include="Assets\Scripts\vehicleDriveScripts\VehicleVelocityController.cs" />
+     <Compile Include="Assets\Scripts\vehicleDriveScripts\VehicleWPController.cs" />
      <Compile Include="Assets\Scripts\vehicleDriveScripts\WaypointDriver.cs" />
      <Compile Include="Assets\Scripts\velodyneScripts\RosUnityCoordinates.cs" />
      <Compile Include="Assets\Scripts\velodyneScripts\UDPSend.cs" />
