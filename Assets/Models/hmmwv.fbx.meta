@@ -1,0 +1,223 @@
+fileFormatVersion: 2
+guid: 21a102094b34340fa9ca3cf66d8ac865
+timeCreated: 1496905246
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Constraint
+    100002: Constraint.001
+    100004: Constraint.002
+    100006: Constraint.003
+    100008: Constraint.004
+    100010: Cube
+    100012: Cube.001
+    100014: Cube.002
+    100016: Cube.003
+    100018: Cube.004
+    100020: Cube.005
+    100022: //RootNode
+    100024: Hummer
+    100026: Hummer.001
+    100028: Hummer.002
+    100030: Hummer.003
+    100032: Hummer.004
+    100034: Hummer.005
+    100036: Hummer.006
+    100038: Hummer.007
+    100040: Hummer.008
+    100042: Hummer.009
+    100044: Hummer.010
+    100046: Hummer.510
+    100048: Plane
+    100050: shl1
+    100052: sl1
+    100054: sml1
+    100056: Sun
+    100058: wl1
+    100060: wr1
+    100062: wr2
+    100064: Nuts_Empty
+    100066: tire
+    400000: Constraint
+    400002: Constraint.001
+    400004: Constraint.002
+    400006: Constraint.003
+    400008: Constraint.004
+    400010: Cube
+    400012: Cube.001
+    400014: Cube.002
+    400016: Cube.003
+    400018: Cube.004
+    400020: Cube.005
+    400022: //RootNode
+    400024: Hummer
+    400026: Hummer.001
+    400028: Hummer.002
+    400030: Hummer.003
+    400032: Hummer.004
+    400034: Hummer.005
+    400036: Hummer.006
+    400038: Hummer.007
+    400040: Hummer.008
+    400042: Hummer.009
+    400044: Hummer.010
+    400046: Hummer.510
+    400048: Plane
+    400050: shl1
+    400052: sl1
+    400054: sml1
+    400056: Sun
+    400058: wl1
+    400060: wr1
+    400062: wr2
+    400064: Nuts_Empty
+    400066: tire
+    2300000: Cube
+    2300002: Cube.001
+    2300004: Cube.002
+    2300006: Cube.003
+    2300008: Cube.004
+    2300010: Cube.005
+    2300012: Hummer
+    2300014: Hummer.001
+    2300016: Hummer.002
+    2300018: Hummer.003
+    2300020: Hummer.004
+    2300022: Hummer.005
+    2300024: Hummer.006
+    2300026: Hummer.007
+    2300028: Hummer.008
+    2300030: Hummer.009
+    2300032: Hummer.010
+    2300034: Hummer.510
+    2300036: Plane
+    2300038: shl1
+    2300040: sl1
+    2300042: sml1
+    2300044: wl1
+    2300046: wr1
+    2300048: wr2
+    2300050: tire
+    3300000: Cube
+    3300002: Cube.001
+    3300004: Cube.002
+    3300006: Cube.003
+    3300008: Cube.004
+    3300010: Cube.005
+    3300012: Hummer
+    3300014: Hummer.001
+    3300016: Hummer.002
+    3300018: Hummer.003
+    3300020: Hummer.004
+    3300022: Hummer.005
+    3300024: Hummer.006
+    3300026: Hummer.007
+    3300028: Hummer.008
+    3300030: Hummer.009
+    3300032: Hummer.010
+    3300034: Hummer.510
+    3300036: Plane
+    3300038: shl1
+    3300040: sl1
+    3300042: sml1
+    3300044: wl1
+    3300046: wr1
+    3300048: wr2
+    3300050: tire
+    4300000: Plane
+    4300002: Hummer.005
+    4300004: Hummer.003
+    4300006: Cube.002
+    4300008: Cube.001
+    4300010: shl1
+    4300012: Cube
+    4300014: sl1
+    4300016: Hummer.004
+    4300018: wl1
+    4300020: Hummer.002
+    4300022: Hummer.001
+    4300024: Hummer.510
+    4300026: Hummer
+    4300028: sml1
+    4300030: Cube.003
+    4300032: Cube.004
+    4300034: Cube.005
+    4300036: Hummer.006
+    4300038: Hummer.007
+    4300040: Hummer.008
+    4300042: Hummer.009
+    4300044: Hummer.010
+    4300046: wr1
+    4300048: wr2
+    4300050: tire
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 1
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15
+    secondaryUVHardAngle: 80
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
