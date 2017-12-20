@@ -9,8 +9,8 @@ public class VehicleWPController : MonoBehaviour
 {
     public VehicleVelocityController VelController;
 
-
-    public float targetX_glob, targetZ_glob;
+    [Tooltip("the WP pose, and velocity ( x->WPx_coordinate , y->WPz_coordinate , z->WP_Velocity)")]
+    public Vector3 targetPoseAndVel;
 
     float targetDiss, targetAzi; 
     public float P_diss=1, P_azimuth=1;
@@ -21,6 +21,7 @@ public class VehicleWPController : MonoBehaviour
     public GameObject targetWP;
 
     Transform myref;
+
 
 
     // Use this for initialization
@@ -37,7 +38,7 @@ public class VehicleWPController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 targetWP_global = new Vector3(targetX_glob,0,targetZ_glob) + 1000*Vector3.up;
+        Vector3 targetWP_global = new Vector3(targetPoseAndVel.x,0,targetPoseAndVel.y) + 1000*Vector3.up;
 
         RaycastHit hit;
         Physics.Raycast(targetWP_global,-Vector3.up, out hit);
@@ -51,6 +52,8 @@ public class VehicleWPController : MonoBehaviour
 
         targetDiss = targetWP_local.magnitude;
         LinVelCmd = P_diss * targetDiss;
+
+        LinVelCmd = Mathf.Min(LinVelCmd, targetPoseAndVel.z);
 
 
         targetAzi = Mathf.Atan2(targetWP_local.x , targetWP_local.z);

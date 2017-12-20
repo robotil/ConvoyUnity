@@ -105,23 +105,4 @@ public class VehicleThrottle : MonoBehaviour
             }
         }
     }
-
-
-
-    // public override void Drive(float T, float S)
-    // {
-    //     throttle = T;
-    //     SteeringAngleCommand = Mathf.Clamp(S, -MaxSteering, MaxSteering);
-    //     BreakPedal = T > 0 ? 0 : Mathf.Clamp(-T, 0, 1);
-    //     steeringSpeed = MaxSteeringSpeed;
-    // }
-    // public override void Drive(float T, float S, float breaks, float steerSpeed)
-    // {
-    //     throttle = T;
-    //     SteeringAngleCommand = Mathf.Clamp(S, -MaxSteering, MaxSteering);
-    //     BreakPedal = breaks;
-    //     steeringSpeed = Mathf.Clamp(steerSpeed, 0, MaxSteeringSpeed);
-    // }
-
-
 }

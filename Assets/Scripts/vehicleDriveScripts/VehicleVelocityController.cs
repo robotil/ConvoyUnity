@@ -26,9 +26,6 @@ public class VehicleVelocityController : MonoBehaviour
     {
         myref = gameObject.transform;
         rb = GetComponent<Rigidbody>();
-
-        // curentLinearVel =  rb.velocity.z; 
-        // curentAngularVel = rb.angularVelocity.y; 
         
         vehicleThrot = GetComponent<VehicleThrottle>();
         vehicleSteer = GetComponent<VehicleSteering>();

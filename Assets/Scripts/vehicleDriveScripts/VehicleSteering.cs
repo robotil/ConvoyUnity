@@ -11,7 +11,6 @@ public class VehicleSteering : MonoBehaviour
    
 
     Transform myref;
-    Rigidbody rb;
     [Tooltip("Assign the steering configurable joints in a Left Wheel, Right Wheel, Left Wheel, Right wheel... manner With the main axis set as X")]
     public ConfigurableJoint[] steering; //Set steering joints as Left Wheel, Right Wheel, Left Wheel, Right wheel via the inspector
 
@@ -19,7 +18,6 @@ public class VehicleSteering : MonoBehaviour
     void Start()
     {
         myref = gameObject.transform;
-        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame

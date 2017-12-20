@@ -572,7 +572,7 @@ Transform:
   - {fileID: 111798316}
   - {fileID: 1814778717}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &534326286
 GameObject:
@@ -634,7 +634,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3c40c8fdc50a841579d7cb15882ac9d9, type: 2}
+  - {fileID: 2100000, guid: 7c32ce59d97f443d8867dbca4456962f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1292,6 +1292,90 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 731181622}
   m_Mesh: {fileID: 4300018, guid: 21a102094b34340fa9ca3cf66d8ac865, type: 3}
+--- !u!1 &828355952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 828355956}
+  - component: {fileID: 828355955}
+  - component: {fileID: 828355954}
+  - component: {fileID: 828355953}
+  m_Layer: 0
+  m_Name: PathWP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &828355953
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 828355952}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 944463113244f4bf8b05c1757cd838a4, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!135 &828355954
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 828355952}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &828355955
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 828355952}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &828355956
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 828355952}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 23.519615, y: -65.84359, z: -48.53293}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &946163612
 Prefab:
   m_ObjectHideFlags: 0
@@ -2031,6 +2115,7 @@ GameObject:
   - component: {fileID: 1364925422}
   - component: {fileID: 1364925415}
   - component: {fileID: 1364925416}
+  - component: {fileID: 1364925423}
   m_Layer: 11
   m_Name: hmmwv
   m_TagString: Vehicle
@@ -2067,8 +2152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VelController: {fileID: 0}
-  targetX_glob: 0
-  targetZ_glob: 0
+  targetPoseAndVel: {x: 0, y: 0, z: 0}
   P_diss: 1
   P_azimuth: 1
   targetWP: {fileID: 0}
@@ -2159,7 +2243,7 @@ Transform:
   - {fileID: 17618255}
   - {fileID: 1347347577}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1364925422
 MonoBehaviour:
@@ -2182,6 +2266,25 @@ MonoBehaviour:
   steering:
   - {fileID: 1326051298}
   - {fileID: 418665089}
+--- !u!114 &1364925423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1364925414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8abd4e68d2db74ea3b473ae427c088f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WPController: {fileID: 0}
+  PathWPs_PosesAndVels:
+  - {x: -100, y: 100, z: 3}
+  - {x: -100, y: -100, z: 3}
+  - {x: 100, y: -100, z: 3}
+  - {x: -100, y: -100, z: 4}
+  curentWP: 0
+  WP_ReachRadius: 0
 --- !u!1 &1412723878
 GameObject:
   m_ObjectHideFlags: 0
