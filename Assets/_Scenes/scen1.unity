@@ -572,7 +572,7 @@ Transform:
   - {fileID: 111798316}
   - {fileID: 1814778717}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &534326286
 GameObject:
@@ -601,6 +601,90 @@ Transform:
   m_Children: []
   m_Father: {fileID: 511227279}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &571479057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 571479061}
+  - component: {fileID: 571479060}
+  - component: {fileID: 571479059}
+  - component: {fileID: 571479058}
+  m_Layer: 0
+  m_Name: targetWP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &571479058
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 571479057}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 3c40c8fdc50a841579d7cb15882ac9d9, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!135 &571479059
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 571479057}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &571479060
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 571479057}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &571479061
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 571479057}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 23.519615, y: -65.84359, z: -48.53293}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &574371504
 GameObject:
@@ -1946,6 +2030,7 @@ GameObject:
   - component: {fileID: 1364925418}
   - component: {fileID: 1364925422}
   - component: {fileID: 1364925415}
+  - component: {fileID: 1364925416}
   m_Layer: 11
   m_Name: hmmwv
   m_TagString: Vehicle
@@ -1967,9 +2052,26 @@ MonoBehaviour:
   vehicleThrot: {fileID: 1364925418}
   vehicleSteer: {fileID: 1364925422}
   targeLinearVel: 1
-  Plin: 5
+  P_lin: 1
   targetAngularVel: 0
-  Pang: 0
+  P_ang: 1
+--- !u!114 &1364925416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1364925414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739cfd211683146fda01a1f3242276aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VelController: {fileID: 0}
+  targetX_glob: 0
+  targetZ_glob: 0
+  P_diss: 1
+  P_azimuth: 1
+  targetWP: {fileID: 0}
 --- !u!114 &1364925417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1996,7 +2098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2d34ed2f5f64091a0206f8d6e16577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ManualInput: 1
+  ManualInput: 0
   BreakOnNullThrottle: 1
   gear: 1
   MaxTorque: 1000000
@@ -2057,7 +2159,7 @@ Transform:
   - {fileID: 17618255}
   - {fileID: 1347347577}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1364925422
 MonoBehaviour:
@@ -2070,7 +2172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4478407c1cc9d4cc6a58fab195fcaa7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ManualInput: 1
+  ManualInput: 0
   VehicleWidth: 2
   VehicleLength: 3
   MaxSteering: 0.4

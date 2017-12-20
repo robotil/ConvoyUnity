@@ -11,30 +11,22 @@ public class VehicleWPController : MonoBehaviour
 
 
     public float targetX_glob, targetZ_glob;
-    public float targetX_loc, targetZ_loc;
-
-
-    
-    float targetY;
 
     float targetDiss, targetAzi; 
     public float P_diss=1, P_azimuth=1;
-    //float curentPose, curentAzimuth;
 
     float LinVelCmd, AngVelCmd;
 
 
     public GameObject targetWP;
 
-    Rigidbody rb;
-    Transform myref;// target;
+    Transform myref;
 
 
     // Use this for initialization
     void Start()
     {
         myref = gameObject.transform;
-        rb = GetComponent<Rigidbody>();
         
         VelController = GetComponent<VehicleVelocityController>();
 
@@ -51,19 +43,11 @@ public class VehicleWPController : MonoBehaviour
         Physics.Raycast(targetWP_global,-Vector3.up, out hit);
         targetWP_global = hit.point;
 
-        targetY = targetWP_global.y;
 
         targetWP.transform.position = targetWP_global;
 
-        // target.position = targetWP_global;
-
 
         Vector3 targetWP_local = myref.InverseTransformPoint(targetWP.transform.position);
-
-
-        targetX_loc = targetWP_local.x;
-        targetZ_loc = targetWP_local.z;
-
 
         targetDiss = targetWP_local.magnitude;
         LinVelCmd = P_diss * targetDiss;
