@@ -1880,15 +1880,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4033241344557922, guid: 789bfd50b5e54436286b07a158e02c01, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.06562151
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4033241344557922, guid: 789bfd50b5e54436286b07a158e02c01, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.556
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4033241344557922, guid: 789bfd50b5e54436286b07a158e02c01, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.2563546
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4033241344557922, guid: 789bfd50b5e54436286b07a158e02c01, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1924,7 +1924,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1552029057816654, guid: 789bfd50b5e54436286b07a158e02c01, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552029057816654, guid: 789bfd50b5e54436286b07a158e02c01, type: 2}
+      propertyPath: m_Name
+      value: velodyne16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 789bfd50b5e54436286b07a158e02c01, type: 2}
