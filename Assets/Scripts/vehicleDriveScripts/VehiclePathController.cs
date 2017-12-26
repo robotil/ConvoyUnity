@@ -23,6 +23,10 @@ public class VehiclePathController : MonoBehaviour
 
 
     List<GameObject> PathWPs=new List<GameObject>();
+    public GameObject PathWP_Mark;
+
+    string VehicleName;
+
 
     Transform myref;
     Rigidbody rb;
@@ -33,13 +37,13 @@ public class VehiclePathController : MonoBehaviour
     {
         myref = gameObject.transform;
         rb = GetComponent<Rigidbody>();
-        
+        VehicleName = gameObject.name;
+
         WPController = GetComponent<VehicleWPController>();
 
         curentWP = 0;
         
         WP_ReachRadius = 5;
-        
     }
 
 
@@ -58,7 +62,7 @@ public class VehiclePathController : MonoBehaviour
 
         if (DissToCurentWP < WP_ReachRadius)
         {
-            if (curentWP < PathWPs.Count )
+            if (curentWP < (PathWPs_PosesAndVels.Count-1) )
                  curentWP++;
         }
 
@@ -72,9 +76,9 @@ public class VehiclePathController : MonoBehaviour
             {
                 if ( WP_i >= PathWPs.Count )
                     {
-                        GameObject newWP_Object = Instantiate(GameObject.Find("PathWP"));
-                        newWP_Object.name = "PathWP_" + WP_i.ToString();
-                        PathWPs.Add(GameObject.Find("PathWP_" + WP_i.ToString()));
+                        GameObject newWP_Object = Instantiate(PathWP_Mark);
+                        newWP_Object.name = VehicleName + "_PathWP_" + WP_i.ToString();
+                        PathWPs.Add(newWP_Object);
                     }
 
             Vector3 targetWP_global = new Vector3(PathWPs_PosesAndVels[WP_i].x,0,PathWPs_PosesAndVels[WP_i].y) + 1000*Vector3.up;

@@ -18,7 +18,7 @@ public class VehicleWPController : MonoBehaviour
     float LinVelCmd, AngVelCmd;
 
 
-    public GameObject targetWP;
+    public GameObject targetWP_Mark;
 
     Transform myref;
 
@@ -31,7 +31,7 @@ public class VehicleWPController : MonoBehaviour
         
         VelController = GetComponent<VehicleVelocityController>();
 
-        targetWP = GameObject.Find("targetWP");
+       targetWP_Mark = Instantiate(targetWP_Mark); // creating a private copy
     }
 
 
@@ -45,10 +45,10 @@ public class VehicleWPController : MonoBehaviour
         targetWP_global = hit.point;
 
 
-        targetWP.transform.position = targetWP_global;
+        targetWP_Mark.transform.position = targetWP_global;
 
 
-        Vector3 targetWP_local = myref.InverseTransformPoint(targetWP.transform.position);
+        Vector3 targetWP_local = myref.InverseTransformPoint(targetWP_Mark.transform.position);
 
         targetDiss = targetWP_local.magnitude;
         LinVelCmd = P_diss * targetDiss;

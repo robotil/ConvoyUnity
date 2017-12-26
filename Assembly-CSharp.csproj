@@ -157,6 +157,7 @@
      <Compile Include="Assets\Scripts\SimulationManager.cs" />
      <Compile Include="Assets\Scripts\vehicleDriveScripts\AntiRollBarConfigurableJoint.cs" />
      <Compile Include="Assets\Scripts\vehicleDriveScripts\CenterOfMass.cs" />
+     <Compile Include="Assets\Scripts\vehicleDriveScripts\VehicleFollowerPathController.cs" />
      <Compile Include="Assets\Scripts\vehicleDriveScripts\VehiclePathController.cs" />
      <Compile Include="Assets\Scripts\vehicleDriveScripts\VehicleSteering.cs" />
      <Compile Include="Assets\Scripts\vehicleDriveScripts\VehicleThrottle.cs" />
