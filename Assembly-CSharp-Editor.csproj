@@ -168,6 +168,7 @@
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\DiskKernels.cginc" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\DepthOfField.cginc" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\ScreenSpaceRaytrace.cginc" />
+     <None Include="Assets\3rdParty\Raw Mocap Data\Animations\_CompleteAnimationList.txt" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\Bloom.shader" />
      <None Include="Assets\3rdParty\PostProcessing\Editor Resources\Monitors\VectorscopeRender.shader" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\EyeAdaptation.shader" />

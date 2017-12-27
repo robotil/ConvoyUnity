@@ -154,6 +154,7 @@
      <Compile Include="Assets\3rdParty\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
      <Compile Include="Assets\Scripts\cameraSmoothFollow.cs" />
      <Compile Include="Assets\Scripts\RigidBodyIterations.cs" />
+     <Compile Include="Assets\Scripts\ShahidController.cs" />
      <Compile Include="Assets\Scripts\SimulationManager.cs" />
      <Compile Include="Assets\Scripts\vehicleDriveScripts\AntiRollBarConfigurableJoint.cs" />
      <Compile Include="Assets\Scripts\vehicleDriveScripts\CenterOfMass.cs" />
@@ -205,6 +206,7 @@
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\DiskKernels.cginc" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\DepthOfField.cginc" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\ScreenSpaceRaytrace.cginc" />
+     <None Include="Assets\3rdParty\Raw Mocap Data\Animations\_CompleteAnimationList.txt" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\Bloom.shader" />
      <None Include="Assets\3rdParty\PostProcessing\Editor Resources\Monitors\VectorscopeRender.shader" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\EyeAdaptation.shader" />
