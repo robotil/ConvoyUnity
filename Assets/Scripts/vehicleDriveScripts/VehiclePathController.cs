@@ -41,6 +41,7 @@ public class VehiclePathController : MonoBehaviour
 
         WPController = GetComponent<VehicleWPController>();
 
+        PathWPs_PosesAndVels.Add(new Vector3(myref.position.x, myref.position.z, 0));
         curentWP = 0;
         
         WP_ReachRadius = 5;

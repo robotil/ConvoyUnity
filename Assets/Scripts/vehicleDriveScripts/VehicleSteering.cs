@@ -7,12 +7,13 @@ public class VehicleSteering : MonoBehaviour
     public bool ManualInput = true;
     public float VehicleWidth = 2, VehicleLength = 3, MaxSteering=0.4f;
 
-    public float steeringCommand = 0, left_steer = 0, right_steer = 0;
-   
+    public float steeringCommand = 0; 
+    
 
     Transform myref;
-    [Tooltip("Assign the steering configurable joints in a Left Wheel, Right Wheel, Left Wheel, Right wheel... manner With the main axis set as X")]
-    public ConfigurableJoint[] steering; //Set steering joints as Left Wheel, Right Wheel, Left Wheel, Right wheel via the inspector
+    public ConfigurableJoint[] rightWheelsSteer, leftWheelsSteer;
+
+
 
     // Use this for initialization
     void Start()
@@ -35,8 +36,9 @@ public class VehicleSteering : MonoBehaviour
     }
 
 
-    public void Apply(float SteerCommand){
-
+    public void Apply(float SteerCommand)
+    {
+        float right_steer = 0, left_steer =0;
         float Len = VehicleLength; 
         float Wid = VehicleWidth;
 
@@ -57,11 +59,12 @@ public class VehicleSteering : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < steering.Length/2; i=+2)
+        for (int i=0; i<rightWheelsSteer.Length; i++)
             {
-            steering[i].targetRotation = Quaternion.Euler(Mathf.Rad2Deg * right_steer , 0, 0);
-            steering[i+1].targetRotation = Quaternion.Euler(Mathf.Rad2Deg * left_steer, 0, 0);
+            rightWheelsSteer[i].targetRotation = Quaternion.Euler(Mathf.Rad2Deg * right_steer , 0, 0);
+            leftWheelsSteer[i].targetRotation = Quaternion.Euler(Mathf.Rad2Deg * left_steer , 0, 0);
             }
+
     }
 
 
