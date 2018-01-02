@@ -9,7 +9,6 @@ using System;
 
 public class Velodyne16 : MonoBehaviour
 {
-
     public float MaxRange = 70;
     public float HorFOV = 360, VerFOV = 20, StartVerticalAngle = -10;
           
@@ -61,7 +60,6 @@ public class Velodyne16 : MonoBehaviour
             horCurrentAngle = 0; 
             SensorRotator.localEulerAngles = new Vector3(0, 0, 0);
         } 
-
 
         Vector3 ScannerVel = myref.InverseTransformVector(rb.velocity);
         Vector3 scanerPos = myref.position;
