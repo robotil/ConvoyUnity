@@ -9,7 +9,6 @@ using System;
 
 public class Velodyne16 : MonoBehaviour
 {
-
     public float MaxRange = 70;
     public float HorFOV = 360, VerFOV = 20, StartVerticalAngle = -10;
           
@@ -32,6 +31,7 @@ public class Velodyne16 : MonoBehaviour
     float horCurrentAngle;
     Transform myref, SensorRotator, emitter;
     Rigidbody rb;
+    private VelodyneWrapper vc;
     // Use this for initialization
     void Start()
     {
@@ -42,11 +42,12 @@ public class Velodyne16 : MonoBehaviour
         emitter = SensorRotator.Find("Emitter");
 
         horCurrentAngle = 0;
+        vc = new VelodyneWrapper(192, 168, 1, 77, 2368, 200, 37, 22, 10, 16);
+        vc.Run();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
+    void FixedUpdate() {
         physics_StepTime =  Time.fixedDeltaTime;
         horFOV_ScanTime = 1.0f/ScaningFreqHZ;
 
@@ -55,61 +56,50 @@ public class Velodyne16 : MonoBehaviour
         verRes = VerFOV/(ScaningPlaines-1);
 
 
-        if (horCurrentAngle > HorFOV) //completed horizontal scan
-        {
+        if (horCurrentAngle > HorFOV) { //completed horizontal scan
             horCurrentAngle = 0; 
             SensorRotator.localEulerAngles = new Vector3(0, 0, 0);
         } 
 
-
         Vector3 ScannerVel = myref.InverseTransformVector(rb.velocity);
         Vector3 scanerPos = myref.position;
         Vector3 ScanerLinearStep = ScannerVel * physics_StepTime;
-
-        for (int i = 0; i < ScanColumnsPerPhysicStep; i++)  // multiple horizontal scans in 1 physics step in order to achieve the full range in the desired rate
-        {
-            if (InterpolateLocation)
+        int timeFixer = 0;
+        for (int i = 0; i < ScanColumnsPerPhysicStep; i++) { // multiple horizontal scans in 1 physics step in order to achieve the full range in the desired rate
+            if (InterpolateLocation) {
                   scanerPos = scanerPos + ScanerLinearStep * i/ScanColumnsPerPhysicStep;
+            }
 
-            if (horCurrentAngle > HorFOV)
-            {
+            if (horCurrentAngle > HorFOV) {
                 horCurrentAngle = 0; 
                 SensorRotator.localEulerAngles = new Vector3(0, 0, 0);
             }
 
-            for (int j = 0; j < ScaningPlaines; j++) //the lazer column
-            {
+            for (int j = ScaningPlaines - 1; j >= 0 ; j--) { //the lazer column 
                 float verCurentAngle = (StartVerticalAngle + j * verRes);
                 emitter.localEulerAngles = new Vector3(verCurentAngle, 0, 0);
 
 
                 Vector3 shootLaserDir = (emitter.forward);
                 RaycastHit hit;
-                if (Physics.Raycast(scanerPos, shootLaserDir, out hit, MaxRange))
-                {
-                    Vector3 p = hit.point;
-                    if (DebugDraw) 
-                        Debug.DrawLine(p, SensorRotator.position, Color.red, DrawTime, true);
-                    else if (DebugDrawDots) 
-                        Debug.DrawLine(p, p + 0.1f * Vector3.up, Color.red, DrawTime, true);
-
-                   // insert(hit.distance, 15 - j, currentangle);
+                if (Physics.Raycast(scanerPos, shootLaserDir, out hit, MaxRange)) {
+                    vc.SetChannel(hit.distance, 0);
+                    if (DebugDraw) {
+                        Debug.DrawLine(hit.point, hit.point + 0.1f * Vector3.up, Color.red, DrawTime, true);
+                    }
                 }
-                else
-                {
-                    // insert(0, 15 - j, currentangle);
-
-                    if (DebugDraw) 
-                        Debug.DrawLine(SensorRotator.position, SensorRotator.position + shootLaserDir * MaxRange, Color.blue, 0.3f, true);
+                else {
+                     vc.SetChannel(0, 0);
                 }
-
             }
+            vc.SetAzimuth(horCurrentAngle);
+            double timeStamp = Time.fixedTime * 1000000.0 + timeFixer++;
+            vc.SetTimeStamp((int)timeStamp);
+            vc.SendData();
 
             horCurrentAngle = horCurrentAngle + HorRes;
             SensorRotator.localEulerAngles = new Vector3(0, horCurrentAngle, 0);
         }
 
     }
-
-
 }
