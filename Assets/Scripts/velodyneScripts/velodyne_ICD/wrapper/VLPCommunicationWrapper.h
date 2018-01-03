@@ -1,5 +1,5 @@
 
-#include "../include/VLPCommunication.h"
+#include "VLPCommunication.h"
 
 class VLPCommunicationWrapper {
 private:
