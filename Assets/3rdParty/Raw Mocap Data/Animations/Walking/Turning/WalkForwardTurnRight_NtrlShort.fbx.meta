@@ -173,7 +173,9 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
+      copied configuration does not match position in animation file:\n\t'LeftLeg'
+      : position error = 7.696520 mm\n\t'LeftFoot' : position error = 15.233778 mm\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -190,8 +192,8 @@ ModelImporter:
     - serializedVersion: 16
       name: WalkForwardTurnRight_NtrlShort
       takeName: _8_a_U1_M_P_WalkForwardTurnRight_NtrlShort__Fb_Dia1m_No_0_PJ_4
-      firstFrame: 0
-      lastFrame: 322
+      firstFrame: 22
+      lastFrame: 139
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
