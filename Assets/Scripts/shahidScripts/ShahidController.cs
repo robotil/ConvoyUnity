@@ -36,8 +36,8 @@ public class ShahidController : MonoBehaviour
             TurningCommand = MaxTurningSpeed * Mathf.Clamp(TurningCommand, -1, 1);
         }
 
-		anim.SetFloat("walking",WalkingCommand);
-		anim.SetFloat("turning",TurningCommand);
+		anim.SetFloat("Forward",WalkingCommand);
+		anim.SetFloat("Turn",TurningCommand);
     }
 
 

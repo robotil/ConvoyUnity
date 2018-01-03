@@ -854,12 +854,12 @@ GameObject:
   - component: {fileID: 135716339113043804}
   - component: {fileID: 114412451880601226}
   m_Layer: 0
-  m_Name: Shahid
+  m_Name: Shahid_yosi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1598822297689230
 GameObject:
   m_ObjectHideFlags: 1
@@ -1780,7 +1780,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1587034927671970}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -120}
+  m_LocalPosition: {x: 69.62, y: -10, z: -128.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4421005113652584}
@@ -2493,7 +2493,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1587034927671970}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 521b611700410be45810047f0a74e899, type: 3}
   m_Name: 
@@ -2506,15 +2506,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1587034927671970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ee39b3573ce4472da6f663dd563f47c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1acd703e7cabd4eea9acad0dc03b19fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  MoveToTarget: 1
-  Triggered: 0
   Speed: 1
-  StopThreshold: 1
-  DistanceAheadOfTarget: 10
+  StopThreshold: 0.2
 --- !u!114 &114590818205100988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2526,13 +2523,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7a80d520cacc042b5fe14f373d8173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovingTurnSpeed: 360
-  m_StationaryTurnSpeed: 180
+  m_MovingTurnSpeed: 720
+  m_StationaryTurnSpeed: 360
   m_JumpPower: 6
-  m_GravityMultiplier: 2
+  m_GravityMultiplier: 1
   m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 1
-  m_AnimSpeedMultiplier: 1
+  m_MoveSpeedMultiplier: 4
+  m_AnimSpeedMultiplier: 4
   m_GroundCheckDistance: 0.3
 --- !u!135 &135716339113043804
 SphereCollider:

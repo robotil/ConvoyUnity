@@ -186,6 +186,7 @@
      <Compile Include="Assets\Scripts\velodyneScripts\VELODYNE.cs" />
      <Compile Include="Assets\Scripts\velodyneScripts\Velodyne16.cs" />
      <Compile Include="Assets\Scripts\velodyneScripts\VELODYNE16_ICD.cs" />
+     <Compile Include="Assets\Scripts\velodyneScripts\VelodyneWrapper.cs" />
      <Compile Include="Assets\Scripts\velodyneScripts\WebsocketClient.cs" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\DepthOfField.shader" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\MotionBlur.cginc" />
