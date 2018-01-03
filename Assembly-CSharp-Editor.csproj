@@ -158,6 +158,7 @@
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\Common.cginc" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Bluenoise64\COPYING.txt" />
      <None Include="Assets\3rdParty\PostProcessing\Editor Resources\UI\Trackball.shader" />
+     <None Include="Assets\3rdParty\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\Bloom.cginc" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\TAA.shader" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\EyeHistogram.compute" />
@@ -170,6 +171,7 @@
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\ScreenSpaceRaytrace.cginc" />
      <None Include="Assets\3rdParty\Raw Mocap Data\Animations\_CompleteAnimationList.txt" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\Bloom.shader" />
+     <None Include="Assets\3rdParty\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
      <None Include="Assets\3rdParty\PostProcessing\Editor Resources\Monitors\VectorscopeRender.shader" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\EyeAdaptation.shader" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\ColorGrading.cginc" />
