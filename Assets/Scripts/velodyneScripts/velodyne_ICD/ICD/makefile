@@ -4,13 +4,13 @@ CFLAGS = -std=c++0x -fPIC -O -g
 
 LDFLAGS = -shared
 
-TARGET = libvlp.so
+TARGET = libvlpcommunication.so
 
 SRC_DIR = src
 
-INCLUDES = -Iinclude/ -I../ICD/include/
+INCLUDES = -Iinclude/
 
-LIBS = libvlpcommunication.so
+LIBS = -lboost_system -lboost_thread
 
 SRCS = $(wildcard $(SRC_DIR)/*.cpp)
 
@@ -28,5 +28,4 @@ $(notdir)%.o: $(SRC_DIR)/%.cpp
 #. PHONY rule keeps make from doing something with a file named clean.
 .PHONY: all clean
 clean:
-	${RM} ${TARGET} ${OBJS}
-
+	$(RM) $(TARGET) ${OBJS}

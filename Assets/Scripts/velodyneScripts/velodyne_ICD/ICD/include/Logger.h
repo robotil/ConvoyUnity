@@ -23,7 +23,6 @@ private:
     Logger(const Logger&) = default;
     ~Logger() = default;
 
-    LogLevel m_tmpLevel;
     /**
      * screen log level for printing
      */ 

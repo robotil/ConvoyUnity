@@ -1,4 +1,4 @@
-/**
+/**../include/
 * VLPCommunication.cpp
 * Manage communication between velodyne sensor with UDP socket
 * Author: Binyamin Appelbaum
