@@ -218,23 +218,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1466479890472642
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4808175299460402}
-  - component: {fileID: 20319883738709304}
-  - component: {fileID: 124079651083333460}
-  m_Layer: 0
-  m_Name: DriverViewCamera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!1 &1552511326399398
 GameObject:
   m_ObjectHideFlags: 1
@@ -284,7 +267,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1568343540963708
 GameObject:
   m_ObjectHideFlags: 1
@@ -524,7 +507,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1943971250810498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: -200}
+  m_LocalPosition: {x: 0, y: -5, z: -180}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4823077433386602}
@@ -532,7 +515,6 @@ Transform:
   - {fileID: 4748811315725612}
   - {fileID: 4808232255348008}
   - {fileID: 4184645090836060}
-  - {fileID: 4808175299460402}
   - {fileID: 4759609346405498}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -783,7 +765,7 @@ Transform:
   - {fileID: 4069036553960282}
   - {fileID: 4772560023670764}
   m_Father: {fileID: 4040276607847028}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4772560023670764
 Transform:
@@ -825,19 +807,6 @@ Transform:
   m_Father: {fileID: 4975439398159724}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!4 &4808175299460402
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1466479890472642}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.864, y: 1.911, z: 0.19}
-  m_LocalScale: {x: 1, y: 1.09, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4040276607847028}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4808232255348008
 Transform:
   m_ObjectHideFlags: 1
@@ -895,41 +864,6 @@ Transform:
   m_Father: {fileID: 4808232255348008}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &20319883738709304
-Camera:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1466479890472642}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0.6
-    y: 0
-    width: 0.4
-    height: 0.4
-  near clip plane: 0.11
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
 --- !u!23 &23010755317675832
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -1878,10 +1812,9 @@ MonoBehaviour:
   VehicleLength: 3
   MaxSteering: 0.4
   steeringCommand: 0
-  left_steer: 0
-  right_steer: 0
-  steering:
+  rightWheelsSteer:
   - {fileID: 153853356333178180}
+  leftWheelsSteer:
   - {fileID: 153488364707585380}
 --- !u!114 &114286387515695346
 MonoBehaviour:
@@ -1896,7 +1829,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicleThrot: {fileID: 114547573816290482}
   vehicleSteer: {fileID: 114232953169183000}
-  targeLinearVel: 1
+  targeLinearVel: 2
   P_lin: 1
   targetAngularVel: 0
   P_ang: 1
@@ -1967,7 +1900,7 @@ MonoBehaviour:
   targetPoseAndVel: {x: 0, y: 0, z: 0}
   P_diss: 1
   P_azimuth: 1
-  targetWP: {fileID: 0}
+  targetWP_Mark: {fileID: 0}
 --- !u!114 &114655569256202044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1995,12 +1928,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WPController: {fileID: 0}
   PathWPs_PosesAndVels:
-  - {x: -100, y: -150, z: 3}
-  - {x: 120, y: 0, z: 3}
-  - {x: 150, y: 150, z: 3}
-  - {x: -180, y: 180, z: 4}
+  - {x: 50, y: -130, z: 5}
+  - {x: -50, y: -70, z: 5}
+  - {x: 10, y: 0, z: 5}
+  - {x: -180, y: 180, z: 5}
   curentWP: 0
   WP_ReachRadius: 0
+  PathWP_Mark: {fileID: 0}
 --- !u!114 &114710435153777164
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2069,13 +2003,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CenterOfMassPos: {fileID: 4777346297526220}
---- !u!124 &124079651083333460
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1466479890472642}
-  m_Enabled: 1
 --- !u!135 &135369541061889482
 SphereCollider:
   m_ObjectHideFlags: 1

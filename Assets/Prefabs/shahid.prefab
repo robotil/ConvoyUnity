@@ -1676,7 +1676,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1466764474982144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 58.6, y: -10, z: -165.6}
+  m_LocalPosition: {x: 81.1, y: -10, z: -132.7}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children:
   - {fileID: 4079653597230208}
@@ -2619,7 +2619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shahid: {fileID: 0}
   targetPoseAndVel: {x: 0, y: 0, z: 0}
-  targetRadius: 1
+  targetRadius: 1.5
   P_diss: 1
   P_azimuth: 1
   targetWP_Mark: {fileID: 0}

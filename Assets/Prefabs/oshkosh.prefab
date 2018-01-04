@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 114076561217748786}
   - component: {fileID: 114166335828312772}
   - component: {fileID: 114455244818082722}
+  - component: {fileID: 114890855178970782}
   m_Layer: 0
   m_Name: oshkosh
   m_TagString: Vehicle
@@ -746,7 +747,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1935622302154312
 GameObject:
   m_ObjectHideFlags: 1
@@ -1383,7 +1384,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1053339504900996}
   m_LocalRotation: {x: -0.002327185, y: 0.058914185, z: 0.00013734408, w: -0.9982604}
-  m_LocalPosition: {x: 0, y: -5, z: -200}
+  m_LocalPosition: {x: 0, y: -5, z: -210}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4702706044682110}
@@ -3360,7 +3361,7 @@ MonoBehaviour:
   targetPoseAndVel: {x: 0, y: 0, z: 0}
   P_diss: 1
   P_azimuth: 1
-  targetWP: {fileID: 0}
+  targetWP_Mark: {fileID: 0}
 --- !u!114 &114224731984159220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3495,11 +3496,12 @@ MonoBehaviour:
   VehicleLength: 5.5
   MaxSteering: 0.4
   steeringCommand: 0
-  left_steer: 0
-  right_steer: 0
-  steering:
+  rightWheelsSteer:
   - {fileID: 153320684998850934}
+  - {fileID: 153324414215705970}
+  leftWheelsSteer:
   - {fileID: 153869803579846624}
+  - {fileID: 153608712593715166}
 --- !u!114 &114455244818082722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3512,12 +3514,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WPController: {fileID: 114166335828312772}
-  PathWPs_PosesAndVels:
-  - {x: -120, y: -10, z: 5}
-  - {x: 100, y: 30, z: 5}
-  - {x: 70, y: -60, z: 5}
+  PathWPs_PosesAndVels: []
   curentWP: 0
   WP_ReachRadius: 0
+  PathWP_Mark: {fileID: 0}
 --- !u!114 &114496715194857372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3658,6 +3658,22 @@ MonoBehaviour:
   Iterations: 15
   VelIteration: 3
   MaxRotSpeed: 7
+--- !u!114 &114890855178970782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1053339504900996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba60671c1321b445a81939132379757a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PathController: {fileID: 0}
+  leaderVehicle: {fileID: 0}
+  followerSpeed: 3
+  leaderPointsDisstances: 1
+  folloActive: 1
 --- !u!114 &114987701156734786
 MonoBehaviour:
   m_ObjectHideFlags: 1
