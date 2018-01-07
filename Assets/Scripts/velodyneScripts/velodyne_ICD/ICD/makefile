@@ -22,6 +22,7 @@ OBJ = $(DEPS:$(INC_DIR)/%.h=$(OBJ_DIR)/%.o)
 
 all: directories $(TARGET)
 
+# this rule meant to create obj directory if it does not exist already
 directories: $(OBJ_DIR)
 
 $(OBJ_DIR):
