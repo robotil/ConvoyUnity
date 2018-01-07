@@ -1,0 +1,25 @@
+******** written by Binyamin Appelbaum at 3.1.2018 **************
+
+These are instructions for using Velodyne_ICD and changing its content in order to use it as a plugin:
+
+Velodyne_ICD folder contains 2 directories:
+1. ICD - contains src and include directories of the core ICD of the velodyne
+3. wrapper - src and include files to wrap the ICD to externed dynamic library
+
+If you just want to USE the plugin:
+1. Copy "libvlp*.so" files on "wrapper" directory to "/usr/lib" (you may need "sudo" before the command)
+2. Run "sudo ldconfig"
+3. Run the required program.
+
+If you want to CHANGE to plugin:
+1. Changes on the ICD itself:
+	a. Make your changes (src or include directories)
+	b. Run make ICD folder
+	c. Copy the compilation product (libvlpcommunication.so) to wrapper directory
+	d. cd to wrapper directory
+	e. Run "make" or "make clean all"
+	f. Repeat 1-3 steps above (USE the plugin).
+2. Changes on the ICD wrapper: do "d-f" steps above
+
+NOTES:
+Tester.cpp, Tester.h, main.cpp are for debugging. hence they are not compiled with the ICD.

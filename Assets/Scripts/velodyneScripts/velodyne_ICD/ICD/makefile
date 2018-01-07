@@ -4,9 +4,9 @@ CFLAGS = -std=c++0x -fPIC -O -g
 
 LDFLAGS = -shared
 
-LIBS = libvlpcommunication.so
+LIBS = -lboost_system -lboost_thread
 
-TARGET = libvlp.so
+TARGET = libvlpcommunication.so
 
 OBJ_DIR = obj
 
@@ -14,7 +14,7 @@ INC_DIR = include
 
 SRC_DIR = src
 
-INCLUDES = -I$(INC_DIR) -I../ICD/include/
+INCLUDES = -I$(INC_DIR)
 # take all h files on include dir
 DEPS = $(wildcard $(INC_DIR)/*.h)
 # replace the name of all h files to the same name with o suffix
@@ -34,9 +34,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(DEPS)
 $(TARGET): $(OBJ) 
 	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
 
-#. PHONY rule keeps make from doing something with a file named clean.
-.PHONY: all clean dirs
+.PHONY: all clean
 
 clean:
 	rm -f $(OBJ_DIR)/*.o *~ core
-
