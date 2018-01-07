@@ -13,8 +13,8 @@ If you just want to USE the plugin:
 
 If you want to CHANGE to plugin:
 1. Changes on the ICD itself:
-	a. Make your changes (src/include directories)
-	b. Run make on "src" folder
+	a. Make your changes (src or include directories)
+	b. Run make ICD folder
 	c. Copy the compilation product (libvlpcommunication.so) to wrapper directory
 	d. cd to wrapper directory
 	e. Run "make" or "make clean all"
@@ -22,5 +22,4 @@ If you want to CHANGE to plugin:
 2. Changes on the ICD wrapper: do "d-f" steps above
 
 NOTES:
-1. If the compilation fails because the compiler doesn't find the "h" files - you may need to change the "include" path on the makefile itself
-2. Tester.cpp, Tester.h, main.cpp are for debugging. they are not compiled with the ICD.
+Tester.cpp, Tester.h, main.cpp are for debugging. hence they are not compiled with the ICD.
