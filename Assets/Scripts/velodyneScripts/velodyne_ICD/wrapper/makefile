@@ -4,29 +4,39 @@ CFLAGS = -std=c++0x -fPIC -O -g
 
 LDFLAGS = -shared
 
+LIBS = libvlpcommunication.so
+
 TARGET = libvlp.so
+
+OBJ_DIR = obj
+
+INC_DIR = include
 
 SRC_DIR = src
 
-INCLUDES = -Iinclude/ -I../ICD/include/
+INCLUDES = -I$(INC_DIR) -I../ICD/include/
+# take all h files on include dir
+DEPS = $(wildcard $(INC_DIR)/*.h)
+# replace the name of all h files to the same name with o suffix
+OBJ = $(DEPS:$(INC_DIR)/%.h=$(OBJ_DIR)/%.o)
 
-LIBS = libvlpcommunication.so
+all: directories $(TARGET)
 
-SRCS = $(wildcard $(SRC_DIR)/*.cpp)
+# this rule meant to create obj directory if it does not exist already
+directories: $(OBJ_DIR)
 
-OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(notdir)%.o)
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
-all: $(TARGET)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(DEPS)
+	$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
 
-# $@ and $^, are the left and right sides of the :
-$(TARGET): $(OBJS)
+$(TARGET): $(OBJ) 
 	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
 
-$(notdir)%.o: $(SRC_DIR)/%.cpp
-	$(CC) $(CFLAGS) $(INCLUDES) -c $(SRCS)
-
 #. PHONY rule keeps make from doing something with a file named clean.
-.PHONY: all clean
+.PHONY: all clean dirs
+
 clean:
-	${RM} ${TARGET} ${OBJS}
+	rm -f $(OBJ_DIR)/*.o *~ core
 
