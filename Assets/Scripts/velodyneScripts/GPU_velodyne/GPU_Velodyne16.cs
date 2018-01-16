@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class GPUVelodyne : MonoBehaviour
+public class GPU_Velodyne16 : MonoBehaviour
 {
     VelodyneWrapper vel16ICDinterface;
     GPULidar Sensor;

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using System;
 
-public class Velodyne16 : MonoBehaviour
+public class CPU_Velodyne16 : MonoBehaviour
 {
     public float MaxRange = 70;
     public float HorFOV = 360, VerFOV = 20, StartVerticalAngle = -10;
