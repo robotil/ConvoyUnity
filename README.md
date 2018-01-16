@@ -22,7 +22,7 @@ Or go for the Latest
     
     https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2
     
-Clone the repository and open the "ConboyUnity" project in the Unity Editor.
+Clone the repository and open the "ConvoyUnity" project in the Unity Editor.
 
 To enable VScode integration, in the Editor, go to Edit->Preferences->VScode->Enable Integration.
 
