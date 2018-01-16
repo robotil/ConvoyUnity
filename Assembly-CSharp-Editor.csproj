@@ -170,6 +170,7 @@
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\DepthOfField.cginc" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\ScreenSpaceRaytrace.cginc" />
      <None Include="Assets\3rdParty\Raw Mocap Data\Animations\_CompleteAnimationList.txt" />
+     <None Include="Assets\Scripts\velodyneScripts\GPU_velodyne\DepthShader.shader" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\Bloom.shader" />
      <None Include="Assets\3rdParty\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
      <None Include="Assets\3rdParty\PostProcessing\Editor Resources\Monitors\VectorscopeRender.shader" />
