@@ -67,8 +67,10 @@ public class VehicleSteering : MonoBehaviour
 
     }
 
-
-
+    public void toggleManual(bool manual)
+    {
+        ManualInput = manual;
+    }
 
 
 }

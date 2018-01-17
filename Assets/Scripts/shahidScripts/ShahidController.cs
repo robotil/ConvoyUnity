@@ -40,5 +40,9 @@ public class ShahidController : MonoBehaviour
 		anim.SetFloat("Turn",TurningCommand);
     }
 
+    public void toggleManual(bool manual)
+    {
+        ManualInput = manual;
+    }
 
 }

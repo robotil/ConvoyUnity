@@ -200,7 +200,7 @@ MonoBehaviour:
   MeasurementRange: 120
   MinMeasurementRange: 0.2
   MeasurementAccuracy: 0.02
-  sendDataOnICD: 1
+  sendDataOnICD: 0
   DrawLidar: 0
   drawSize: 0.1
   drawTime: 0.1

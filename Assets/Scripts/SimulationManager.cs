@@ -45,5 +45,4 @@ public class SimulationManager : MonoBehaviour
             Time.timeScale = Timescale;
         }
     }
-
 }

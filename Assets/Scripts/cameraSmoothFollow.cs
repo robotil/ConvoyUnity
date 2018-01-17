@@ -71,4 +71,11 @@
          // Always look at the target
          transform.LookAt (target);
      }
+
+
+    public void setTarget(Transform newTarget)
+    {
+        target = newTarget;
+    }
+
  }
