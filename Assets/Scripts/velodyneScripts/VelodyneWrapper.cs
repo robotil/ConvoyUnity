@@ -6,32 +6,32 @@ public class VelodyneWrapper : IDisposable {
 	const String DLL_LOCATION = "libvlp";
 
 	[DllImport (DLL_LOCATION)]
-	private static extern IntPtr CreateVLPObject(short ip1, short ip2, short ip3, short ip4, int port, int resolution,
+	private static extern IntPtr CreateVLPObject(string ip, string port, int resolution,
     	int returnMode, int dataSource, int sensorFrequency, int velType);
 
 	[DllImport (DLL_LOCATION)]
 	private static extern void DeleteVLPObject(IntPtr pVlp);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern void Run(IntPtr pVlp);
+	private static extern void RunVLP(IntPtr pVlp);
 
 	[DllImport (DLL_LOCATION)]
 	private static extern void SetAzimuth(IntPtr pVlp, double azimuth);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern void SetTimeStamp(IntPtr pVlp, int timeStamp);
+	private static extern void SetVLPTimeStamp(IntPtr pVlp, int timeStamp);
 
 	[DllImport (DLL_LOCATION)]
 	private static extern void SetChannel(IntPtr pVlp, double distance, short reflectivity);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern void SendData(IntPtr pVlp);
+	private static extern void SendVLPData(IntPtr pVlp);
 
 	private IntPtr m_nativeObject;
 
-	public VelodyneWrapper(short ip1, short ip2, short ip3, short ip4, int port, int resolution,
+	public VelodyneWrapper(string ip, string port, int resolution,
     	int returnMode, int dataSource, int sensorFrequency, int velType) {
-			this.m_nativeObject = CreateVLPObject(ip1, ip2, ip3, ip4, port, resolution, returnMode, dataSource, sensorFrequency, velType);
+		this.m_nativeObject = CreateVLPObject(ip, port, resolution, returnMode, dataSource, sensorFrequency, velType);
 	}
 
 	~VelodyneWrapper() {Dispose(false);}
@@ -50,7 +50,7 @@ public class VelodyneWrapper : IDisposable {
     }
 
 	public void Run() {
-		Run(this.m_nativeObject);
+		RunVLP(this.m_nativeObject);
 	}
 
 	public void SetAzimuth(double azimuth) {
@@ -58,7 +58,7 @@ public class VelodyneWrapper : IDisposable {
 	}
 
 	public void SetTimeStamp(int timeStamp) {
-		SetTimeStamp(this.m_nativeObject, timeStamp);
+		SetVLPTimeStamp(this.m_nativeObject, timeStamp);
 	}
 
 	public void SetChannel(double distance, short reflectivity) {
@@ -66,6 +66,6 @@ public class VelodyneWrapper : IDisposable {
 	}
 
 	public void SendData() {
-		SendData(this.m_nativeObject);
+		SendVLPData(this.m_nativeObject);
 	}
 }

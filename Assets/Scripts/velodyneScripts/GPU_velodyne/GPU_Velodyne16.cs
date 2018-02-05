@@ -66,7 +66,8 @@ public class GPU_Velodyne16 : MonoBehaviour
         // activtion of the ICD interface    
         if (sendDataOnICD)
         {
-            vel16ICDinterface = new VelodyneWrapper(192, 168, 1, 77, 2368, (int)(AngularResolution * 1000), 37, 22, Mathf.RoundToInt(RotateFrequency), 16);
+            //vel16ICDinterface = new VelodyneWrapper(192, 168, 1, 77, 2368, (int)(AngularResolution * 1000), 37, 22, Mathf.RoundToInt(RotateFrequency), 16);
+            vel16ICDinterface = new VelodyneWrapper("192.168.1.77", "2368", (int)(AngularResolution * 1000), 37, 22, Mathf.RoundToInt(RotateFrequency), 16);
             vel16ICDinterface.Run();
         }
     }

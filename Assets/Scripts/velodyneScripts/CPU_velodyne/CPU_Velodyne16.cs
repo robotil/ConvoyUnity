@@ -42,7 +42,8 @@ public class CPU_Velodyne16 : MonoBehaviour
         emitter = SensorRotator.Find("Emitter");
 
         horCurrentAngle = 0;
-        vc = new VelodyneWrapper(192, 168, 1, 77, 2368, 200, 37, 22, 10, 16);
+        vc = new VelodyneWrapper("192.168.1.77", "2368", 200, 37, 22, 10, 16);
+        //vc = new VelodyneWrapper(192, 168, 1, 77, 2368, 200, 37, 22, 10, 16);
         vc.Run();
     }
 
