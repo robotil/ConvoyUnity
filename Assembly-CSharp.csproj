@@ -167,12 +167,15 @@
      <Compile Include="Assets\3rdParty\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
      <Compile Include="Assets\3rdParty\Standard Assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
      <Compile Include="Assets\Scripts\cameraSmoothFollow.cs" />
+     <Compile Include="Assets\Scripts\NovatelScripts\DgpsWrapper.cs" />
+     <Compile Include="Assets\Scripts\NovatelScripts\Novatel.cs" />
      <Compile Include="Assets\Scripts\RigidBodyIterations.cs" />
      <Compile Include="Assets\Scripts\shahidScripts\ShahidActivator.cs" />
      <Compile Include="Assets\Scripts\shahidScripts\ShahidAI.cs" />
      <Compile Include="Assets\Scripts\shahidScripts\ShahidController.cs" />
      <Compile Include="Assets\Scripts\shahidScripts\ShahidWPController.cs" />
      <Compile Include="Assets\Scripts\SimulationManager.cs" />
+     <Compile Include="Assets\Scripts\smartestScripts\scenWorldGenerator.cs" />
      <Compile Include="Assets\Scripts\vehicleDriveScripts\AntiRollBarConfigurableJoint.cs" />
      <Compile Include="Assets\Scripts\vehicleDriveScripts\CenterOfMass.cs" />
      <Compile Include="Assets\Scripts\vehicleDriveScripts\VehicleFollowerPathController.cs" />

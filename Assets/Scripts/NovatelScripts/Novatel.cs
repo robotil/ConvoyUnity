@@ -36,7 +36,13 @@ public class Novatel : MonoBehaviour {
 		InvokeRepeating("PosVelPub", 0.0f, pubTimeInterval);
 
 		DGPSinterface = new DgpsWrapper("/dev/ttyUSB0", 115200);
+		DGPSinterface.Run();
 	}
+
+	
+	// void OnApplicationQuit() {
+	// 	DGPSinterface.Dispose();
+	// 	}
 	
 	// Update is called once per frame
 	void PosVelPub() {
@@ -68,6 +74,7 @@ public class Novatel : MonoBehaviour {
 
         double timeStamp = Time.fixedTime * 1000000.0;
 		DGPSinterface.SetTimeStamp((int)timeStamp);
+		DGPSinterface.SendData();
 	}
 
 
