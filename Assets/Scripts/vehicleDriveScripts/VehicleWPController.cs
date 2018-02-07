@@ -21,6 +21,7 @@ public class VehicleWPController : MonoBehaviour
 
 
     public GameObject targetWP_Mark;
+    GameObject TargetWP;
 
     Transform myref;
 
@@ -33,18 +34,20 @@ public class VehicleWPController : MonoBehaviour
         
        VelController = GetComponent<VehicleVelocityController>();
 
-        targetWP_Mark = Instantiate(targetWP_Mark); // creating a private copy
-        WPpos = targetWP_Mark.GetComponent<terrainAttachment>();
+
+       TargetWP = Instantiate(targetWP_Mark);
+       TargetWP.name = gameObject.name + "TargetWP";
+       
+       WPpos = TargetWP.GetComponent<terrainAttachment>();
     }
 
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        WPpos.moveTo(new Vector3(targetPoseAndVel.x,targetPoseAndVel.y,0));
 
-        WPpos.XYHightCords = new Vector3(targetPoseAndVel.x,targetPoseAndVel.y,0);
-
-        Vector3 targetWP_local = myref.InverseTransformPoint(targetWP_Mark.transform.position);
+        Vector3 targetWP_local = myref.InverseTransformPoint(TargetWP.transform.position);
 
         targetDiss = targetWP_local.magnitude;
         LinVelCmd = P_diss * targetDiss;

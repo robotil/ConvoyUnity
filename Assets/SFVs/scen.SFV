@@ -1,0 +1,109 @@
+<?xml version="1.0" ?>
+<SFV ID="1" ResourceFileURL="/home/robil/SmARTest/src/smartest/resource/resource_convoy.xml">
+    <map ID="1" name="map">
+        <topographic_map>7</topographic_map>
+    </map>
+    <objects ID="2">
+        <object ID="1" name="">
+            <object_i_type>1</object_i_type>
+            <object_i_scaling_factor>1</object_i_scaling_factor>
+            <object_i_location_on_the_X_axis>0.559207</object_i_location_on_the_X_axis>
+            <object_i_location_on_the_Y_axis>0.0862168</object_i_location_on_the_Y_axis>
+            <object_i_location_on_the_Z_axis>-0.0705268</object_i_location_on_the_Z_axis>
+            <object_i_location_Roll>0.0300028</object_i_location_Roll>
+            <object_i_location_Pitch>-0.0623071</object_i_location_Pitch>
+            <object_i_location_Yaw>2.32863</object_i_location_Yaw>
+        </object>
+    </objects>
+    <obstacles_on_path ID="3">
+        <obstacle_on_path ID="1" name="">
+            <obstacle_on_path_i_type>1</obstacle_on_path_i_type>
+            <obstacle_on_path_i_scaling_factor>1</obstacle_on_path_i_scaling_factor>
+            <obstacle_on_path_i_location_along_the_path>0.300706</obstacle_on_path_i_location_along_the_path>
+            <obstacle_on_path_i_location_perpendicular_to_the_path>-0.507736</obstacle_on_path_i_location_perpendicular_to_the_path>
+            <obstacle_on_path_i_location_on_the_Z_axis>-0.089252</obstacle_on_path_i_location_on_the_Z_axis>
+            <obstacle_on_path_i_location_Roll>0.0628041</obstacle_on_path_i_location_Roll>
+            <obstacle_on_path_i_location_Pitch>0.0465869</obstacle_on_path_i_location_Pitch>
+            <obstacle_on_path_i_location_Yaw>-1.37457</obstacle_on_path_i_location_Yaw>
+        </obstacle_on_path>
+        <obstacle_on_path ID="2" name="">
+            <obstacle_on_path_i_type>1</obstacle_on_path_i_type>
+            <obstacle_on_path_i_scaling_factor>1</obstacle_on_path_i_scaling_factor>
+            <obstacle_on_path_i_location_along_the_path>0.674589</obstacle_on_path_i_location_along_the_path>
+            <obstacle_on_path_i_location_perpendicular_to_the_path>0.836363</obstacle_on_path_i_location_perpendicular_to_the_path>
+            <obstacle_on_path_i_location_on_the_Z_axis>-0.075291</obstacle_on_path_i_location_on_the_Z_axis>
+            <obstacle_on_path_i_location_Roll>0.0236553</obstacle_on_path_i_location_Roll>
+            <obstacle_on_path_i_location_Pitch>0.0804174</obstacle_on_path_i_location_Pitch>
+            <obstacle_on_path_i_location_Yaw>2.91147</obstacle_on_path_i_location_Yaw>
+        </obstacle_on_path>
+        <obstacle_on_path ID="3" name="">
+            <obstacle_on_path_i_type>1</obstacle_on_path_i_type>
+            <obstacle_on_path_i_scaling_factor>1</obstacle_on_path_i_scaling_factor>
+            <obstacle_on_path_i_location_along_the_path>0.274043</obstacle_on_path_i_location_along_the_path>
+            <obstacle_on_path_i_location_perpendicular_to_the_path>-0.287365</obstacle_on_path_i_location_perpendicular_to_the_path>
+            <obstacle_on_path_i_location_on_the_Z_axis>-0.0780369</obstacle_on_path_i_location_on_the_Z_axis>
+            <obstacle_on_path_i_location_Roll>-0.070597</obstacle_on_path_i_location_Roll>
+            <obstacle_on_path_i_location_Pitch>-0.0118933</obstacle_on_path_i_location_Pitch>
+            <obstacle_on_path_i_location_Yaw>2.06695</obstacle_on_path_i_location_Yaw>
+        </obstacle_on_path>
+    </obstacles_on_path>
+    <mass_link_i ID="4" name="body">
+        <mass_link_i_mass_deviation>1.01881</mass_link_i_mass_deviation>
+        <mass_link_i_inertia_deviation_Ixx_component>1.03905</mass_link_i_inertia_deviation_Ixx_component>
+        <mass_link_i_inertia_deviation_Iyy_component>0.981146</mass_link_i_inertia_deviation_Iyy_component>
+        <mass_link_i_inertia_deviation_Izz_component>1.0314</mass_link_i_inertia_deviation_Izz_component>
+        <mass_link_i_location_deviation_X>0</mass_link_i_location_deviation_X>
+        <mass_link_i_location_deviation_Y>0</mass_link_i_location_deviation_Y>
+        <mass_link_i_location_deviation_Z>0</mass_link_i_location_deviation_Z>
+        <mass_link_i_location_deviation_Roll>0</mass_link_i_location_deviation_Roll>
+        <mass_link_i_location_deviation_Pitch>0</mass_link_i_location_deviation_Pitch>
+        <mass_link_i_location_deviation_Yaw>0</mass_link_i_location_deviation_Yaw>
+    </mass_link_i>
+    <friction_link_i ID="5" name="front_right_wheel">
+        <friction_link_friction_deviation>0.920573</friction_link_friction_deviation>
+    </friction_link_i>
+    <friction_link_i ID="6" name="front_left_wheel">
+        <friction_link_friction_deviation>1.00369</friction_link_friction_deviation>
+    </friction_link_i>
+    <friction_link_i ID="7" name="back_right_wheel">
+        <friction_link_friction_deviation>0.901799</friction_link_friction_deviation>
+    </friction_link_i>
+    <friction_link_i ID="8" name="back_left_wheel">
+        <friction_link_friction_deviation>1.01691</friction_link_friction_deviation>
+    </friction_link_i>
+    <sensor_link_i ID="9" name="IPON::link">
+        <sensor_link_i_location_deviation_X>-3.06461e-05</sensor_link_i_location_deviation_X>
+        <sensor_link_i_location_deviation_Y>2.46613e-05</sensor_link_i_location_deviation_Y>
+        <sensor_link_i_location_deviation_Z>-7.50794e-05</sensor_link_i_location_deviation_Z>
+        <sensor_link_i_location_deviation_Roll>0.000140365</sensor_link_i_location_deviation_Roll>
+        <sensor_link_i_location_deviation_Pitch>-6.83167e-05</sensor_link_i_location_deviation_Pitch>
+        <sensor_link_i_location_deviation_Yaw>0.000152679</sensor_link_i_location_deviation_Yaw>
+    </sensor_link_i>
+    <sensor_link_i ID="10" name="IBEO::link">
+        <sensor_link_i_location_deviation_X>3.11662e-05</sensor_link_i_location_deviation_X>
+        <sensor_link_i_location_deviation_Y>1.85639e-05</sensor_link_i_location_deviation_Y>
+        <sensor_link_i_location_deviation_Z>-0.000210182</sensor_link_i_location_deviation_Z>
+        <sensor_link_i_location_deviation_Roll>-6.09017e-05</sensor_link_i_location_deviation_Roll>
+        <sensor_link_i_location_deviation_Pitch>-0.000143268</sensor_link_i_location_deviation_Pitch>
+        <sensor_link_i_location_deviation_Yaw>-0.000105131</sensor_link_i_location_deviation_Yaw>
+    </sensor_link_i>
+    <platform_pose ID="11" name="bobcat">
+        <initial_platform_position_on_map_X_axis>0.0</initial_platform_position_on_map_X_axis>
+        <initial_platform_position_on_map_Y_axis>-0.7</initial_platform_position_on_map_Y_axis>
+        <initial_platform_azimut_on_map>0.0</initial_platform_azimut_on_map>
+    </platform_pose>
+    <Path ID="12">
+        <WayPoint ID="1" name="">
+            <wp_i_relative_distance>50.93</wp_i_relative_distance>
+            <wp_i_relative_angle>-0.431119</wp_i_relative_angle>
+        </WayPoint>
+        <WayPoint ID="2" name="">
+            <wp_i_relative_distance>70.1044</wp_i_relative_distance>
+            <wp_i_relative_angle>0.160858</wp_i_relative_angle>
+        </WayPoint>
+        <WayPoint ID="3" name="">
+            <wp_i_relative_distance>40.581</wp_i_relative_distance>
+            <wp_i_relative_angle>-0.0889171</wp_i_relative_angle>
+        </WayPoint>
+    </Path>
+</SFV>

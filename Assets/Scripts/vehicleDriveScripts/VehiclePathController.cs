@@ -83,9 +83,8 @@ public class VehiclePathController : MonoBehaviour
                     }
 
             terrainAttachment WPpos = PathWPs[WP_i].GetComponent<terrainAttachment>();
-            WPpos.XYHightCords = new Vector3(PathWPs_PosesAndVels[WP_i].x,PathWPs_PosesAndVels[WP_i].y,0);
+            WPpos.moveTo(new Vector3(PathWPs_PosesAndVels[WP_i].x,PathWPs_PosesAndVels[WP_i].y,0));
             }
-
     }
 
 

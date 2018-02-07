@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class terrainAttachment : MonoBehaviour {
 
-	public Vector3 XYHightCords;
+	//public Vector3 XYHightCords;
 
-    Transform myref;
 
 	// Use this for initialization
 	void Start () {
-        myref = gameObject.transform;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
+	public void moveTo(Vector3 XYHightCords) {
 		Vector3 objectPosGlobal = new Vector3(XYHightCords.x,0,XYHightCords.y) + 1000*Vector3.up;
 
         RaycastHit hit;
@@ -23,6 +19,11 @@ public class terrainAttachment : MonoBehaviour {
         objectPosGlobal = hit.point;
 		objectPosGlobal.y = objectPosGlobal.y + XYHightCords.z;
 
-        myref.position = objectPosGlobal;
+        gameObject.transform.position = objectPosGlobal;
+
+		
 	}
+	
+
+
 }
