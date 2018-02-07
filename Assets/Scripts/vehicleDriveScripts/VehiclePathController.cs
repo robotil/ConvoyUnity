@@ -82,11 +82,8 @@ public class VehiclePathController : MonoBehaviour
                         PathWPs.Add(newWP_Object);
                     }
 
-            Vector3 targetWP_global = new Vector3(PathWPs_PosesAndVels[WP_i].x,0,PathWPs_PosesAndVels[WP_i].y) + 1000*Vector3.up;
-            RaycastHit hit;
-            Physics.Raycast(targetWP_global,-Vector3.up, out hit);
-            targetWP_global = hit.point;
-            PathWPs[WP_i].transform.position = targetWP_global;
+            terrainAttachment WPpos = PathWPs[WP_i].GetComponent<terrainAttachment>();
+            WPpos.XYHightCords = new Vector3(PathWPs_PosesAndVels[WP_i].x,PathWPs_PosesAndVels[WP_i].y,0);
             }
 
     }
