@@ -6,30 +6,30 @@ public class DgpsWrapper : IDisposable {
 	const String DLL_LOCATION = "libdgps";
 
 	[DllImport (DLL_LOCATION)]
-	private static extern IntPtr CreateDgpsObject(string portName, int baudRate);
+	private static extern IntPtr CreateDgpsObject(string confFilePath);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern void DeleteDgpsObject(IntPtr pDgps);
+	private static extern void DeleteDgpsObject(IntPtr pVlp);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern void RunDgps(IntPtr pDgps);
+	private static extern void RunDgps(IntPtr pVlp);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern void SendDgpsData(IntPtr pDgps);
+	private static extern void SendDgpsData(IntPtr pVlp);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern void SetPosition(IntPtr pDgps, double latitude, double longitude, double altitude);
+	private static extern void SetPosition(IntPtr pVlp, double latitude, double longitude, double altitude);
 	
 	[DllImport (DLL_LOCATION)]
-	private static extern void SetVelocities(IntPtr pDgps, double latSpeed, double longSpeed, double altAzimuth);
+	private static extern void SetVelocities(IntPtr pVlp, double latSpeed, double longSpeed, double altAzimuth);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern void SetDgpsTimeStamp(IntPtr pDgps, int timeStamp);
+	private static extern void SetDgpsTimeStamp(IntPtr pVlp, int timeStamp);
 
 	private IntPtr m_nativeObject;
 
-	public DgpsWrapper(string portName, int baudRate) {
-		this.m_nativeObject = CreateDgpsObject(portName, baudRate);
+	public DgpsWrapper(string confFilePath) {
+		this.m_nativeObject = CreateDgpsObject(confFilePath);
 	}
 
 	~DgpsWrapper() {Dispose(false);}

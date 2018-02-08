@@ -35,7 +35,7 @@ public class Novatel : MonoBehaviour {
 		float pubTimeInterval = 1/SensorPubFreq;
 		InvokeRepeating("PosVelPub", 0.0f, pubTimeInterval);
 
-		DGPSinterface = new DgpsWrapper("/dev/ttyUSB0", 115200);
+		DGPSinterface = new DgpsWrapper("/home/robil/dgps.conf");
 		DGPSinterface.Run();
 	}
 
