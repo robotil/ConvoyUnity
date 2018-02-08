@@ -7,6 +7,8 @@ using System;
 public class GPU_Velodyne16 : MonoBehaviour
 {
     VelodyneWrapper vel16ICDinterface;
+
+    public string ICD_ConfigFile = "/home/robil/vlp.conf";
     GPULidar Sensor;
     Camera depthCam;
     Texture2D RangesSamples;
@@ -66,7 +68,7 @@ public class GPU_Velodyne16 : MonoBehaviour
         // activtion of the ICD interface    
         if (sendDataOnICD)
         {
-            vel16ICDinterface = new VelodyneWrapper("/home/robil/vlp.conf");
+            vel16ICDinterface = new VelodyneWrapper(ICD_ConfigFile);
             vel16ICDinterface.Run();
         }
     }

@@ -16,6 +16,8 @@ public class Novatel : MonoBehaviour {
 
 	DgpsWrapper DGPSinterface;
 
+	public string ICD_ConfigFile = "/home/robil/dgps.conf";
+
 	public Vector3 LatLonAltPos0;
     public Vector3 LatLonAltPos, LatLonAltVel; 
 
@@ -35,7 +37,7 @@ public class Novatel : MonoBehaviour {
 		float pubTimeInterval = 1/SensorPubFreq;
 		InvokeRepeating("PosVelPub", 0.0f, pubTimeInterval);
 
-		DGPSinterface = new DgpsWrapper("/home/robil/dgps.conf");
+		DGPSinterface = new DgpsWrapper(ICD_ConfigFile);
 		DGPSinterface.Run();
 	}
 
