@@ -39,7 +39,7 @@ public class ShahidActivator : MonoBehaviour {
 				Vector3 targetPos = targetVehicle.transform.position;
 				Vector3 targetPredictedPose = targetPos; 
 				
-				shahidTargetWP.targetPoseAndVel = new Vector3(targetPredictedPose.x, targetPredictedPose.z, shahidVel); 	
+				shahidTargetWP.shhidTargetPoseAndVel = new Vector3(targetPredictedPose.x, targetPredictedPose.z, shahidVel); 	
 				wasActivated = true;
 			}
 		}

@@ -6,17 +6,14 @@ using System.Xml.Linq;
 
 
 
-
-
-
 public class scenWorldGenerator : MonoBehaviour {
 
 
     public string SFVToLoad = "";
 	XDocument file;
 
-	public GameObject LeaderVehicleRef, FollowerVehicleRef, ShahidRef;
-	GameObject LeaderVehicle, FollowerVehicle, Shahid;
+	//public GameObject LeaderVehicleRef, FollowerVehicleRef, ShahidRef;
+	public GameObject LeaderVehicle, FollowerVehicle, Shahid;
 
 	float MapSize = 250;
 
@@ -46,14 +43,12 @@ public class scenWorldGenerator : MonoBehaviour {
     void LeaderPositon()
     {
         foreach (var vehicleXML in file.Descendants("platform_pose"))
-        {
-            Debug.Log(vehicleXML);
-			
+        {		
             LeaderPose = new Vector2(float.Parse(vehicleXML.Element("initial_platform_position_on_map_X_axis").Value),
 			                                 float.Parse(vehicleXML.Element("initial_platform_position_on_map_Y_axis").Value)) * MapSize;
 			LeaderAzimuth = float.Parse(vehicleXML.Element("initial_platform_azimut_on_map").Value);
 			
-			LeaderVehicle = Instantiate(LeaderVehicleRef);
+			//LeaderVehicle = Instantiate(LeaderVehicleRef);
 			
 			terrainAttachment LeaderVehiclePos = LeaderVehicle.GetComponent<terrainAttachment>();
 			LeaderVehiclePos.moveTo(new Vector3(LeaderPose.x, LeaderPose.y, 1.0f));
@@ -68,10 +63,13 @@ public class scenWorldGenerator : MonoBehaviour {
 
 		float FollowerAzimuth = LeaderAzimuth;
 
-		FollowerVehicle = Instantiate(FollowerVehicleRef);
+		//FollowerVehicle = Instantiate(FollowerVehicleRef);
 		terrainAttachment FollowerVehiclePos = FollowerVehicle.GetComponent<terrainAttachment>();
 	    FollowerVehiclePos.moveTo(new Vector3(FollowerPose.x, FollowerPose.y, 1.0f));
 		FollowerVehiclePos.transform.eulerAngles = new Vector3(0,FollowerAzimuth * Mathf.Rad2Deg,0);
+
+     	VehiclePathController FollowerPathController = FollowerVehicle.GetComponent<VehiclePathController>();
+		FollowerPathController.PathWPs_PosesAndVels.Clear(); 
 
 		VehicleFollowerPathController PathController = FollowerVehicle.GetComponent<VehicleFollowerPathController>(); 
 		PathController.leaderVehicle = LeaderVehicle.transform;
@@ -81,6 +79,7 @@ public class scenWorldGenerator : MonoBehaviour {
 	void LeaderPath() 
 	{
      		LarerPathController = LeaderVehicle.GetComponent<VehiclePathController>();
+			LarerPathController.PathWPs_PosesAndVels.Clear(); 
 
 			Vector2 WP = LeaderPose;
             LarerPathController.PathWPs_PosesAndVels.Add(new Vector3( WP.x, WP.y, 5)); 

@@ -105,5 +105,17 @@
             <wp_i_relative_distance>40.581</wp_i_relative_distance>
             <wp_i_relative_angle>-0.0889171</wp_i_relative_angle>
         </WayPoint>
+        <WayPoint ID="1" name="">
+            <wp_i_relative_distance>50.93</wp_i_relative_distance>
+            <wp_i_relative_angle>-0.51119</wp_i_relative_angle>
+        </WayPoint>
+        <WayPoint ID="2" name="">
+            <wp_i_relative_distance>70.1044</wp_i_relative_distance>
+            <wp_i_relative_angle>-0.50858</wp_i_relative_angle>
+        </WayPoint>
+        <WayPoint ID="3" name="">
+            <wp_i_relative_distance>40.581</wp_i_relative_distance>
+            <wp_i_relative_angle>-0.0889171</wp_i_relative_angle>
+        </WayPoint>
     </Path>
 </SFV>

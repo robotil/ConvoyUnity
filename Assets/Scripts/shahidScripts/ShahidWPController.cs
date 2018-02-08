@@ -7,7 +7,7 @@ public class ShahidWPController : MonoBehaviour {
 	public ShahidController shahid;
 
 	[Tooltip("the WP pose, and velocity ( x->WPx_coordinate , y->WPz_coordinate , z->WP_Velocity)")]
-    public Vector3 targetPoseAndVel;
+    public Vector3 shhidTargetPoseAndVel;
 	public float targetRadius = 1;
     float targetDiss, targetAzi; 
     public float P_diss=1, P_azimuth=1;
@@ -15,6 +15,7 @@ public class ShahidWPController : MonoBehaviour {
     float LinVelCmd, AngVelCmd;
 
     public GameObject targetWP_Mark;
+    terrainAttachment TargetMarkPos;
 
     Transform myref;
 
@@ -27,23 +28,22 @@ public class ShahidWPController : MonoBehaviour {
         myref = gameObject.transform;
         
         shahid = GetComponent<ShahidController>();
+        string shahidName = gameObject.name;
 
         targetWP_Mark = Instantiate(targetWP_Mark); // creating a private copy
+        targetWP_Mark.name = shahidName + "Target" ;
+
+        TargetMarkPos = targetWP_Mark.GetComponent<terrainAttachment>();
+
+        shhidTargetPoseAndVel = new Vector3(myref.position.x+targetRadius,myref.position.z+targetRadius,0);
     }
 	
 
 	// Update is called once per frame
     void Update()
     {
-        Vector3 targetWP_global = new Vector3(targetPoseAndVel.x,0,targetPoseAndVel.y) + 1000*Vector3.up;
 
-        RaycastHit hit;
-        Physics.Raycast(targetWP_global,-Vector3.up, out hit);
-        targetWP_global = hit.point;
-
-
-        targetWP_Mark.transform.position = targetWP_global;
-
+        TargetMarkPos.moveTo(new Vector3(shhidTargetPoseAndVel.x,shhidTargetPoseAndVel.y,0)); 
 
         Vector3 targetWP_local = myref.InverseTransformPoint(targetWP_Mark.transform.position);
 
@@ -53,7 +53,7 @@ public class ShahidWPController : MonoBehaviour {
         LinVelCmd = P_diss * targetDiss;
 
 
-        LinVelCmd = Mathf.Min(LinVelCmd, targetPoseAndVel.z);
+        LinVelCmd = Mathf.Min(LinVelCmd, shhidTargetPoseAndVel.z);
 
 
         targetAzi = Mathf.Atan2(targetWP_local.x , targetWP_local.z);
