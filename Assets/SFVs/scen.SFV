@@ -19,32 +19,12 @@
         <obstacle_on_path ID="1" name="">
             <obstacle_on_path_i_type>1</obstacle_on_path_i_type>
             <obstacle_on_path_i_scaling_factor>1</obstacle_on_path_i_scaling_factor>
-            <obstacle_on_path_i_location_along_the_path>0.300706</obstacle_on_path_i_location_along_the_path>
-            <obstacle_on_path_i_location_perpendicular_to_the_path>-0.507736</obstacle_on_path_i_location_perpendicular_to_the_path>
+            <obstacle_on_path_i_location_along_the_path>0.4</obstacle_on_path_i_location_along_the_path>
+            <obstacle_on_path_i_location_perpendicular_to_the_path>-5</obstacle_on_path_i_location_perpendicular_to_the_path>
             <obstacle_on_path_i_location_on_the_Z_axis>-0.089252</obstacle_on_path_i_location_on_the_Z_axis>
             <obstacle_on_path_i_location_Roll>0.0628041</obstacle_on_path_i_location_Roll>
             <obstacle_on_path_i_location_Pitch>0.0465869</obstacle_on_path_i_location_Pitch>
             <obstacle_on_path_i_location_Yaw>-1.37457</obstacle_on_path_i_location_Yaw>
-        </obstacle_on_path>
-        <obstacle_on_path ID="2" name="">
-            <obstacle_on_path_i_type>1</obstacle_on_path_i_type>
-            <obstacle_on_path_i_scaling_factor>1</obstacle_on_path_i_scaling_factor>
-            <obstacle_on_path_i_location_along_the_path>0.674589</obstacle_on_path_i_location_along_the_path>
-            <obstacle_on_path_i_location_perpendicular_to_the_path>0.836363</obstacle_on_path_i_location_perpendicular_to_the_path>
-            <obstacle_on_path_i_location_on_the_Z_axis>-0.075291</obstacle_on_path_i_location_on_the_Z_axis>
-            <obstacle_on_path_i_location_Roll>0.0236553</obstacle_on_path_i_location_Roll>
-            <obstacle_on_path_i_location_Pitch>0.0804174</obstacle_on_path_i_location_Pitch>
-            <obstacle_on_path_i_location_Yaw>2.91147</obstacle_on_path_i_location_Yaw>
-        </obstacle_on_path>
-        <obstacle_on_path ID="3" name="">
-            <obstacle_on_path_i_type>1</obstacle_on_path_i_type>
-            <obstacle_on_path_i_scaling_factor>1</obstacle_on_path_i_scaling_factor>
-            <obstacle_on_path_i_location_along_the_path>0.274043</obstacle_on_path_i_location_along_the_path>
-            <obstacle_on_path_i_location_perpendicular_to_the_path>-0.287365</obstacle_on_path_i_location_perpendicular_to_the_path>
-            <obstacle_on_path_i_location_on_the_Z_axis>-0.0780369</obstacle_on_path_i_location_on_the_Z_axis>
-            <obstacle_on_path_i_location_Roll>-0.070597</obstacle_on_path_i_location_Roll>
-            <obstacle_on_path_i_location_Pitch>-0.0118933</obstacle_on_path_i_location_Pitch>
-            <obstacle_on_path_i_location_Yaw>2.06695</obstacle_on_path_i_location_Yaw>
         </obstacle_on_path>
     </obstacles_on_path>
     <mass_link_i ID="4" name="body">

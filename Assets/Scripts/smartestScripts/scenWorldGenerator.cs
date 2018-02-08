@@ -18,6 +18,7 @@ public class scenWorldGenerator : MonoBehaviour {
 	float MapSize = 250;
 
  	Vector2 LeaderPose;
+	float pathLength = 0; 
 	float LeaderAzimuth; 
 	public VehiclePathController LarerPathController;
 
@@ -36,6 +37,7 @@ public class scenWorldGenerator : MonoBehaviour {
 		LeaderPositon();
 		FollowerPosition();
 		LeaderPath();
+		ShahidPosition();
 
 	}
 	
@@ -92,7 +94,50 @@ public class scenWorldGenerator : MonoBehaviour {
 				Vector2 vecToNextWP = new Vector2(Mathf.Sin(WPang),Mathf.Cos(WPang)) * WPdiss;
 				WP = WP + vecToNextWP;
 				LarerPathController.PathWPs_PosesAndVels.Add(new Vector3( WP.x, WP.y, 5)); 
+
+				pathLength+=WPdiss; // used in shahid positionning
 			}
+	}
+
+
+	void ShahidPosition() 
+	{
+		float AlongPath = 0 , PerpePath = 0;
+        foreach (var shahidXML in file.Descendants("obstacles_on_path").Descendants("obstacle_on_path"))
+        {		
+            AlongPath = float.Parse(shahidXML.Element("obstacle_on_path_i_location_along_the_path").Value); 
+			PerpePath = float.Parse(shahidXML.Element("obstacle_on_path_i_location_perpendicular_to_the_path").Value); 
+        }
+
+		float dissFromStart = 0;
+		Vector2 WPcurent = LeaderPose;
+		Vector2 WPnext = LeaderPose;
+
+		float WPdiss = 1, WPang=0;
+    	foreach (var wpXML in file.Descendants("Path").Descendants("WayPoint"))
+		{
+			WPdiss = float.Parse(wpXML.Element("wp_i_relative_distance").Value);
+			WPang = float.Parse(wpXML.Element("wp_i_relative_angle").Value);
+
+			Vector2 vecToNextWP = new Vector2(Mathf.Sin(WPang),Mathf.Cos(WPang)) * WPdiss;
+			WPnext = WPcurent + vecToNextWP;
+			dissFromStart += WPdiss;
+
+			if (dissFromStart > pathLength * AlongPath) {
+				break;
+			}
+			WPcurent = WPnext;
+		}
+
+		float rem_alo = ((AlongPath - dissFromStart/pathLength)*pathLength)/WPdiss;
+		float shahid_x = WPcurent.x + rem_alo * (WPnext.x - WPcurent.x) - PerpePath*(WPnext.y - WPcurent.y)/WPdiss;
+		float shahid_y = WPcurent.y + rem_alo * (WPnext.y - WPcurent.y) + PerpePath*(WPnext.x - WPcurent.x)/WPdiss;
+		Vector2 shahidPose = new Vector2(shahid_x, shahid_y);
+
+		//Vector2 shahidPose = Vector2.Lerp(WPcurent,WPnext,rem_alo);
+
+		terrainAttachment shahidPoseOnterrain = Shahid.GetComponent<terrainAttachment>();
+		shahidPoseOnterrain.moveTo(new Vector3(shahidPose.x, shahidPose.y, 1.0f));
 	}
 
 
