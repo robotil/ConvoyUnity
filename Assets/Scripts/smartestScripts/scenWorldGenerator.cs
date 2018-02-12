@@ -23,11 +23,13 @@ public class scenWorldGenerator : MonoBehaviour {
 	public VehiclePathController LarerPathController;
 
 
+
 	
 	// Use this for initialization
 	void Start () {
 		string fileNmae = "scen.SFV";
-		SFVToLoad = Application.dataPath + "/SFVs/" + fileNmae;
+//		SFVToLoad = Application.dataPath + "/SFVs/" + fileNmae;
+		SFVToLoad = "/home/robil/SmARTest/src/smartest/work_space/scenario_1/scen.SFV";
 
 		file = XDocument.Load(uri: SFVToLoad);
         var xmlText = System.IO.File.ReadAllText(SFVToLoad);
@@ -47,7 +49,7 @@ public class scenWorldGenerator : MonoBehaviour {
         foreach (var vehicleXML in file.Descendants("platform_pose"))
         {		
             LeaderPose = new Vector2(float.Parse(vehicleXML.Element("initial_platform_position_on_map_X_axis").Value),
-			                                 float.Parse(vehicleXML.Element("initial_platform_position_on_map_Y_axis").Value)) * MapSize;
+			                                 float.Parse(vehicleXML.Element("initial_platform_position_on_map_Y_axis").Value));// * MapSize;
 			LeaderAzimuth = float.Parse(vehicleXML.Element("initial_platform_azimut_on_map").Value);
 			
 			//LeaderVehicle = Instantiate(LeaderVehicleRef);
@@ -90,10 +92,12 @@ public class scenWorldGenerator : MonoBehaviour {
 			{
 				float WPdiss = float.Parse(element.Element("wp_i_relative_distance").Value);
 				float WPang = float.Parse(element.Element("wp_i_relative_angle").Value);
+				float WPvel = float.Parse(element.Element("wp_i_velocity").Value);
+
 
 				Vector2 vecToNextWP = new Vector2(Mathf.Sin(WPang),Mathf.Cos(WPang)) * WPdiss;
 				WP = WP + vecToNextWP;
-				LarerPathController.PathWPs_PosesAndVels.Add(new Vector3( WP.x, WP.y, 5)); 
+				LarerPathController.PathWPs_PosesAndVels.Add(new Vector3( WP.x, WP.y, WPvel)); 
 
 				pathLength+=WPdiss; // used in shahid positionning
 			}
@@ -137,7 +141,10 @@ public class scenWorldGenerator : MonoBehaviour {
 		//Vector2 shahidPose = Vector2.Lerp(WPcurent,WPnext,rem_alo);
 
 		terrainAttachment shahidPoseOnterrain = Shahid.GetComponent<terrainAttachment>();
+		ShahidWPController shahidWpController = Shahid.GetComponent<ShahidWPController>();
+
 		shahidPoseOnterrain.moveTo(new Vector3(shahidPose.x, shahidPose.y, 1.0f));
+		shahidWpController.shhidTargetPoseAndVel = new Vector3(shahidPose.x, shahidPose.y, 0.0f);
 	}
 
 

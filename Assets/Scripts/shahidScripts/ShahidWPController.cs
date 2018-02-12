@@ -35,7 +35,7 @@ public class ShahidWPController : MonoBehaviour {
 
         TargetMarkPos = targetWP_Mark.GetComponent<terrainAttachment>();
 
-        shhidTargetPoseAndVel = new Vector3(myref.position.x+targetRadius,myref.position.z+targetRadius,0);
+        shhidTargetPoseAndVel = new Vector3(myref.position.x,myref.position.z,0);
     }
 	
 
@@ -43,7 +43,7 @@ public class ShahidWPController : MonoBehaviour {
     void Update()
     {
 
-        TargetMarkPos.moveTo(new Vector3(shhidTargetPoseAndVel.x,shhidTargetPoseAndVel.y,0)); 
+        TargetMarkPos.moveTo(new Vector3(shhidTargetPoseAndVel.x+targetRadius, shhidTargetPoseAndVel.y+targetRadius, 0)); 
 
         Vector3 targetWP_local = myref.InverseTransformPoint(targetWP_Mark.transform.position);
 
