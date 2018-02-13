@@ -27,24 +27,36 @@ public class scenWorldGenerator : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		string fileNmae = "scen.SFV";
-//		SFVToLoad = Application.dataPath + "/SFVs/" + fileNmae;
-		SFVToLoad = "/home/robil/SmARTest/src/smartest/work_space/scenario_1/scen.SFV";
+		SFVToLoad = "/home/robil/SmARTest/work_space/scenario_1/scen.SFV";
+		loadInputArgs();
 
 		file = XDocument.Load(uri: SFVToLoad);
         var xmlText = System.IO.File.ReadAllText(SFVToLoad);
 		Debug.Log(SFVToLoad);
 
-
-		LeaderPositon();
-		FollowerPosition();
-		LeaderPath();
-		ShahidPosition();
-
+		LeaderSetup();
+		FollowerSetup();
+		PathSetup();
+		ShahidSetup();
 	}
 	
 
-    void LeaderPositon()
+	void loadInputArgs()
+	{
+		string[] args = System.Environment.GetCommandLineArgs ();
+	
+		for (int i = 0; i < args.Length; i++) {
+			Debug.Log ("ARG " + i + ": " + args [i]);
+			if (args [i] == "-sfv") {
+				SFVToLoad = args [i + 1];
+			}
+		}
+	}
+
+
+
+
+    void LeaderSetup()
     {
         foreach (var vehicleXML in file.Descendants("platform_pose"))
         {		
@@ -60,7 +72,7 @@ public class scenWorldGenerator : MonoBehaviour {
         }
     }
 
-	void FollowerPosition() {
+	void FollowerSetup() {
 		float FollowerDiss = 30; 
 		Vector2 diffVec = new Vector2(Mathf.Sin(LeaderAzimuth), Mathf.Cos(LeaderAzimuth)) * FollowerDiss;
 		Vector2 FollowerPose = LeaderPose - diffVec;
@@ -80,7 +92,7 @@ public class scenWorldGenerator : MonoBehaviour {
 	}
 
 
-	void LeaderPath() 
+	void PathSetup() 
 	{
      		LarerPathController = LeaderVehicle.GetComponent<VehiclePathController>();
 			LarerPathController.PathWPs_PosesAndVels.Clear(); 
@@ -104,7 +116,7 @@ public class scenWorldGenerator : MonoBehaviour {
 	}
 
 
-	void ShahidPosition() 
+	void ShahidSetup() 
 	{
 		float AlongPath = 0 , PerpePath = 0;
         foreach (var shahidXML in file.Descendants("obstacles_on_path").Descendants("obstacle_on_path"))
