@@ -175,7 +175,9 @@
      <Compile Include="Assets\Scripts\shahidScripts\ShahidController.cs" />
      <Compile Include="Assets\Scripts\shahidScripts\ShahidWPController.cs" />
      <Compile Include="Assets\Scripts\SimulationManager.cs" />
+     <Compile Include="Assets\Scripts\smartestScripts\ScenTerminator.cs" />
      <Compile Include="Assets\Scripts\smartestScripts\scenWorldGenerator.cs" />
+     <Compile Include="Assets\Scripts\TiltanScripts\Tiltan.cs" />
      <Compile Include="Assets\Scripts\utilityScripts\terrainAttachment.cs" />
      <Compile Include="Assets\Scripts\vehicleDriveScripts\AntiRollBarConfigurableJoint.cs" />
      <Compile Include="Assets\Scripts\vehicleDriveScripts\CenterOfMass.cs" />
