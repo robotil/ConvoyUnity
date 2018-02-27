@@ -32,6 +32,7 @@ public class SimulationManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Application.runInBackground = true;
         Time.fixedDeltaTime=Timestep;
 
     }

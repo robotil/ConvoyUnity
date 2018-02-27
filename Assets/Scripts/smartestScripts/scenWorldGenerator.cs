@@ -47,9 +47,11 @@ public class scenWorldGenerator : MonoBehaviour {
 	
 		for (int i = 0; i < args.Length; i++) {
 			Debug.Log ("ARG " + i + ": " + args [i]);
-			if (args [i] == "-sfv") {
-				SFVToLoad = args [i + 1];
-			}
+			if (args [i] == "-scenfolder") {
+				string scenFolderURI = args [i + 1];
+				SFVToLoad = scenFolderURI + "/scen.SFV";
+				Debug.Log(SFVToLoad);
+ 			}
 		}
 	}
 
@@ -140,7 +142,7 @@ public class scenWorldGenerator : MonoBehaviour {
 			dissFromStart += WPdiss;
 
 			if (dissFromStart > pathLength * AlongPath) {
-				break;
+				break; 
 			}
 			WPcurent = WPnext;
 		}

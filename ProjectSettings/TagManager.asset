@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Vehicle
   - Waypoint
+  - GraderCollisionTag
   layers:
   - Default
   - TransparentFX
@@ -15,11 +16,11 @@ TagManager:
   - UI
   - 
   - 
-  - World
-  - Body
-  - Wheels
-  - Vehicle
   - 
+  - VehicleBody
+  - VehicleWheels
+  - 
+  - CollisionGrader
   - 
   - 
   - 
