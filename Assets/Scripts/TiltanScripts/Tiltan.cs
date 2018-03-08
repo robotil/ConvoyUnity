@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//         N (z) (Lat)
+//         North (z) (Lat)
 //         ^ 
 //         |
-//  W ------------>  E (x) (Lon)
+//  W ------------>  East (x) (Lon)
 //         |
 //         |
 //         S
@@ -14,22 +14,24 @@ using UnityEngine;
 
 public class Tiltan : MonoBehaviour {
 
-	DgpsWrapper DGPSinterface;
+	InsWrapper INSinterface;
 
-	//public string ICD_ConfigFile = "/home/robil/tiltan.conf";
+	public string ICD_ConfigFile = "/home/robil/ConvoyUnity/Assets/Scripts/TiltanScripts/ins.conf";
 
 	public Vector3 LatLonAltPos0;
-    public Vector3 LatLonAltPos, LatLonAltVel, AzimuthPitchRoll_mils, AzimuthPitchRollVel_mils;
+    public Vector3 LatLonAltPos, NorthEastDownVel, AzimuthPitchRoll_mils, AzimuthPitchRollVel_mils;
 
-	public double timeStamp_sec;
+	public float timeStamp;
 
 	public float DistanceTraveled = 0;
 
 	public bool MothionDetected = false;
 	Vector3 prev_pose;
 
+
+	public short GpsFom, NumOfSatelites; 
 	public float HorizontalErrorCEP, VerticalErrorPE;
-	public Vector3 LatLonAltPosErrorSIGMA, LatLonAltVelErrorSIGMA, AzimuthPitchRollErrorSIGMA_mils;
+	public Vector3 LatLonAltPosErrorSIGMA, NorthEastDownVelErrorSIGMA, AzimuthPitchRollErrorSIGMA_mils;
 
 
 	public float DataPubFreq = 50, StatusPubFreq = 1;
@@ -50,9 +52,9 @@ public class Tiltan : MonoBehaviour {
 
 		InvokeRepeating("TiltanDataPub", 0.0f, 1/DataPubFreq);
 		InvokeRepeating("TiltanStatusPub", 0.0f, 1/StatusPubFreq);
-
-	//	DGPSinterface = new DgpsWrapper(ICD_ConfigFile);
-	//	DGPSinterface.Run();
+		
+		INSinterface = new InsWrapper(ICD_ConfigFile);
+		INSinterface.Run();
 	}
 
 	
@@ -73,22 +75,19 @@ public class Tiltan : MonoBehaviour {
 		LatLonAltPos.x = lat;  // Lat in degs
 		LatLonAltPos.y = lon;  // Lon in degs
 		LatLonAltPos.z = alt;  // Alt in meters
-
-		//DGPSinterface.SetPosition(LatLonAltPos.x, LatLonAltPos.y, LatLonAltPos.z);
+		INSinterface.SetPose(LatLonAltPos.x, LatLonAltPos.y, LatLonAltPos.z);
 
 		// velocity in meters/sec
 		Vector3 vel = rb.velocity;
-		LatLonAltVel.x = vel.z;    
-		LatLonAltVel.y = vel.x;	   
-		LatLonAltVel.z = vel.y;    
-
-		//DGPSinterface.SetVelocities(LatLonAltVel.x , LatLonAltVel.y, LatLonAltVel.z);   // velocity in meters/sec
+		NorthEastDownVel.x = vel.z;    
+		NorthEastDownVel.y = vel.x;	   
+		NorthEastDownVel.z = -vel.y;    
+		INSinterface.SetVelocity(NorthEastDownVel.x , NorthEastDownVel.y, NorthEastDownVel.z);   // velocity in meters/sec
 		
 
 		// Time in secs
-        timeStamp_sec = Time.fixedTime;
-		//DGPSinterface.SetTimeStamp((int)timeStamp);   
-		//DGPSinterface.SendData();
+        timeStamp = (float)Time.fixedTime;
+		INSinterface.SetTimeStamps(timeStamp,timeStamp);   
 
 
 		// angles in Mils
@@ -96,10 +95,14 @@ public class Tiltan : MonoBehaviour {
 		AzimuthPitchRoll_mils.x = ang.y * D2M;
 		AzimuthPitchRoll_mils.y = angShift(ang.x) * D2M;
 		AzimuthPitchRoll_mils.z = angShift(ang.z) * D2M;
+		INSinterface.SetOrientation(AzimuthPitchRoll_mils.x,AzimuthPitchRoll_mils.y,AzimuthPitchRoll_mils.z);   
+
+
 
 		// Azimuth Rate in Mils/sec
 		Vector3 angVel = rb.angularVelocity;
 		AzimuthPitchRollVel_mils.x = -angVel.y * R2M;
+		INSinterface.SetAzimuthRate(AzimuthPitchRollVel_mils.x);   
 
 		
 		float dissDiff = (pos - prev_pose).magnitude;
@@ -108,23 +111,37 @@ public class Tiltan : MonoBehaviour {
 			DistanceTraveled += dissDiff;
 			prev_pose = pos;
 			}
+		INSinterface.SetDistances(DistanceTraveled,DistanceTraveled);
+
 
 		float velMag = vel.magnitude;
 		if (velMag > 0.01)
 			MothionDetected = true;
 		else
 			MothionDetected = false;	
+		INSinterface.SetMotionDetected(MothionDetected);	
 
+
+		INSinterface.SendData();
 	}
 
 
 	void TiltanStatusPub() 
 	{
+		GpsFom = 1;   // as the   sqrt(Xerr^2 + Yerr^2 + Zerr^2) < 25meters
+		NumOfSatelites = 5;
+		INSinterface.SetInternalGpsFields(GpsFom, NumOfSatelites);
+		
 		HorizontalErrorCEP = 10; // Meters
 		VerticalErrorPE = 10; // Meters
 		LatLonAltPosErrorSIGMA = new Vector3(1,1,3); // in Meters , one sigma
-		LatLonAltVelErrorSIGMA = new Vector3(1,1,1); // in Meters , one sigma
+		INSinterface.SetDirectionErrors(HorizontalErrorCEP, VerticalErrorPE, LatLonAltPosErrorSIGMA.x,LatLonAltPosErrorSIGMA.y,LatLonAltPosErrorSIGMA.z);
+		
+		NorthEastDownVelErrorSIGMA = new Vector3(1,1,1); // in Meters , one sigma
+		INSinterface.SetVelocityErrors(NorthEastDownVelErrorSIGMA.x,NorthEastDownVelErrorSIGMA.y,NorthEastDownVelErrorSIGMA.z);
+
 		AzimuthPitchRollErrorSIGMA_mils = new Vector3((0.5f*D2M),1*D2M,1*D2M); // in Mills, one sigma
+		INSinterface.SetOrientationErrors(AzimuthPitchRollErrorSIGMA_mils.x,AzimuthPitchRollErrorSIGMA_mils.y,AzimuthPitchRollErrorSIGMA_mils.z);
 	}
 
 

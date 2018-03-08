@@ -9,23 +9,22 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1334201050995644}
+  m_RootGameObject: {fileID: 1002353308927966}
   m_IsPrefabParent: 1
---- !u!1 &1334201050995644
+--- !u!1 &1002353308927966
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4964643854909366}
-  - component: {fileID: 54163945718988624}
-  - component: {fileID: 138372559655371814}
-  - component: {fileID: 33265359894645828}
-  - component: {fileID: 65172877735103082}
-  - component: {fileID: 23342632448261472}
-  - component: {fileID: 114566927686944080}
-  - component: {fileID: 114552091910459320}
+  - component: {fileID: 4195001044475492}
+  - component: {fileID: 54698692127994772}
+  - component: {fileID: 138602740771982672}
+  - component: {fileID: 33441977641683526}
+  - component: {fileID: 65076280395563946}
+  - component: {fileID: 23252872441359414}
+  - component: {fileID: 114488199085323250}
   m_Layer: 0
   m_Name: Tiltan
   m_TagString: Untagged
@@ -33,26 +32,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4964643854909366
+--- !u!4 &4195001044475492
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1334201050995644}
-  m_LocalRotation: {x: -0.00000091362745, y: 0.000000923872, z: 0.00000071385875,
-    w: 1}
-  m_LocalPosition: {x: 0.0000057816505, y: 2.4999988, z: -0.49999982}
+  m_GameObject: {fileID: 1002353308927966}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.5, z: -0.5}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23342632448261472
+--- !u!23 &23252872441359414
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1334201050995644}
+  m_GameObject: {fileID: 1002353308927966}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -81,19 +79,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33265359894645828
+--- !u!33 &33441977641683526
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1334201050995644}
+  m_GameObject: {fileID: 1002353308927966}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54163945718988624
+--- !u!54 &54698692127994772
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1334201050995644}
+  m_GameObject: {fileID: 1002353308927966}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -103,78 +101,53 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65172877735103082
+--- !u!65 &65076280395563946
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1334201050995644}
+  m_GameObject: {fileID: 1002353308927966}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114552091910459320
+--- !u!114 &114488199085323250
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1334201050995644}
+  m_GameObject: {fileID: 1002353308927966}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5af0be4be46ad496280967d6460581e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LatLonAltPos0: {x: 0, y: 0, z: 0}
+  ICD_ConfigFile: /home/robil/ConvoyUnity/Assets/Scripts/TiltanScripts/ins.conf
+  LatLonAltPos0: {x: 32.0853, y: 34.7818, z: 0}
   LatLonAltPos: {x: -0.00090177165, y: -0.0005998395, z: -9.580022}
-  LatLonAltVel: {x: 2.0319018, y: -1.8171774, z: 0.004345149}
+  NorthEastDownVel: {x: 0, y: 0, z: 0}
   AzimuthPitchRoll_mils: {x: 5204.4595, y: 5.9718933, z: -29.190155}
   AzimuthPitchRollVel_mils: {x: -471.09494, y: 0, z: 0}
-  timeStamp_sec: 56.375
-  DistanceTraveled: 62.939884
+  timeStamp: 0
+  DistanceTraveled: 0
   MothionDetected: 1
+  GpsFom: 0
+  NumOfSatelites: 0
   HorizontalErrorCEP: 0
   VerticalErrorPE: 0
-  LatLonAltPosError: {x: 1, y: 1, z: 3}
-  LatLonAltVelError: {x: 1, y: 1, z: 1}
-  AzimuthPitchRollError: {x: 8.5, y: 17, z: 17}
+  LatLonAltPosErrorSIGMA: {x: 0, y: 0, z: 0}
+  NorthEastDownVelErrorSIGMA: {x: 0, y: 0, z: 0}
+  AzimuthPitchRollErrorSIGMA_mils: {x: 0, y: 0, z: 0}
   DataPubFreq: 50
   StatusPubFreq: 1
---- !u!114 &114566927686944080
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1334201050995644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7968dfc7d68a47cd8376667ac1bbe35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LatLonAltPos0: {x: 32.0853, y: 34.7818, z: 0}
-  LatLonAltPos: {x: 0, y: 0, z: 0}
-  LatLonAltVel: {x: 0, y: 0, z: 0}
-  AzimuthPitchRoll_mils: {x: 0, y: 0, z: 0}
-  AzimuthPitchRollVel_mils: {x: 0, y: 0, z: 0}
-  timeStamp_sec: 0
-  DistanceTraveled: 0
-  MothionDetected: 0
-  prev_pose: {x: 0, y: 0, z: 0}
-  SensorPubFreq: 50
-  rb: {fileID: 0}
-  myref: {fileID: 0}
-  Re: 6378100
-  R2D: 57.29578
-  D2R: 0.017453292
-  D2M: 17
-  R2M: 1018.5916
---- !u!138 &138372559655371814
+--- !u!138 &138602740771982672
 FixedJoint:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1334201050995644}
+  m_GameObject: {fileID: 1002353308927966}
   m_ConnectedBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity

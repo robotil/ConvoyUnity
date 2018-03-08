@@ -691,9 +691,11 @@ GameObject:
   - component: {fileID: 114684256738966398}
   - component: {fileID: 114686397525989974}
   - component: {fileID: 114518625173393342}
+  - component: {fileID: 114018476012547606}
+  - component: {fileID: 114790585748429162}
   m_Layer: 0
   m_Name: shahid
-  m_TagString: Untagged
+  m_TagString: GraderCollisionTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1675,15 +1677,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1466764474982144}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 81.1, y: -10, z: -132.7}
+  m_LocalRotation: {x: -0, y: 0.79162854, z: -0, w: 0.61100274}
+  m_LocalPosition: {x: 14.6, y: -10, z: -132.7}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children:
   - {fileID: 4079653597230208}
   - {fileID: 4164513362281628}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 104.676, z: 0}
 --- !u!4 &4248459330214638
 Transform:
   m_ObjectHideFlags: 1
@@ -2574,6 +2576,22 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114018476012547606
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1466764474982144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bd37883fcc0b4f29bd0af0ec9439051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MinDist: 30
+  dissResulution: 0.5
+  MinDistToCollisionTxt: {fileID: 0}
+  colliderOffset: {x: 0, y: 0.85, z: 0}
+  ColliionTag: GraderCollisionTag
 --- !u!114 &114518625173393342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2618,11 +2636,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shahid: {fileID: 0}
-  targetPoseAndVel: {x: 0, y: 0, z: 0}
+  shhidTargetPoseAndVel: {x: 0, y: 0, z: 0}
   targetRadius: 1.5
   P_diss: 1
   P_azimuth: 1
   targetWP_Mark: {fileID: 0}
+--- !u!114 &114790585748429162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1466764474982144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c67d9e6ca941c4e8faadae5add183b6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136663755504165574
 CapsuleCollider:
   m_ObjectHideFlags: 1

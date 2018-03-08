@@ -8,7 +8,7 @@ public class GPU_Velodyne16 : MonoBehaviour
 {
     VelodyneWrapper vel16ICDinterface;
 
-    public string ICD_ConfigFile = "/home/robil/vlp.conf";
+    public string ICD_ConfigFile = "/home/robil/ConvoyUnity/Assets/Scripts/velodyneScripts/vlp.conf";
     GPULidar Sensor;
     Camera depthCam;
     Texture2D RangesSamples;

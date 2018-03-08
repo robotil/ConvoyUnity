@@ -16,7 +16,7 @@ public class Novatel : MonoBehaviour {
 
 	DgpsWrapper DGPSinterface;
 
-	public string ICD_ConfigFile = "/home/robil/dgps.conf";
+	public string ICD_ConfigFile = "/home/robil/ConvoyUnity/Assets/Scripts/NovatelScripts/dgps.conf";
 
 	public Vector3 LatLonAltPos0;
     public Vector3 LatLonAltPos, LatLonAltVel; 

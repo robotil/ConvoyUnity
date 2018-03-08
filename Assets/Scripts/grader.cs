@@ -16,8 +16,6 @@ public Text MinDistToCollisionTxt;
 
 SphereCollider graderCollider;
 
-public GameObject CollisionTarget;
-
 public Vector3 colliderOffset = new Vector3(0,0.85f,0);
 
 public string ColliionTag = "GraderCollisionTag";
@@ -32,8 +30,9 @@ public string ColliionTag = "GraderCollisionTag";
 	}
 	
 
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
+		Debug.Log( other.gameObject.tag  );
 		if (other.gameObject.CompareTag(ColliionTag) )
 		  {
 			MinDist = graderCollider.radius;
