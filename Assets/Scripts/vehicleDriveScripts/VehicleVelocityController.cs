@@ -12,9 +12,10 @@ public class VehicleVelocityController : MonoBehaviour
 
 
     public float targeLinearVel=0, P_lin=1;
-    float curentLinearVel, ErrorLinVel, throttelCmd;
+    float curentLinearVel, ErrorLinVel; 
     public float targetAngularVel=0, P_ang=1;
-    float curentAngularVel, ErrorAngVel, SteerCmd;
+    float curentAngularVel, ErrorAngVel;
+    public float throttelCmd, SteerCmd;
 
 
     Rigidbody rb;
@@ -41,7 +42,11 @@ public class VehicleVelocityController : MonoBehaviour
 
         ErrorLinVel = targeLinearVel - curentLinearVel;
         throttelCmd = P_lin * ErrorLinVel;
-        vehicleThrot.throttleCommand = throttelCmd;
+        if (throttelCmd >=0) 
+            vehicleThrot.throttleCommand = throttelCmd;
+        else
+            vehicleThrot.BreakCommand = -throttelCmd;
+
 
 
         ErrorAngVel = targetAngularVel - curentAngularVel;
