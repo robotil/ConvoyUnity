@@ -32,7 +32,6 @@ public string ColliionTag = "GraderCollisionTag";
 
     void OnTriggerEnter(Collider other)
     {
-		Debug.Log( other.gameObject.tag  );
 		if (other.gameObject.CompareTag(ColliionTag) )
 		  {
 			MinDist = graderCollider.radius;
@@ -45,8 +44,8 @@ public string ColliionTag = "GraderCollisionTag";
     }
 
 
+#if !UNITY_EDITOR
 	private void OnApplicationQuit() {
-		
 		string[] args = System.Environment.GetCommandLineArgs ();
 	
 		string scenFolderURI = "";
@@ -63,4 +62,5 @@ public string ColliionTag = "GraderCollisionTag";
 		writer.WriteLine("MinDist : " + MinDist);
         writer.Close();
 	}
+#endif	
 }

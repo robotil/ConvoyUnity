@@ -242,7 +242,7 @@ Prefab:
       objectReference: {fileID: 766592696}
     - target: {fileID: 1832382523126744, guid: 5969107db10f241cdacbbeb86830a8f6, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1331945068636994, guid: 5969107db10f241cdacbbeb86830a8f6, type: 2}
       propertyPath: m_TagString
@@ -271,6 +271,11 @@ Prefab:
     - target: {fileID: 1984713894087840, guid: 5969107db10f241cdacbbeb86830a8f6, type: 2}
       propertyPath: m_TagString
       value: GraderCollisionTag
+      objectReference: {fileID: 0}
+    - target: {fileID: 114445965324942370, guid: 5969107db10f241cdacbbeb86830a8f6,
+        type: 2}
+      propertyPath: ICD_ConfigFile
+      value: /home/robil/simConfigs/vlp.conf
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5969107db10f241cdacbbeb86830a8f6, type: 2}
@@ -1301,6 +1306,16 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114547573816290482, guid: 7025ac4f9278442698be726f93594c23,
+        type: 2}
+      propertyPath: ManualInput
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114704051357441530, guid: 7025ac4f9278442698be726f93594c23,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7025ac4f9278442698be726f93594c23, type: 2}
   m_IsPrefabParent: 0
@@ -1632,12 +1647,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1412723878}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f314327f9663a428c8e92045934af6a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 888e84f780c1d4e76b6ea92450b82795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScenTimeMax: 60
+  ScenDuration: 600
+  LeaderMovementStart: 10
   ScenTimeLeft: 0
+  LeaderMovementTimeLeft: 0
   ScenTimeLeftText: {fileID: 2083625736}
+  Leader: {fileID: 815256226}
+  Folower: {fileID: 683434758}
 --- !u!114 &1412723883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1805,7 +1824,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1568893232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 458.5, y: 127.5, z: 0}
+  m_LocalPosition: {x: 540, y: 106.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1844902435}
@@ -2192,7 +2211,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1844902434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -458.5, y: 127.5, z: 0}
+  m_LocalPosition: {x: -540, y: 106.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2146402929}
