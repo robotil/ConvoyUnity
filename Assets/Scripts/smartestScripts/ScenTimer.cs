@@ -42,7 +42,7 @@ public class ScenTimer : MonoBehaviour {
 		ScenTimeLeftText.text = "Time Left : " + ScenTimeLeft.ToString("N2"); 
 
 		#if !UNITY_EDITOR
-		if (ScenTimeLeft <= 0){
+			if (ScenTimeLeft <= 0){
 			Application.Quit();
 			Debug.Log("Aplication Quit");
 		}

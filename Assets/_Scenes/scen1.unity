@@ -242,7 +242,7 @@ Prefab:
       objectReference: {fileID: 766592696}
     - target: {fileID: 1832382523126744, guid: 5969107db10f241cdacbbeb86830a8f6, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1331945068636994, guid: 5969107db10f241cdacbbeb86830a8f6, type: 2}
       propertyPath: m_TagString
@@ -276,6 +276,14 @@ Prefab:
         type: 2}
       propertyPath: ICD_ConfigFile
       value: /home/robil/simConfigs/vlp.conf
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242631511843192, guid: 5969107db10f241cdacbbeb86830a8f6, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401105688323894, guid: 5969107db10f241cdacbbeb86830a8f6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5969107db10f241cdacbbeb86830a8f6, type: 2}
@@ -1651,7 +1659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScenDuration: 600
-  LeaderMovementStart: 10
+  LeaderMovementStart: 60
   ScenTimeLeft: 0
   LeaderMovementTimeLeft: 0
   ScenTimeLeftText: {fileID: 2083625736}
@@ -1824,7 +1832,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1568893232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 540, y: 106.5, z: 0}
+  m_LocalPosition: {x: 516.5, y: 182, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1844902435}
@@ -2211,7 +2219,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1844902434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -540, y: 106.5, z: 0}
+  m_LocalPosition: {x: -516.5, y: 182, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2146402929}

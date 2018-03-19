@@ -277,9 +277,6 @@
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>/home/robil/.config/unity3d/cache/packages/packages.unity.com/com.unity.ads@1.0.7/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>/home/robil/.config/unity3d/cache/packages/packages.unity.com/com.unity.ads@1.0.7/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.Purchasing">
  <HintPath>/home/robil/.config/unity3d/cache/packages/packages.unity.com/com.unity.purchasing@1.0.1/UnityEngine.Purchasing.dll</HintPath>
  </Reference>
