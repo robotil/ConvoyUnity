@@ -9,22 +9,22 @@ public class DgpsWrapper : IDisposable {
 	private static extern IntPtr CreateDgpsObject(string confFilePath);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern void DeleteDgpsObject(IntPtr pVlp);
+	private static extern void DeleteDgpsObject(IntPtr pObj);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern void RunDgps(IntPtr pVlp);
+	private static extern void RunDgps(IntPtr pObj);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern void SendDgpsData(IntPtr pVlp);
+	private static extern void SendDgpsData(IntPtr pObj);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern void SetPosition(IntPtr pVlp, double latitude, double longitude, double altitude);
+	private static extern void SetPosition(IntPtr pObj, double latitude, double longitude, double altitude);
 	
 	[DllImport (DLL_LOCATION)]
-	private static extern void SetVelocities(IntPtr pVlp, double latSpeed, double longSpeed, double altAzimuth);
+	private static extern void SetVelocities(IntPtr pObj, double latSpeed, double longSpeed, double altAzimuth);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern void SetDgpsTimeStamp(IntPtr pVlp, int timeStamp);
+	private static extern void SetDgpsTimeStamp(IntPtr pObj, float timeStamp);
 
 	private IntPtr m_nativeObject;
 
@@ -59,7 +59,7 @@ public class DgpsWrapper : IDisposable {
 		SetVelocities(this.m_nativeObject, latSpeed, longSpeed, altAzimuth);
 	}
 
-	public void SetTimeStamp(int timeStamp) {
+	public void SetTimeStamp(float timeStamp) {
 		SetDgpsTimeStamp(this.m_nativeObject, timeStamp);
 	}
 

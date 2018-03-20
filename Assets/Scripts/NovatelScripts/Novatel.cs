@@ -75,7 +75,7 @@ public class Novatel : MonoBehaviour {
 		DGPSinterface.SetVelocities(LatLonAltVel.x , LatLonAltVel.y, LatLonAltVel.z);
 
         double timeStamp = Time.fixedTime * 1000000.0;
-		DGPSinterface.SetTimeStamp((int)timeStamp);
+		DGPSinterface.SetTimeStamp((float)timeStamp);
 		DGPSinterface.SendData();
 	}
 
