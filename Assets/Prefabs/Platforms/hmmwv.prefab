@@ -206,7 +206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1220332226178476
 GameObject:
   m_ObjectHideFlags: 1
@@ -291,7 +291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1552511326399398
 GameObject:
   m_ObjectHideFlags: 1
@@ -465,7 +465,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1804412409226406
 GameObject:
   m_ObjectHideFlags: 1
@@ -2212,6 +2212,8 @@ MonoBehaviour:
   P_lin: 1
   targetAngularVel: 0
   P_ang: 1
+  throttelCmd: 0
+  SteerCmd: 0
 --- !u!114 &114290251933763846
 MonoBehaviour:
   m_ObjectHideFlags: 1

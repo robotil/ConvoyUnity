@@ -3709,6 +3709,8 @@ MonoBehaviour:
   P_lin: 1
   targetAngularVel: 0
   P_ang: 1
+  throttelCmd: 0
+  SteerCmd: 0
 --- !u!114 &114166335828312772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3872,7 +3874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ICD_ConfigFile: /home/robil/simConfigs/vlp.conf
   RotateFrequency: 10
-  Rotate: 0
+  Rotate: 1
   AngularResolution: 0.2
   LowerAngle: -10
   HigherAngle: 10

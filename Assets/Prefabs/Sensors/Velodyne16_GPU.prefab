@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4196a6c52054049a8b5aad602f13f703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ICD_ConfigFile: /home/robil/ConvoyUnity/Assets/Scripts/velodyneScripts/vlp.conf
   RotateFrequency: 10
   Rotate: 1
   AngularResolution: 0.2
