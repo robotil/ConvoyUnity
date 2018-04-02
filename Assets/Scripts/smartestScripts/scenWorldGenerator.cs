@@ -69,7 +69,7 @@ public class scenWorldGenerator : MonoBehaviour {
 			//LeaderVehicle = Instantiate(LeaderVehicleRef);
 			
 			terrainAttachment LeaderVehiclePos = LeaderVehicle.GetComponent<terrainAttachment>();
-			LeaderVehiclePos.moveTo(new Vector3(LeaderPose.x, LeaderPose.y, 1.0f));
+			LeaderVehiclePos.moveTo(new Vector3(LeaderPose.x, LeaderPose.y, 0.0f));
 			LeaderVehicle.transform.eulerAngles = new Vector3(0,LeaderAzimuth * Mathf.Rad2Deg,0);
         }
     }
@@ -83,7 +83,7 @@ public class scenWorldGenerator : MonoBehaviour {
 
 		//FollowerVehicle = Instantiate(FollowerVehicleRef);
 		terrainAttachment FollowerVehiclePos = FollowerVehicle.GetComponent<terrainAttachment>();
-	    FollowerVehiclePos.moveTo(new Vector3(FollowerPose.x, FollowerPose.y, 1.0f));
+	    FollowerVehiclePos.moveTo(new Vector3(FollowerPose.x, FollowerPose.y, 0.0f));
 		FollowerVehiclePos.transform.eulerAngles = new Vector3(0,FollowerAzimuth * Mathf.Rad2Deg,0);
 
      	VehiclePathController FollowerPathController = FollowerVehicle.GetComponent<VehiclePathController>();
@@ -157,7 +157,7 @@ public class scenWorldGenerator : MonoBehaviour {
 		terrainAttachment shahidPoseOnterrain = Shahid.GetComponent<terrainAttachment>();
 		ShahidWPController shahidWpController = Shahid.GetComponent<ShahidWPController>();
 
-		shahidPoseOnterrain.moveTo(new Vector3(shahidPose.x, shahidPose.y, 1.0f));
+		shahidPoseOnterrain.moveTo(new Vector3(shahidPose.x, shahidPose.y, 0.0f));
 		shahidWpController.shhidTargetPoseAndVel = new Vector3(shahidPose.x, shahidPose.y, 0.0f);
 	}
 
