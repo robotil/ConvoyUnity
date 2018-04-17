@@ -61,7 +61,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4006701009700346
 Transform:
   m_ObjectHideFlags: 1
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4196a6c52054049a8b5aad602f13f703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ICD_ConfigFile: /home/robil/ConvoyUnity/Assets/Scripts/velodyneScripts/vlp.conf
+  ICD_ConfigFile: /home/robil/simConfigs/vlp.conf
   RotateFrequency: 10
   Rotate: 1
   AngularResolution: 0.2

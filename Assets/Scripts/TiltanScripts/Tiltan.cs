@@ -16,7 +16,7 @@ public class Tiltan : MonoBehaviour {
 
 	InsWrapper INSinterface;
 
-	public string ICD_ConfigFile = "/home/robil/ConvoyUnity/Assets/Scripts/TiltanScripts/ins.conf";
+	public string ICD_ConfigFile = "/home/robil/simConfigs/ins.conf";
 
 	public Vector3 LatLonAltPos0;
     public Vector3 LatLonAltPos, NorthEastDownVel, AzimuthPitchRoll_mils, AzimuthPitchRollVel_mils;
