@@ -7,9 +7,7 @@ using System.Linq;
 
 public class VehicleVelocityController : MonoBehaviour
 {
-    public VehicleThrottle vehicleThrot;
-    public VehicleSteering vehicleSteer;
-
+    public Vehicle vehicleControl;
 
     public float targeLinearVel=0, P_lin=1;
     float curentLinearVel, ErrorLinVel; 
@@ -28,8 +26,7 @@ public class VehicleVelocityController : MonoBehaviour
         myref = gameObject.transform;
         rb = GetComponent<Rigidbody>();
         
-        vehicleThrot = GetComponent<VehicleThrottle>();
-        vehicleSteer = GetComponent<VehicleSteering>();
+        vehicleControl = GetComponent<Vehicle>();
     }
 
 
@@ -43,15 +40,14 @@ public class VehicleVelocityController : MonoBehaviour
         ErrorLinVel = targeLinearVel - curentLinearVel;
         throttelCmd = P_lin * ErrorLinVel;
         if (throttelCmd >=0) 
-            vehicleThrot.throttleCommand = throttelCmd;
+            vehicleControl.throttleCommand = throttelCmd;
         else
-            vehicleThrot.BreakCommand = -throttelCmd;
-
+            vehicleControl.BreakCommand = -throttelCmd;
 
 
         ErrorAngVel = targetAngularVel - curentAngularVel;
         SteerCmd = P_ang * ErrorAngVel;
-        vehicleSteer.steeringCommand = SteerCmd;
+        vehicleControl.steeringCommand = SteerCmd;
 
     }
 

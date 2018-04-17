@@ -452,6 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2d34ed2f5f64091a0206f8d6e16577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ICD_ConfigFile: /home/robil/simConfigs/ins.conf
   ManualInput: 0
   BreakOnNullThrottle: 1
   gear: 1
@@ -2911,6 +2912,10 @@ Prefab:
       propertyPath: m_TagString
       value: GraderCollisionTag
       objectReference: {fileID: 0}
+    - target: {fileID: 1466764474982144, guid: e71a18a84983942beb4cfc9def200c89, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e71a18a84983942beb4cfc9def200c89, type: 2}
   m_IsPrefabParent: 0
@@ -3345,7 +3350,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &683434759
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4722,7 +4727,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 815256226}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8abd4e68d2db74ea3b473ae427c088f4, type: 3}
   m_Name: 
@@ -4744,7 +4749,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 815256226}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 739cfd211683146fda01a1f3242276aa, type: 3}
   m_Name: 
@@ -4761,7 +4766,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 815256226}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4478407c1cc9d4cc6a58fab195fcaa7f, type: 3}
   m_Name: 
@@ -4782,11 +4787,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 815256226}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d2d34ed2f5f64091a0206f8d6e16577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ICD_ConfigFile: /home/robil/simConfigs/ins.conf
   ManualInput: 0
   BreakOnNullThrottle: 1
   gear: 1
@@ -4807,7 +4813,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 815256226}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1b59e7a04f15499bbbb2fa1a6130c43, type: 3}
   m_Name: 
@@ -8115,7 +8121,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1568893232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 466, y: 167.5, z: 0}
+  m_LocalPosition: {x: 505.5, y: 194, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1844902435}
@@ -9354,7 +9360,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1844902434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -466, y: 167.5, z: 0}
+  m_LocalPosition: {x: -505.5, y: 194, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2146402929}

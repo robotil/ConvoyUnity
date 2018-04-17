@@ -1,17 +1,18 @@
-﻿﻿using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class VehicleThrottle : MonoBehaviour  
+public class Vehicle : MonoBehaviour  
 {
 
+    public bool TiltanInput = false;
     public bool ManualInput = true;
     public bool BreakOnNullThrottle = true;
     public int gear=1;
     public float MaxTorque = 1000000;
     public float  MaxBreakingTorque = 1000;
 
-
+    public float VehicleWidth = 2, VehicleLength = 3, MaxSteering=0.4f;
 
 
     [Tooltip("Assign the wheels you want motorized here with a rotation axis set as X.")]
@@ -20,12 +21,13 @@ public class VehicleThrottle : MonoBehaviour
     Rigidbody rb;
 
 
-    public float throttleCommand=0, BreakCommand=0, ForwardVel;
+    public float throttleCommand=0, steeringCommand = 0, BreakCommand=0, ForwardVel;
     List<float> wheelRotationVel = new List<float>();
     List<float> wheelAppliedTrq = new List<float>();
     
+    public ConfigurableJoint[] rightWheelsSteer, leftWheelsSteer;
 
-    
+
 
     // Use this for initialization
     void Start()
@@ -38,25 +40,28 @@ public class VehicleThrottle : MonoBehaviour
             wheelRotationVel.Add(0);
             wheelAppliedTrq.Add(0);            
            } 
+  
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        ForwardVel = myref.InverseTransformVector(rb.velocity).z;
         if (ManualInput)
         {
-
             throttleCommand = Input.GetAxis("Vertical") > 0 ? Input.GetAxis("Vertical") : 0;
             throttleCommand = Mathf.Clamp(throttleCommand, 0, 1);
 
             BreakCommand = Input.GetAxis("Vertical") < 0 ? -Input.GetAxis("Vertical") : 0;
             BreakCommand = Mathf.Clamp(BreakCommand, 0, 1);
 
-
             if (Input.GetButtonDown("GearDown")) gear--;
             if (Input.GetButtonDown("GearUp")) gear++;
             gear = Mathf.Clamp(gear, -1, 1);
+
+            steeringCommand = Input.GetAxis("Horizontal");
+            steeringCommand = Mathf.Clamp(steeringCommand, -1, 1);
+
+            steeringCommand = MaxSteering * Input.GetAxis("Horizontal");  
         }
 
         if (BreakOnNullThrottle && throttleCommand == 0)
@@ -64,12 +69,15 @@ public class VehicleThrottle : MonoBehaviour
             BreakCommand = 0.2f;
         }
 
-        Apply(throttleCommand,  BreakCommand);
+        ApplyTrottleAndBreaks(throttleCommand,  BreakCommand);
+        ApplySteering(steeringCommand);
+
+
         throttleCommand = 0; BreakCommand = 0;
     }
 
 
-    public void Apply(float Throttle, float Break)
+    public void ApplyTrottleAndBreaks(float Throttle, float Break)
     {
         for (int i = 0; i < Wheels.Length; i++)
            {
@@ -103,6 +111,42 @@ public class VehicleThrottle : MonoBehaviour
             }
         }
     }
+
+
+    public void ApplySteering(float SteerCommand)
+    {
+        float right_steer = 0, left_steer =0;
+        float Len = VehicleLength; 
+        float Wid = VehicleWidth;
+
+
+        if (SteerCommand != 0)
+        {
+        if ( SteerCommand < 0 )  // turning left - left wheel is the iner one
+            {
+            float R = Len/Mathf.Atan(-SteerCommand);
+            right_steer = Mathf.Atan(Len/(R-Wid/2)); 
+            left_steer  = Mathf.Atan(Len/(R+Wid/2)); 
+            }
+        else // turning right - right wheel is the iner one
+            {
+            float R = Len/Mathf.Atan(SteerCommand);
+            right_steer = -Mathf.Atan(Len/(R+Wid/2)); 
+            left_steer  = -Mathf.Atan(Len/(R-Wid/2)); 
+            }
+        }
+
+        for (int i=0; i<rightWheelsSteer.Length; i++)
+            {
+            rightWheelsSteer[i].targetRotation = Quaternion.Euler(Mathf.Rad2Deg * right_steer , 0, 0);
+            leftWheelsSteer[i].targetRotation = Quaternion.Euler(Mathf.Rad2Deg * left_steer , 0, 0);
+            }
+
+    }
+
+
+
+
 
     public void toggleManual(bool manual)
     {
