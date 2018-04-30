@@ -3736,7 +3736,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83558e7c3a5e84b99b1391c25f762efa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TiltanInput: 0
   ManualInput: 0
   BreakOnNullThrottle: 1
   gear: 1
@@ -3980,11 +3979,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5a7c7d1309846f9a06dc24f511090d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ICD_Active: 1
   ICD_ConfigFile: /home/robil/simConfigs/dgps.conf
   LatLonAltPos0: {x: 32.0853, y: 34.7818, z: 0}
   LatLonAltPos: {x: 0, y: 0, z: 0}
   LatLonAltVel: {x: 0, y: 0, z: 0}
   SensorPubFreq: 10
+  screnText: {fileID: 0}
 --- !u!114 &114709300404969074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3996,6 +3997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af0be4be46ad496280967d6460581e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ICD_Active: 1
   ICD_ConfigFile: /home/robil/simConfigs/ins.conf
   LatLonAltPos0: {x: 32.0853, y: 34.7818, z: 0}
   LatLonAltPos: {x: -0.00090177165, y: -0.0005998395, z: -9.580022}
@@ -4014,6 +4016,7 @@ MonoBehaviour:
   AzimuthPitchRollErrorSIGMA_mils: {x: 0, y: 0, z: 0}
   DataPubFreq: 50
   StatusPubFreq: 1
+  screnText: {fileID: 0}
 --- !u!114 &114739775571877816
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class Vehicle : MonoBehaviour  
 {
 
-    public bool TiltanInput = false;
     public bool ManualInput = true;
     public bool BreakOnNullThrottle = true;
     public int gear=1;
