@@ -6,19 +6,22 @@ public class IdanWrapper: IDisposable {
 	const String DLL_LOCATION = "libidan";
 	
 	[DllImport (DLL_LOCATION)]
-	private static extern IntPtr CreateIdanObject(string confFilePath);
+	private static extern IntPtr IdanCreateObject(string confFilePath);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern void DeleteIdanObject(IntPtr pObj);
+	private static extern void IdanDeleteObject(IntPtr pObj);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern void RunIdan(IntPtr pObj);
+	private static extern void SendIdanPrimaryData(IntPtr pObj);
+
+    [DllImport (DLL_LOCATION)]
+	private static extern void SendIdanSecondaryReportData(IntPtr pObj);
+
+    [DllImport (DLL_LOCATION)]
+	private static extern void SendIdanSecondarySensorData(IntPtr pObj);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern void SendIdanData(IntPtr pObj);
-
-	[DllImport (DLL_LOCATION)]
-	private static extern void GetIdanData(IntPtr pObj);
+	private static extern void IdanReceiveData(IntPtr pObj);
 
 /***************************************************** HLC Primary *********************************************** */
 	[DllImport (DLL_LOCATION)]
@@ -28,10 +31,10 @@ public class IdanWrapper: IDisposable {
 	private static extern bool HasHLCPEmergencyCmd(IntPtr pObj);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern int GetHLCPSteerCmd(IntPtr pObj);
+	private static extern float GetHLCPSteerCmd(IntPtr pObj);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern int GetHLCPGasCmd(IntPtr pObj);
+	private static extern float GetHLCPGasCmd(IntPtr pObj);
 
 /********************************* HLC Secondary ***********************************************************/
 	[DllImport (DLL_LOCATION)]
@@ -81,10 +84,10 @@ public class IdanWrapper: IDisposable {
 
    /************************************************* IDAN Primary ********************************************/
     [DllImport (DLL_LOCATION)]
-	private static extern void SetIdanPrimSteerPos(IntPtr pObj, int steerPose);
+	private static extern void SetIdanPrimSteerPos(IntPtr pObj, float steerPose);
 
     [DllImport (DLL_LOCATION)]
-	private static extern void SetIdanPrimGasPos(IntPtr pObj, int gasPose);
+	private static extern void SetIdanPrimGasPos(IntPtr pObj, float gasPose);
 
     /************************************************* IDAN Secondary Report ********************************************/
 	
@@ -99,6 +102,9 @@ public class IdanWrapper: IDisposable {
 
     [DllImport (DLL_LOCATION)]
 	private static extern void SetIdanSecRepKeySwitch(IntPtr pObj, bool keySwitch);
+
+	[DllImport (DLL_LOCATION)]
+	private static extern void SetIdanSecRepMotorStarter(IntPtr pObj, bool motorStarter);
 
     [DllImport (DLL_LOCATION)]
 	private static extern void SetIdanSecRepHorn(IntPtr pObj, bool horn);
@@ -158,7 +164,7 @@ public class IdanWrapper: IDisposable {
 	private IntPtr m_nativeObject;
 
 	public IdanWrapper(string confFilePath) {
-		this.m_nativeObject = CreateIdanObject(confFilePath);
+		this.m_nativeObject = IdanCreateObject(confFilePath);
 	}
 
 	~IdanWrapper() {Dispose(false);}
@@ -167,8 +173,8 @@ public class IdanWrapper: IDisposable {
 
     protected virtual void Dispose(bool bDisposing) {
         if (this.m_nativeObject != IntPtr.Zero) {
-            //DeleteIdanObject(this.m_nativeObject);
-             //this.m_nativeObject = IntPtr.Zero;
+            IdanDeleteObject(this.m_nativeObject);
+            this.m_nativeObject = IntPtr.Zero;
         }
 
         if (bDisposing) {
@@ -176,16 +182,20 @@ public class IdanWrapper: IDisposable {
         }
     }
 
-	public void Run() {
-		RunIdan(this.m_nativeObject);
+	public void SendIdanPrimaryData() {
+		SendIdanPrimaryData(this.m_nativeObject);
 	}
 
-	public void SendData() {
-		SendIdanData(this.m_nativeObject);
+	public void SendIdanSecondaryReportData() {
+		SendIdanSecondaryReportData(this.m_nativeObject);
 	}
 
-	public void GetData() {
-		GetIdanData(this.m_nativeObject);
+	public void SendIdanSecondarySensorData() {
+		SendIdanSecondarySensorData(this.m_nativeObject);
+	}
+
+	public void ReceiveData() {
+		IdanReceiveData(this.m_nativeObject);
 	}
 
 /***************************************************** HLC Primary *********************************************** */
@@ -197,11 +207,11 @@ public class IdanWrapper: IDisposable {
 		return HasHLCPEmergencyCmd(this.m_nativeObject);
 	}
 
-	public int GetHLCPSteerCmd() {
+	public float GetHLCPSteerCmd() {
 		return GetHLCPSteerCmd(this.m_nativeObject);
 	}
 
-	public int GetHLCPGasCmd() {
+	public float GetHLCPGasCmd() {
 		return GetHLCPGasCmd(this.m_nativeObject);
 	}
 
@@ -290,6 +300,10 @@ public class IdanWrapper: IDisposable {
 
 	public void SetIdanSecRepKeySwitch(bool keySwitch) {
 		SetIdanSecRepKeySwitch(this.m_nativeObject, keySwitch);
+	}
+
+	public void SetIdanSecRepMotorStarter(bool motorStarter) {
+		SetIdanSecRepMotorStarter(this.m_nativeObject, motorStarter);
 	}
 
 	public void SetIdanSecRepHorn(bool horn) {

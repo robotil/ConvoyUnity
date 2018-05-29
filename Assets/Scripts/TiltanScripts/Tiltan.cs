@@ -16,10 +16,10 @@ using UnityEngine.UI;
 
 public class Tiltan : MonoBehaviour {
 
-	InsWrapper INSinterface;
+	TiltanWrapper TiltanInterface;
 
 	public bool ICD_Active = true;
-	public string ICD_ConfigFile = "/home/robil/simConfigs/ins.conf";
+	public string ICD_ConfigFile = "/home/robil/simConfigs/tiltan.conf";
 
 	public Vector3 LatLonAltPos0;
     public Vector3 LatLonAltPos, NorthEastDownVel, AzimuthPitchRoll_mils, AzimuthPitchRollVel_mils;
@@ -59,8 +59,7 @@ public class Tiltan : MonoBehaviour {
 		InvokeRepeating("TiltanStatusPub", 0.0f, 1/StatusPubFreq);
 		
 		if (ICD_Active) {
-			INSinterface = new InsWrapper(ICD_ConfigFile);
-			INSinterface.Run();
+			TiltanInterface = new TiltanWrapper(ICD_ConfigFile);
 		}
 	}
 
@@ -132,15 +131,15 @@ public class Tiltan : MonoBehaviour {
 		else
 			MothionDetected = false;	
 
-		if (ICD_Active && INSinterface!=null) {
-			INSinterface.SetPose(LatLonAltPos.x, LatLonAltPos.y, LatLonAltPos.z);
-			INSinterface.SetVelocity(NorthEastDownVel.x , NorthEastDownVel.y, NorthEastDownVel.z);   
-			INSinterface.SetTimeStamps(timeStamp,timeStamp);   
-			INSinterface.SetOrientation(AzimuthPitchRoll_mils.x,AzimuthPitchRoll_mils.y,AzimuthPitchRoll_mils.z);   
-			INSinterface.SetAzimuthRate(AzimuthPitchRollVel_mils.x);   
-			INSinterface.SetDistances(DistanceTraveled,DistanceTraveled);
-			INSinterface.SetMotionDetected(MothionDetected);	
-			INSinterface.SendData();
+		if (ICD_Active && TiltanInterface!=null) {
+			TiltanInterface.SetPose(LatLonAltPos.x, LatLonAltPos.y, LatLonAltPos.z);
+			TiltanInterface.SetVelocity(NorthEastDownVel.x , NorthEastDownVel.y, NorthEastDownVel.z);   
+			TiltanInterface.SetTimeStamps(timeStamp,timeStamp);   
+			TiltanInterface.SetOrientation(AzimuthPitchRoll_mils.x,AzimuthPitchRoll_mils.y,AzimuthPitchRoll_mils.z);   
+			TiltanInterface.SetAzimuthRate(AzimuthPitchRollVel_mils.x);   
+			TiltanInterface.SetDistances(DistanceTraveled,DistanceTraveled);
+			TiltanInterface.SetMotionDetected(MothionDetected);	
+			TiltanInterface.SendNavigationData();
 		}
 	}
 
@@ -158,11 +157,16 @@ public class Tiltan : MonoBehaviour {
 
 		AzimuthPitchRollErrorSIGMA_mils = new Vector3((0.5f*D2M),1*D2M,1*D2M); // in Mills, one sigma
 
-	if (ICD_Active && INSinterface!=null) {
-		INSinterface.SetInternalGpsFields(GpsFom, NumOfSatelites);
-		INSinterface.SetDirectionErrors(HorizontalErrorCEP, VerticalErrorPE, LatLonAltPosErrorSIGMA.x,LatLonAltPosErrorSIGMA.y,LatLonAltPosErrorSIGMA.z);
-		INSinterface.SetVelocityErrors(NorthEastDownVelErrorSIGMA.x,NorthEastDownVelErrorSIGMA.y,NorthEastDownVelErrorSIGMA.z);
-		INSinterface.SetOrientationErrors(AzimuthPitchRollErrorSIGMA_mils.x,AzimuthPitchRollErrorSIGMA_mils.y,AzimuthPitchRollErrorSIGMA_mils.z);
+		if (ICD_Active && TiltanInterface!=null) {
+			TiltanInterface.SetInternalGpsFields(GpsFom, NumOfSatelites);
+			TiltanInterface.SetDirectionErrors(HorizontalErrorCEP, VerticalErrorPE, LatLonAltPosErrorSIGMA.x,LatLonAltPosErrorSIGMA.y,LatLonAltPosErrorSIGMA.z);
+			TiltanInterface.SetVelocityErrors(NorthEastDownVelErrorSIGMA.x,NorthEastDownVelErrorSIGMA.y,NorthEastDownVelErrorSIGMA.z);
+			TiltanInterface.SetOrientationErrors(AzimuthPitchRollErrorSIGMA_mils.x,AzimuthPitchRollErrorSIGMA_mils.y,AzimuthPitchRollErrorSIGMA_mils.z);
+			TiltanInterface.SetTimeStamps(Time.fixedTime, Time.fixedTime);
+
+			TiltanInterface.SendInternalGPSData();
+			TiltanInterface.SendErrorEstimationData();
+			TiltanInterface.SendStatusMsgData();
 		}
 
 	}

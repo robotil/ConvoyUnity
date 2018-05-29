@@ -8,7 +8,7 @@ public class GPU_Velodyne16 : MonoBehaviour
 {
     VelodyneWrapper vel16ICDinterface;
 
-    public string ICD_ConfigFile = "/home/robil/ConvoyUnity/Assets/Scripts/velodyneScripts/vlp.conf";
+    public string ICD_ConfigFile = "/home/robil/simConfigs/velodyne.conf";
     GPULidar Sensor;
     Camera depthCam;
     Texture2D RangesSamples;
@@ -31,6 +31,8 @@ public class GPU_Velodyne16 : MonoBehaviour
     public bool DrawLidar; // for digug
     public float drawSize = 0.1f, drawTime = 0.1f;
     public Color drawColor = Color.red;
+    private int blocksCounter = 0;
+    private const int BLOCKS_ON_PACKET = 24;
 
 
     void Awake()
@@ -69,7 +71,6 @@ public class GPU_Velodyne16 : MonoBehaviour
         if (sendDataOnICD)
         {
             vel16ICDinterface = new VelodyneWrapper(ICD_ConfigFile);
-            vel16ICDinterface.Run();
         }
     }
 
@@ -113,9 +114,13 @@ public class GPU_Velodyne16 : MonoBehaviour
                 {
                     float columnAng = Mathf.Repeat( -horizontalFOV/2  +  cameraRotationAngle +  i * AngularResolution , 360);
                     vel16ICDinterface.SetAzimuth(columnAng);
-                    double timeStamp = Time.fixedTime * 1000000.0 + i;  
-                    vel16ICDinterface.SetTimeStamp((int)timeStamp);
-                    vel16ICDinterface.SendData();
+                    vel16ICDinterface.SetTimeStamp(Time.fixedTime);
+                    vel16ICDinterface.CloseBlock();
+                    blocksCounter++;
+                    if (blocksCounter == BLOCKS_ON_PACKET) {
+                        vel16ICDinterface.SendData();
+                        blocksCounter = 0;
+                    }
                 }
             }
 

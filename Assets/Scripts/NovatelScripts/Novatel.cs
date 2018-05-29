@@ -16,10 +16,10 @@ using UnityEngine.UI;
 
 public class Novatel : MonoBehaviour {
 
-	DgpsWrapper DGPSinterface;
+	NovatelWrapper NovatelInterface;
 	
 	public bool ICD_Active = true;
-	public string ICD_ConfigFile = "/home/robil/simConfigs/dgps.conf";
+	public string ICD_ConfigFile = "/home/robil/simConfigs/novatel.conf";
 
 	public Vector3 LatLonAltPos0;
     public Vector3 LatLonAltPos, LatLonAltVel; 
@@ -42,8 +42,7 @@ public class Novatel : MonoBehaviour {
 		InvokeRepeating("PosVelPub", 0.0f, pubTimeInterval);
 
 		if(ICD_Active) {
-			DGPSinterface = new DgpsWrapper(ICD_ConfigFile);
-			DGPSinterface.Run();
+			NovatelInterface = new NovatelWrapper(ICD_ConfigFile);
 		}			
 	}
 
@@ -76,19 +75,18 @@ public class Novatel : MonoBehaviour {
 		LatLonAltPos.y = lon;
 		LatLonAltPos.z = alt;
 
-		DGPSinterface.SetPosition(LatLonAltPos.x, LatLonAltPos.y, LatLonAltPos.z);
+		NovatelInterface.SetPosition(LatLonAltPos.x, LatLonAltPos.y, LatLonAltPos.z);
+		NovatelInterface.SetTimeStamp(Time.fixedTime);
+		NovatelInterface.SendBestPosData();
 
 		Vector3 vel = rb.velocity;
 		LatLonAltVel.x = vel.z;
 		LatLonAltVel.y = vel.x;
 		LatLonAltVel.z = vel.y;
 
-		DGPSinterface.SetVelocities(LatLonAltVel.x , LatLonAltVel.y, LatLonAltVel.z);
-
-        double timeStamp = Time.fixedTime * 1000000.0;
-		DGPSinterface.SetTimeStamp((float)timeStamp);
-		if(ICD_Active && DGPSinterface!=null)
-			DGPSinterface.SendData();
+		NovatelInterface.SetVelocities(LatLonAltVel.x , LatLonAltVel.y, LatLonAltVel.z);
+		NovatelInterface.SetTimeStamp(Time.fixedTime);
+		NovatelInterface.SendBestVelData();
 	}
 
 
