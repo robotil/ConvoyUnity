@@ -14,7 +14,7 @@ public class ScenTimer : MonoBehaviour {
 
 	public float ScenTimeLeft, LeaderMovementTimeLeft;
 
-	public Text ScenTimeLeftText;
+	public Text displayText;
 
     public GameObject Leader, Folower;
 	VehiclePathController LeaderController, FolowerController;
@@ -39,7 +39,8 @@ public class ScenTimer : MonoBehaviour {
 
 
 		ScenTimeLeft = ScenDuration - Time.time;
-		ScenTimeLeftText.text = "Time Left : " + ScenTimeLeft.ToString("N2"); 
+
+		displayText.text = "Time to Start : " + LeaderMovementTimeLeft.ToString("0.00"); 
 
 		#if !UNITY_EDITOR
 			if (ScenTimeLeft <= 0){

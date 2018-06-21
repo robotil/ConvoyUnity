@@ -68,8 +68,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1607919320675496}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.5, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4480874057929190}
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4196a6c52054049a8b5aad602f13f703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ICD_ConfigFile: /home/robil/simConfigs/vlp.conf
+  ICD_ConfigFile: /home/robil/simConfigs/velodyne.conf
   RotateFrequency: 10
   Rotate: 1
   AngularResolution: 0.2
@@ -201,7 +201,7 @@ MonoBehaviour:
   MeasurementRange: 120
   MinMeasurementRange: 0.2
   MeasurementAccuracy: 0.02
-  sendDataOnICD: 0
+  sendDataOnICD: 1
   DrawLidar: 0
   drawSize: 0.1
   drawTime: 0.1

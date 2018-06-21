@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
 
 
 //         N (z) (Lat)
@@ -16,10 +14,9 @@ using UnityEngine.UI;
 
 public class Novatel : MonoBehaviour {
 
-	DgpsWrapper DGPSinterface;
-	
-	public bool ICD_Active = true;
-	public string ICD_ConfigFile = "/home/robil/simConfigs/dgps.conf";
+	NovatelWrapper NovatelInterface;
+
+	public string ICD_ConfigFile = "/home/robil/simConfigs/novatel.conf";
 
 	public Vector3 LatLonAltPos0;
     public Vector3 LatLonAltPos, LatLonAltVel; 
@@ -28,7 +25,6 @@ public class Novatel : MonoBehaviour {
     Rigidbody rb;
     Transform myref;
 
-	public Text screnText;
 
 	float Re = 6378.1f * 1000; // Earth radius in meters 
 	float R2D = Mathf.Rad2Deg, D2R = Mathf.Deg2Rad;
@@ -41,21 +37,8 @@ public class Novatel : MonoBehaviour {
 		float pubTimeInterval = 1/SensorPubFreq;
 		InvokeRepeating("PosVelPub", 0.0f, pubTimeInterval);
 
-		if(ICD_Active) {
-			DGPSinterface = new DgpsWrapper(ICD_ConfigFile);
-			DGPSinterface.Run();
-		}			
+		NovatelInterface = new NovatelWrapper(ICD_ConfigFile);
 	}
-
-
-	void Update() {
-		if (screnText) {
-			screnText.text = "NOVATEL : \n" +
-							 "	Pos (Lat, Lon, Alt) [deg] = " + LatLonAltPos.ToString("N5") + "\n" +
-							 "	Vel (North, East, Down) [m/sec] = " + LatLonAltVel.ToString("N2") + "\n";
-		}
-	}
-
 
 	// Update is called once per frame
 	void PosVelPub() {
@@ -76,20 +59,21 @@ public class Novatel : MonoBehaviour {
 		LatLonAltPos.y = lon;
 		LatLonAltPos.z = alt;
 
-		DGPSinterface.SetPosition(LatLonAltPos.x, LatLonAltPos.y, LatLonAltPos.z);
+		NovatelInterface.SetPosition(LatLonAltPos.x, LatLonAltPos.y, LatLonAltPos.z);
+		NovatelInterface.SetTimeStamp(Time.fixedTime);
+		NovatelInterface.SendBestPosData();
 
 		Vector3 vel = rb.velocity;
 		LatLonAltVel.x = vel.z;
 		LatLonAltVel.y = vel.x;
 		LatLonAltVel.z = vel.y;
 
-		DGPSinterface.SetVelocities(LatLonAltVel.x , LatLonAltVel.y, LatLonAltVel.z);
-
-        double timeStamp = Time.fixedTime * 1000000.0;
-		DGPSinterface.SetTimeStamp((float)timeStamp);
-		if(ICD_Active && DGPSinterface!=null)
-			DGPSinterface.SendData();
+		NovatelInterface.SetVelocities(LatLonAltVel.x , LatLonAltVel.y, LatLonAltVel.z);
+		NovatelInterface.SetTimeStamp(Time.fixedTime);
+		NovatelInterface.SendBestVelData();
 	}
+
+
 
 
 	float sin(float x) { return Mathf.Sin(x); }	

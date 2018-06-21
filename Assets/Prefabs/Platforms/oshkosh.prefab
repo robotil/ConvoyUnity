@@ -124,7 +124,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1067486208210270
 GameObject:
   m_ObjectHideFlags: 1
@@ -839,7 +839,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1935622302154312
 GameObject:
   m_ObjectHideFlags: 1
@@ -3894,7 +3894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4196a6c52054049a8b5aad602f13f703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ICD_ConfigFile: /home/robil/simConfigs/vlp.conf
+  ICD_ConfigFile: /home/robil/simConfigs/velodyne.conf
   RotateFrequency: 10
   Rotate: 1
   AngularResolution: 0.2
@@ -3979,13 +3979,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5a7c7d1309846f9a06dc24f511090d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ICD_Active: 1
-  ICD_ConfigFile: /home/robil/simConfigs/dgps.conf
+  ICD_ConfigFile: /home/robil/simConfigs/novatel.conff
   LatLonAltPos0: {x: 32.0853, y: 34.7818, z: 0}
   LatLonAltPos: {x: 0, y: 0, z: 0}
   LatLonAltVel: {x: 0, y: 0, z: 0}
   SensorPubFreq: 10
-  screnText: {fileID: 0}
 --- !u!114 &114709300404969074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3997,8 +3995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af0be4be46ad496280967d6460581e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ICD_Active: 1
-  ICD_ConfigFile: /home/robil/simConfigs/ins.conf
+  ICD_ConfigFile: /home/robil/simConfigs/tiltan.conf
   LatLonAltPos0: {x: 32.0853, y: 34.7818, z: 0}
   LatLonAltPos: {x: -0.00090177165, y: -0.0005998395, z: -9.580022}
   NorthEastDownVel: {x: 0, y: 0, z: 0}
@@ -4016,7 +4013,6 @@ MonoBehaviour:
   AzimuthPitchRollErrorSIGMA_mils: {x: 0, y: 0, z: 0}
   DataPubFreq: 50
   StatusPubFreq: 1
-  screnText: {fileID: 0}
 --- !u!114 &114739775571877816
 MonoBehaviour:
   m_ObjectHideFlags: 1

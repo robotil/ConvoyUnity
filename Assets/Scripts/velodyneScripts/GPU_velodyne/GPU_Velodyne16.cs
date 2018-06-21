@@ -8,15 +8,15 @@ public class GPU_Velodyne16 : MonoBehaviour
 {
     VelodyneWrapper vel16ICDinterface;
 
-    public string ICD_ConfigFile = "/home/robil/ConvoyUnity/Assets/Scripts/velodyneScripts/vlp.conf";
+    public string ICD_ConfigFile = "/home/robil/simConfigs/velodyne.conf";
     GPULidar Sensor;
     Camera depthCam;
     Texture2D RangesSamples;
 
 
-    public float RotateFrequency = 10;
+    public float RotateFrequency = 10.0f;
     public bool Rotate;
-    public float AngularResolution = 0.2f, LowerAngle = -10, HigherAngle = 10;
+    public float AngularResolution = 0.2f, LowerAngle = -10f, HigherAngle = 10f, RotationAngle = 360f; 
     public int Channels = 16, SuperSample = 1;
     public float MeasurementRange = 120f, MinMeasurementRange = 0.2f,  MeasurementAccuracy = 0.02f;
 
@@ -28,9 +28,15 @@ public class GPU_Velodyne16 : MonoBehaviour
     float verticalAngularResolution;
     float cameraRotationAngle;
 
+
+    private int blocksCounter = 0;
+    private const int BLOCKS_ON_PACKET = 24;
+
     public bool DrawLidar; // for digug
     public float drawSize = 0.1f, drawTime = 0.1f;
     public Color drawColor = Color.red;
+
+    public Text displayText;
 
 
     void Awake()
@@ -41,18 +47,18 @@ public class GPU_Velodyne16 : MonoBehaviour
         // Calculation of FOV 
         verticalFOV = HigherAngle - LowerAngle;
         verticalAngularResolution = verticalFOV / (Channels - 1f);
-        horizontalFOV = Time.fixedDeltaTime * 360 * RotateFrequency / SuperSample;
+        horizontalFOV = Time.fixedDeltaTime * 360.0f * RotateFrequency / SuperSample;
 
         // Calculation of the Camera Projection Mat 
         Matrix4x4 projMat = depthCam.projectionMatrix;
-        float horizontalMval = 1 / (Mathf.Tan((horizontalFOV / 2) * Mathf.Deg2Rad));
-        float verticalMval = 1 / (Mathf.Tan((verticalFOV / 2) * Mathf.Deg2Rad));
+        float horizontalMval = 1.0f / (Mathf.Tan((horizontalFOV / 2.0f) * Mathf.Deg2Rad));
+        float verticalMval = 1.0f / (Mathf.Tan((verticalFOV / 2.0f) * Mathf.Deg2Rad));
         projMat[0, 0] = horizontalMval;
         projMat[1, 1] = verticalMval;
         depthCam.projectionMatrix = projMat;
 
         // target Texture size calculation 
-        ColumnsPerPhysStep = Mathf.RoundToInt(Time.fixedDeltaTime * 360 * RotateFrequency / AngularResolution) / SuperSample;
+        ColumnsPerPhysStep = Mathf.RoundToInt(Time.fixedDeltaTime * RotationAngle * RotateFrequency / AngularResolution) / SuperSample;
         ResWidth = ColumnsPerPhysStep;
         ResHeight = Channels;
         depthCam.targetTexture = new RenderTexture(ResWidth, ResHeight, 1, RenderTextureFormat.RFloat, RenderTextureReadWrite.Default);
@@ -62,14 +68,13 @@ public class GPU_Velodyne16 : MonoBehaviour
         depthCam.nearClipPlane = MinMeasurementRange;
 
         // initial direction of the depthCam scan window center
-        cameraRotationAngle = horizontalFOV / 2;
-        Sensor.transform.localEulerAngles = new Vector3(-(HigherAngle + LowerAngle)/2,  cameraRotationAngle , 0);
+        cameraRotationAngle = horizontalFOV / 2.0f;
+        Sensor.transform.localEulerAngles = new Vector3(-(HigherAngle + LowerAngle)/2.0f,  cameraRotationAngle , 0);
 
         // activtion of the ICD interface    
         if (sendDataOnICD)
         {
             vel16ICDinterface = new VelodyneWrapper(ICD_ConfigFile);
-            vel16ICDinterface.Run();
         }
     }
 
@@ -86,7 +91,7 @@ public class GPU_Velodyne16 : MonoBehaviour
             RangesSamples.Apply();
             ranges = RangesSamples.GetPixels();
 
-            float hAng = -horizontalFOV / 2;       
+            float hAng = -horizontalFOV / 2.0f;       
             for (int i = 0; i < ResWidth; i++) //columns
             {   
                 float vAng = HigherAngle;
@@ -98,7 +103,7 @@ public class GPU_Velodyne16 : MonoBehaviour
                         range = 0;                         
 
                     if (sendDataOnICD)
-                        vel16ICDinterface.SetChannel(range, 0);
+                        vel16ICDinterface.SetChannel((double)range, 0);
 
                     if (DrawLidar)
                     {
@@ -111,11 +116,17 @@ public class GPU_Velodyne16 : MonoBehaviour
 
                 if (sendDataOnICD)
                 {
-                    float columnAng = Mathf.Repeat( -horizontalFOV/2  +  cameraRotationAngle +  i * AngularResolution , 360);
-                    vel16ICDinterface.SetAzimuth(columnAng);
-                    double timeStamp = Time.fixedTime * 1000000.0 + i;  
-                    vel16ICDinterface.SetTimeStamp((int)timeStamp);
-                    vel16ICDinterface.SendData();
+                    float columnAng = Mathf.Repeat( -horizontalFOV/2.0f  +  cameraRotationAngle +  i * AngularResolution , 360.0f);
+                   // displayText.text += "   " + columnAng.ToString();
+                    vel16ICDinterface.SetAzimuth((double)columnAng);  
+                    vel16ICDinterface.SetTimeStamp(Time.fixedTime);
+                    vel16ICDinterface.CloseBlock();
+                    blocksCounter++;
+                    if (blocksCounter == BLOCKS_ON_PACKET) {
+                        vel16ICDinterface.SendData();
+                        blocksCounter = 0;
+                       // displayText.text = "";
+                    }
                 }
             }
 
@@ -123,8 +134,13 @@ public class GPU_Velodyne16 : MonoBehaviour
             if (Rotate) 
                 cameraRotationAngle += horizontalFOV;
 
-            Sensor.transform.localEulerAngles = new Vector3(-(HigherAngle + LowerAngle) / 2, cameraRotationAngle, 0);
+            Sensor.transform.localEulerAngles = new Vector3(-(HigherAngle + LowerAngle) / 2.0f, cameraRotationAngle, 0);
         }
         RenderTexture.active = currentActiveRT;
+
+        
+        displayText.text = "Velodyne: Freq[Hz]=" + RotateFrequency.ToString() + " \n" +
+                                     "vFOV[deg]=" + verticalFOV.ToString("0.00") +   " vRes[deg]= " + verticalAngularResolution.ToString("0.00") + "\n" +
+                                     "hFOV[deg]=" + RotationAngle.ToString("0.00") + " hRes[deg]= " + AngularResolution.ToString("0.00"); 
     }
 }

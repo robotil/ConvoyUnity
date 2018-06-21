@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 
 
@@ -14,6 +15,8 @@ public class VehicleVelocityController : MonoBehaviour
     public float targetAngularVel=0, P_ang=1;
     float curentAngularVel, ErrorAngVel;
     public float throttelCmd, SteerCmd;
+    public Text displayText;
+
 
 
     Rigidbody rb;
@@ -49,6 +52,12 @@ public class VehicleVelocityController : MonoBehaviour
         SteerCmd = P_ang * ErrorAngVel;
         vehicleControl.steeringCommand = SteerCmd;
 
+    }
+
+    void Update()
+    {
+        displayText.text = "Vehicle vel:  linear[n/sec]= " + curentLinearVel.ToString("0.00") + "  angular[deg/sec]=" + curentAngularVel.ToString("0.00");
+             
     }
 
 

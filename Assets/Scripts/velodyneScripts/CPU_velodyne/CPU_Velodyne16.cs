@@ -32,6 +32,8 @@ public class CPU_Velodyne16 : MonoBehaviour
     Transform myref, SensorRotator, emitter;
     Rigidbody rb;
     private VelodyneWrapper vc;
+    private int blocksCounter = 0;
+    private const int BLOCKS_ON_PACKET = 24;
     // Use this for initialization
     void Start()
     {
@@ -42,8 +44,7 @@ public class CPU_Velodyne16 : MonoBehaviour
         emitter = SensorRotator.Find("Emitter");
 
         horCurrentAngle = 0;
-        vc = new VelodyneWrapper("/home/robil/vlp.conf");
-        vc.Run();
+        vc = new VelodyneWrapper("/home/robil/simConfigs/velodyne.conf");
     }
 
     // Update is called once per frame
@@ -64,7 +65,6 @@ public class CPU_Velodyne16 : MonoBehaviour
         Vector3 ScannerVel = myref.InverseTransformVector(rb.velocity);
         Vector3 scanerPos = myref.position;
         Vector3 ScanerLinearStep = ScannerVel * physics_StepTime;
-        int timeFixer = 0;
         for (int i = 0; i < ScanColumnsPerPhysicStep; i++) { // multiple horizontal scans in 1 physics step in order to achieve the full range in the desired rate
             if (InterpolateLocation) {
                   scanerPos = scanerPos + ScanerLinearStep * i/ScanColumnsPerPhysicStep;
@@ -93,9 +93,13 @@ public class CPU_Velodyne16 : MonoBehaviour
                 }
             }
             vc.SetAzimuth(horCurrentAngle);
-            double timeStamp = Time.fixedTime * 1000000.0 + timeFixer++;
-            vc.SetTimeStamp((int)timeStamp);
-            vc.SendData();
+            vc.SetTimeStamp(Time.fixedTime);
+            vc.CloseBlock();
+            blocksCounter++;
+            if (blocksCounter == BLOCKS_ON_PACKET) {
+                vc.SendData();
+                blocksCounter = 0;
+            }
 
             horCurrentAngle = horCurrentAngle + HorRes;
             SensorRotator.localEulerAngles = new Vector3(0, horCurrentAngle, 0);

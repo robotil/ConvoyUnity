@@ -3,33 +3,33 @@ using System;
 using System.Runtime.InteropServices;
 
 public class VelodyneWrapper : IDisposable {
-	const String DLL_LOCATION = "libvlp";
+	const String DLL_LOCATION = "libvelodyne";
 
 	[DllImport (DLL_LOCATION)]
-	private static extern IntPtr CreateVLPObject(string confFilePath);
+	private static extern IntPtr VelodyneCreateObject(string confFilePath);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern void DeleteVLPObject(IntPtr pVlp);
+	private static extern void VelodyneDeleteObject(IntPtr pObj);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern void RunVLP(IntPtr pVlp);
+	private static extern void VelodyneSetAzimuth(IntPtr pObj, double azimuth);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern void SetAzimuth(IntPtr pVlp, double azimuth);
+	private static extern void VelodyneSetTimeStamp(IntPtr pObj, float timeStamp);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern void SetVLPTimeStamp(IntPtr pVlp, int timeStamp);
+	private static extern void VelodyneSetChannel(IntPtr pObj, double distance, short reflectivity);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern void SetChannel(IntPtr pVlp, double distance, short reflectivity);
+	private static extern void VelodyneCloseBlock(IntPtr pObj);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern void SendVLPData(IntPtr pVlp);
+	private static extern void VelodyneSendData(IntPtr pObj);
 
 	private IntPtr m_nativeObject;
 
 	public VelodyneWrapper(string confFilePath) {
-			this.m_nativeObject = CreateVLPObject(confFilePath);
+			this.m_nativeObject = VelodyneCreateObject(confFilePath);
 	}
 
 	~VelodyneWrapper() {Dispose(false);}
@@ -38,8 +38,8 @@ public class VelodyneWrapper : IDisposable {
 
     protected virtual void Dispose(bool bDisposing) {
         if (this.m_nativeObject != IntPtr.Zero) {
-            //DeleteVLPObject(this.m_nativeObject);
-             //this.m_nativeObject = IntPtr.Zero;
+            VelodyneDeleteObject(this.m_nativeObject);
+            this.m_nativeObject = IntPtr.Zero;
         }
 
         if (bDisposing) {
@@ -47,23 +47,23 @@ public class VelodyneWrapper : IDisposable {
         }
     }
 
-	public void Run() {
-		RunVLP(this.m_nativeObject);
-	}
-
 	public void SetAzimuth(double azimuth) {
-		SetAzimuth(this.m_nativeObject, azimuth);
+		VelodyneSetAzimuth(this.m_nativeObject, azimuth);
 	}
 
-	public void SetTimeStamp(int timeStamp) {
-		SetVLPTimeStamp(this.m_nativeObject, timeStamp);
+	public void SetTimeStamp(float timeStamp) {
+		VelodyneSetTimeStamp(this.m_nativeObject, timeStamp);
 	}
 
 	public void SetChannel(double distance, short reflectivity) {
-		SetChannel(this.m_nativeObject, distance, reflectivity);
+		VelodyneSetChannel(this.m_nativeObject, distance, reflectivity);
+	}
+
+	public void CloseBlock() {
+		VelodyneCloseBlock(this.m_nativeObject);
 	}
 
 	public void SendData() {
-		SendVLPData(this.m_nativeObject);
+		VelodyneSendData(this.m_nativeObject);
 	}
 }
