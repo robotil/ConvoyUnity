@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 
 //         N (z) (Lat)
@@ -15,7 +17,8 @@ using UnityEngine;
 public class Novatel : MonoBehaviour {
 
 	NovatelWrapper NovatelInterface;
-
+	
+	public bool ICD_Active = true;
 	public string ICD_ConfigFile = "/home/robil/simConfigs/novatel.conf";
 
 	public Vector3 LatLonAltPos0;
@@ -25,6 +28,7 @@ public class Novatel : MonoBehaviour {
     Rigidbody rb;
     Transform myref;
 
+	public Text screnText;
 
 	float Re = 6378.1f * 1000; // Earth radius in meters 
 	float R2D = Mathf.Rad2Deg, D2R = Mathf.Deg2Rad;
@@ -37,8 +41,20 @@ public class Novatel : MonoBehaviour {
 		float pubTimeInterval = 1/SensorPubFreq;
 		InvokeRepeating("PosVelPub", 0.0f, pubTimeInterval);
 
-		NovatelInterface = new NovatelWrapper(ICD_ConfigFile);
+		if(ICD_Active) {
+			NovatelInterface = new NovatelWrapper(ICD_ConfigFile);
+		}			
 	}
+
+
+	void Update() {
+		if (screnText) {
+			screnText.text = "NOVATEL : \n" +
+							 "	Pos (Lat, Lon, Alt) [deg] = " + LatLonAltPos.ToString("N5") + "\n" +
+							 "	Vel (North, East, Down) [m/sec] = " + LatLonAltVel.ToString("N2") + "\n";
+		}
+	}
+
 
 	// Update is called once per frame
 	void PosVelPub() {
@@ -72,8 +88,6 @@ public class Novatel : MonoBehaviour {
 		NovatelInterface.SetTimeStamp(Time.fixedTime);
 		NovatelInterface.SendBestVelData();
 	}
-
-
 
 
 	float sin(float x) { return Mathf.Sin(x); }	
