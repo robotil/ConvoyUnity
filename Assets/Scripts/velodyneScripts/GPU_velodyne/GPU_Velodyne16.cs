@@ -35,8 +35,7 @@ public class GPU_Velodyne16 : MonoBehaviour
     public bool DrawLidar; // for digug
     public float drawSize = 0.1f, drawTime = 0.1f;
     public Color drawColor = Color.red;
-    private int blocksCounter = 0;
-    private const int BLOCKS_ON_PACKET = 24;
+    
 
     public Text displayText;
 
@@ -113,7 +112,7 @@ public class GPU_Velodyne16 : MonoBehaviour
                         Debug.DrawLine(rangePointPos, rangePointPos + Vector3.up * drawSize, drawColor, drawTime);
                     }                    
                     vAng = vAng - verticalAngularResolution;
-                
+                }
                 hAng = hAng + AngularResolution;
 
                 if (sendDataOnICD)
