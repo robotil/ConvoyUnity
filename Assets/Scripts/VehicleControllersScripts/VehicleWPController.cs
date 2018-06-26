@@ -38,6 +38,7 @@ public class VehicleWPController : MonoBehaviour
        TargetWP = Instantiate(targetWP_Mark);
        TargetWP.name = gameObject.name + "TargetWP";
        
+       //For displaying red signs on the terrain
        WPpos = TargetWP.GetComponent<terrainAttachment>();
     }
 

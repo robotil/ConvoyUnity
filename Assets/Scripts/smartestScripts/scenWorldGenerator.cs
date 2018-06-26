@@ -20,7 +20,7 @@ public class scenWorldGenerator : MonoBehaviour {
  	Vector2 LeaderPose;
 	float pathLength = 0; 
 	float LeaderAzimuth; 
-	public VehiclePathController LarerPathController;
+	public VehiclePathController LeaderPathController;
 
 
 
@@ -96,11 +96,11 @@ public class scenWorldGenerator : MonoBehaviour {
 
 	void PathSetup() 
 	{
-     		LarerPathController = LeaderVehicle.GetComponent<VehiclePathController>();
-			LarerPathController.PathWPs_PosesAndVels.Clear(); 
+     		LeaderPathController = LeaderVehicle.GetComponent<VehiclePathController>();
+			LeaderPathController.PathWPs_PosesAndVels.Clear(); 
 
 			Vector2 WP = LeaderPose;
-            LarerPathController.PathWPs_PosesAndVels.Add(new Vector3( WP.x, WP.y, 5)); 
+            LeaderPathController.PathWPs_PosesAndVels.Add(new Vector3( WP.x, WP.y, 5)); 
 
          	foreach (var element in file.Descendants("Path").Descendants("WayPoint"))
 			{
@@ -111,7 +111,7 @@ public class scenWorldGenerator : MonoBehaviour {
 
 				Vector2 vecToNextWP = new Vector2(Mathf.Sin(WPang),Mathf.Cos(WPang)) * WPdiss;
 				WP = WP + vecToNextWP;
-				LarerPathController.PathWPs_PosesAndVels.Add(new Vector3( WP.x, WP.y, WPvel)); 
+				LeaderPathController.PathWPs_PosesAndVels.Add(new Vector3( WP.x, WP.y, WPvel)); 
 
 				pathLength+=WPdiss; // used in shahid positionning
 			}

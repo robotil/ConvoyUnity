@@ -85,8 +85,6 @@ public class Vehicle : MonoBehaviour
             BreakCommand = 0.0f;
         }
 
-
-
        // ApplyEngineAndGearLogic();
 
         ApplyTrottleAndBreaks(throttleCommand,  BreakCommand);
