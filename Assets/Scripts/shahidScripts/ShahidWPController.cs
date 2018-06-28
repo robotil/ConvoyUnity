@@ -7,10 +7,10 @@ public class ShahidWPController : MonoBehaviour {
 	public ShahidController shahid;
 
 	[Tooltip("the WP pose, and velocity ( x->WPx_coordinate , y->WPz_coordinate , z->WP_Velocity)")]
-    public Vector3 shhidTargetPoseAndVel;
+    public Vector3 shahidTargetPoseAndVel;
 	public float targetRadius = 1;
-    float targetDiss, targetAzi; 
-    public float P_diss=1, P_azimuth=1;
+    float targetDist, targetAzi; 
+    public float P_dist=1, P_azimuth=1;
 
     float LinVelCmd, AngVelCmd;
 
@@ -35,7 +35,7 @@ public class ShahidWPController : MonoBehaviour {
 
         TargetMarkPos = targetWP_Mark.GetComponent<terrainAttachment>();
 
-        shhidTargetPoseAndVel = new Vector3(myref.position.x,myref.position.z,0);
+        shahidTargetPoseAndVel = new Vector3(myref.position.x,myref.position.z,0);
     }
 	
 
@@ -43,17 +43,17 @@ public class ShahidWPController : MonoBehaviour {
     void Update()
     {
 
-        TargetMarkPos.moveTo(new Vector3(shhidTargetPoseAndVel.x+targetRadius, shhidTargetPoseAndVel.y+targetRadius, 0)); 
+        TargetMarkPos.moveTo(new Vector3(shahidTargetPoseAndVel.x+targetRadius, shahidTargetPoseAndVel.y+targetRadius, 0)); 
 
         Vector3 targetWP_local = myref.InverseTransformPoint(targetWP_Mark.transform.position);
 
-        targetDiss = targetWP_local.magnitude;
-		if (targetDiss < targetRadius)
-			targetDiss = 0;	
-        LinVelCmd = P_diss * targetDiss;
+        targetDist = targetWP_local.magnitude;
+		if (targetDist < targetRadius)
+			targetDist = 0;	
+        LinVelCmd = P_dist * targetDist;
 
 
-        LinVelCmd = Mathf.Min(LinVelCmd, shhidTargetPoseAndVel.z);
+        LinVelCmd = Mathf.Min(LinVelCmd, shahidTargetPoseAndVel.z);
 
 
         targetAzi = Mathf.Atan2(targetWP_local.x , targetWP_local.z);

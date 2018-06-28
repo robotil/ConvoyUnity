@@ -18,7 +18,7 @@ SphereCollider graderCollider;
 
 public Vector3 colliderOffset = new Vector3(0,0.85f,0);
 
-public string ColliionTag = "GraderCollisionTag";
+public string CollisionTag = "GraderCollisionTag";
 
 
 	// Use this for initialization
@@ -32,7 +32,7 @@ public string ColliionTag = "GraderCollisionTag";
 
     void OnTriggerEnter(Collider other)
     {
-		if (other.gameObject.CompareTag(ColliionTag) )
+		if (other.gameObject.CompareTag(CollisionTag) )
 		  {
 			MinDist = graderCollider.radius;
 			if ( graderCollider.radius >= dissResulution )

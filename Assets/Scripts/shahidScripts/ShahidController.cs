@@ -8,7 +8,7 @@ public class ShahidController : MonoBehaviour
 
     public float TurningCommand = 0, WalkingCommand = 0;
 
-	public float MaxWokingSpeed = 1, MaxTurningSpeed = 1; 
+	public float MaxWalkingSpeed = 1, MaxTurningSpeed = 1; 
 
 	
     Transform myref;
@@ -30,7 +30,7 @@ public class ShahidController : MonoBehaviour
         if (ManualInput)
         {
             WalkingCommand = Input.GetAxis("Vertical");
-            WalkingCommand = MaxWokingSpeed * Mathf.Clamp(WalkingCommand, 0, 1);
+            WalkingCommand = MaxWalkingSpeed * Mathf.Clamp(WalkingCommand, 0, 1);
 
             TurningCommand = Input.GetAxis("Horizontal");
             TurningCommand = MaxTurningSpeed * Mathf.Clamp(TurningCommand, -1, 1);
