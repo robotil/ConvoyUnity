@@ -14,19 +14,23 @@ public float MinDist, dissResulution;
 public Text MinDistToCollisionTxt;
 
 
-SphereCollider graderCollider;
+CapsuleCollider graderCollider;
 
 public Vector3 colliderOffset = new Vector3(0,0.85f,0);
 
-public string CollisionTag = "GraderCollisionTag";
+string CollisionTag = "GraderCollisionTag";
 
 
 	// Use this for initialization
 	void Start () {
-		graderCollider = gameObject.AddComponent<SphereCollider>();
+		graderCollider = gameObject.AddComponent<CapsuleCollider>();
 		graderCollider.center = colliderOffset;
 		graderCollider.isTrigger = true;
-		graderCollider.radius = MinDist;	
+		graderCollider.radius = MinDist;
+
+		CollisionTag = gameObject.tag;	
+
+		Debug.Log("Tag="+CollisionTag);
 	}
 	
 
