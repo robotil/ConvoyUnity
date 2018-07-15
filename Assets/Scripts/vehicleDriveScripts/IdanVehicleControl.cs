@@ -38,7 +38,7 @@ public class IdanVehicleControl : MonoBehaviour
         Oshkosh = GetComponent<Vehicle>();
 
   		IdanInterface = new IdanWrapper(ICD_ConfigFile);
-        
+        //Invokes the method methodName in time seconds, then repeatedly every repeatRate seconds.
         InvokeRepeating("UpdateIdanPrimary", 3.0f, 1/IdanPrimFreq);
 		InvokeRepeating("UpdateIdanSecondary", 3.0f, 1/IdanSecoFreq);
         InvokeRepeating("UpdateIdanSecondarySensors", 3.0f, 1/IdanSensFreq);
@@ -131,12 +131,12 @@ void ApplyEngineAndGearLogic() {
 
         ShutDownCmd  = IdanInterface.HasHLCPShutDownCmd();
         EmergencyCmd = IdanInterface.HasHLCPEmergencyCmd(); 
-        SteerCmd = -IdanInterface.GetHLCPSteerCmd();
-        GasCmd = IdanInterface.GetHLCPGasCmd();
+        SteerCmd = -IdanInterface.GetHLCPSteerCmd();  // range [-1, 1]
+        GasCmd = IdanInterface.GetHLCPGasCmd();       // range [-1, 1]
 
-
-        IdanInterface.SetIdanPrimSteerPos((int)(-4000*SteerState));
-	    IdanInterface.SetIdanPrimGasPos((int)(4000*GasState));
+           
+        IdanInterface.SetIdanPrimSteerPos((int)(-SteerState));  // no more report back in range [0, 4000]
+	    IdanInterface.SetIdanPrimGasPos((int)(GasState));       // no more report back in range [0, 4000]   
 
         IdanInterface.SendIdanPrimaryData();
     }
@@ -186,7 +186,7 @@ void ApplyEngineAndGearLogic() {
         IdanInterface.SendIdanSecondaryReportData();
     }
 
-
+// report car data
     void UpdateIdanSecondarySensors() {
 
         IdanInterface.SetIdanSecSenEngineTemp(EngineTemp);

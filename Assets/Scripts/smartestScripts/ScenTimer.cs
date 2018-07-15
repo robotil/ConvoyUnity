@@ -9,9 +9,13 @@ public class ScenTimer : MonoBehaviour {
 
 
 
+	[Tooltip("Seconds")]
 	public float ScenDuration = 600;
-	public float LeaderMovementStart = 30;	
 
+	[Tooltip("Number of seconds before the hummer starts leading.")]
+	public float LeaderMovementStart = 30;	
+    
+	[Tooltip("Seconds")]
 	public float ScenTimeLeft, LeaderMovementTimeLeft;
 
 	public Text displayText;

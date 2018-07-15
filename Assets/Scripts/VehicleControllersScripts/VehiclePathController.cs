@@ -9,21 +9,21 @@ public class VehiclePathController : MonoBehaviour
 {
     public VehicleWPController WPController;
 
-  
+  // Read the waypoints from unity interface by default. They will be changed if there is a scenario afterward
+  [Tooltip("Insert list of WP for the path: pose, and velocity ( x->WPx_coordinate , y->WPz_coordinate , z->WP_Velocity)")]
     public List<Vector3> PathWPs_PosesAndVels=new List<Vector3>();
-    public int curentWP;
+  [Tooltip("Position of current way point in the path")]
+    public int currentWPRange;
 
-    Vector3 curentTeagetWP_PoseAndVel;
-    Vector3 curentVehicle_PoseAndVel;
-
-
-    float DissToCurentWP;
-
+    
+  [Tooltip("WP considered as reach at this distance")]
     public float WP_ReachRadius;
-
-
-    List<GameObject> PathWPs=new List<GameObject>();
     public GameObject PathWP_Mark;
+
+    Vector3 curentTargetWP_PoseAndVel;
+    Vector3 curentVehicle_PoseAndVel;
+    float DissToCurrentWP;
+    List<GameObject> PathWPs=new List<GameObject>();
 
     string VehicleName;
 
@@ -42,7 +42,7 @@ public class VehiclePathController : MonoBehaviour
         WPController = GetComponent<VehicleWPController>();
 
         PathWPs_PosesAndVels.Add(new Vector3(myref.position.x, myref.position.z, 0));
-        curentWP = 0;
+        currentWPRange = 0;
         
         WP_ReachRadius = 5;
     }
@@ -53,21 +53,21 @@ public class VehiclePathController : MonoBehaviour
     {
         pathConstraction();
 
-        curentTeagetWP_PoseAndVel = PathWPs_PosesAndVels[curentWP];
+        curentTargetWP_PoseAndVel = PathWPs_PosesAndVels[currentWPRange];
         curentVehicle_PoseAndVel = new Vector3(myref.position.x, myref.position.z, myref.InverseTransformVector(rb.velocity).z);
 
 
-        Vector3 curentTeagetWP_glob = PathWPs[curentWP].transform.position;
+        Vector3 curentTeagetWP_glob = PathWPs[currentWPRange].transform.position;
         Vector3 curentTeagetWP_loc = myref.InverseTransformPoint(curentTeagetWP_glob);
-        DissToCurentWP = curentTeagetWP_loc.magnitude;
+        DissToCurrentWP = curentTeagetWP_loc.magnitude;
 
-        if (DissToCurentWP < WP_ReachRadius)
+        if (DissToCurrentWP < WP_ReachRadius)
         {
-            if (curentWP < (PathWPs_PosesAndVels.Count-1) )
-                 curentWP++;
+            if (currentWPRange < (PathWPs_PosesAndVels.Count-1) )
+                 currentWPRange++;
         }
 
-        WPController.targetPoseAndVel = PathWPs_PosesAndVels[curentWP];
+        WPController.targetPoseAndVel = PathWPs_PosesAndVels[currentWPRange];
     }
     
 

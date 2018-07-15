@@ -10,6 +10,7 @@ public class SimulationManager : MonoBehaviour
     public static SimulationManager instance;
     public bool ROSInterface = true;
 
+    [Tooltip("Seconds")]
     public float Timescale = 1,Timestep=0.005f;
     public bool DebugTime = false;
     //Awake is always called before any Start functions

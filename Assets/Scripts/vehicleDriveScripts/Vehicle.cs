@@ -13,20 +13,19 @@ public class Vehicle : MonoBehaviour
 
     public bool ManualInput = true;
     public bool BreakOnNullThrottle = true;
-    public int Gear=1;
+    public float Gear=1;
     public float MaxTorque = 1000000;
     public float  MaxBreakingTorque = 1000000;
 
     public float VehicleWidth = 2, VehicleLength = 3, MaxSteering=0.4f;
 
-    public float testWhell;
 
     [Tooltip("Assign the wheels you want motorized here with a rotation axis set as X.")]
     public Rigidbody[] Wheels; //Assign here the wheels you want motorized
     public HingeJoint[] WheelsJoints;
     Transform myref;
     Rigidbody rb;
-
+    string VehicleName;
 
 
     public float throttleCommand=0, steeringCommand = 0, BreakCommand=0, ForwardVel;
@@ -43,6 +42,7 @@ public class Vehicle : MonoBehaviour
     {
         myref = gameObject.transform;
         rb = GetComponent<Rigidbody>();
+        VehicleName = gameObject.name;
 
         for (int i = 0; i < Wheels.Length; i++)
            {
@@ -85,13 +85,15 @@ public class Vehicle : MonoBehaviour
             BreakCommand = 0.0f;
         }
 
+
+
        // ApplyEngineAndGearLogic();
 
         ApplyTrottleAndBreaks(throttleCommand,  BreakCommand);
         ApplySteering(steeringCommand);
 
 
-        displayText.text = "Vehicle: throttleCommand=" + throttleCommand.ToString("0.00") + "  steeringCommand=" + steeringCommand.ToString("0.00") + "\n" +
+        displayText.text = VehicleName +": throttleCommand=" + throttleCommand.ToString("0.00") + "  steeringCommand=" + steeringCommand.ToString("0.00") + "\n" +
                                      "Gear=" + Gear.ToString("0.00") +  "    BreakCommand= " + BreakCommand.ToString("0.00") + "\n";
 
 
@@ -139,33 +141,33 @@ public class Vehicle : MonoBehaviour
     }
 
 
-    public void ApplySteering(float SteerCommand)
+    public void ApplySteering(float SteerCommand)   // SteerCommand in the range of [-1 , 1]
     {
         float right_steer = 0, left_steer =0;
         float Len = VehicleLength; 
         float Wid = VehicleWidth;
 
-        SteerCommand = SteerCommand*MaxSteering;
+        float Steer = SteerCommand*MaxSteering;
 
-        if (SteerCommand != 0)
+        if (Steer != 0)
         {
-        if ( SteerCommand < 0 )  // turning left - left wheel is the iner one
+        if ( Steer < 0 )  // turning left - left wheel is the iner one
             {
-            float R = Len/Mathf.Tan(-SteerCommand);
-            right_steer = Mathf.Atan(Len/(R-Wid/2)); 
-            left_steer  = Mathf.Atan(Len/(R+Wid/2)); 
+            float R = Len/Mathf.Tan(-Steer);
+            right_steer = Mathf.Atan(Len/(R-Wid/2));    // in Rads
+            left_steer  = Mathf.Atan(Len/(R+Wid/2));    // in Rads
             }
         else // turning right - right wheel is the iner one
             {
-            float R = Len/Mathf.Tan(SteerCommand);
-            right_steer = -Mathf.Atan(Len/(R+Wid/2)); 
-            left_steer  = -Mathf.Atan(Len/(R-Wid/2)); 
+            float R = Len/Mathf.Tan(Steer);
+            right_steer = -Mathf.Atan(Len/(R+Wid/2));   // in Rads
+            left_steer  = -Mathf.Atan(Len/(R-Wid/2));   // in Rads
             }
         }
 
         for (int i=0; i<rightWheelsSteer.Length; i++)
             {
-            rightWheelsSteer[i].targetRotation = Quaternion.Euler(Mathf.Rad2Deg * right_steer , 0, 0);
+            rightWheelsSteer[i].targetRotation = Quaternion.Euler(Mathf.Rad2Deg * right_steer , 0, 0);  // targetRotation = angle of wheel with respect to vehicle axes
             leftWheelsSteer[i].targetRotation = Quaternion.Euler(Mathf.Rad2Deg * left_steer , 0, 0);
             }
 
