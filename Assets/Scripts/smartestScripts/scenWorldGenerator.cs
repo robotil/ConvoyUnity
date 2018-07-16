@@ -27,7 +27,7 @@ public class scenWorldGenerator : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		SFVToLoad = "/home/robil/SmARTest/work_space/scenario_1/scen.SFV";
+		SFVToLoad = "/home/robil/ws/src/SmARTest/work_space/scenario_10/scen.SFV";
 		loadInputArgs();
 
 		file = XDocument.Load(uri: SFVToLoad);
@@ -158,7 +158,7 @@ public class scenWorldGenerator : MonoBehaviour {
 		ShahidWPController shahidWpController = Shahid.GetComponent<ShahidWPController>();
 
 		shahidPoseOnterrain.moveTo(new Vector3(shahidPose.x, shahidPose.y, 0.0f));
-		shahidWpController.shhidTargetPoseAndVel = new Vector3(shahidPose.x, shahidPose.y, 0.0f);
+		shahidWpController.shahidTargetPoseAndVel = new Vector3(shahidPose.x, shahidPose.y, 0.0f);
 	}
 
 
