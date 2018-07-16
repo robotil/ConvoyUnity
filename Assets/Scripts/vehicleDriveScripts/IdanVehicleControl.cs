@@ -135,8 +135,8 @@ void ApplyEngineAndGearLogic() {
         GasCmd = IdanInterface.GetHLCPGasCmd();       // range [-1, 1]
 
            
-        IdanInterface.SetIdanPrimSteerPos((int)(-SteerState));  // no more report back in range [0, 4000]
-	    IdanInterface.SetIdanPrimGasPos((int)(GasState));       // no more report back in range [0, 4000]   
+        IdanInterface.SetIdanPrimSteerPos(SteerState);  // no more report back in range [0, 4000]
+	    IdanInterface.SetIdanPrimGasPos(GasState);       // no more report back in range [0, 4000]   
 
         IdanInterface.SendIdanPrimaryData();
     }
