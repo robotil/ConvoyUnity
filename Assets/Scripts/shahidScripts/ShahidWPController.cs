@@ -36,25 +36,28 @@ public class ShahidWPController : MonoBehaviour {
         TargetMarkPos = targetWP_Mark.GetComponent<terrainAttachment>();
 
         shahidTargetPoseAndVel = new Vector3(myref.position.x,myref.position.z,0);
+
+        Debug.Log("targetRadius is:"+targetRadius.ToString());
     }
 	
 
 	// Update is called once per frame
     void Update()
     {
-
         TargetMarkPos.moveTo(new Vector3(shahidTargetPoseAndVel.x+targetRadius, shahidTargetPoseAndVel.y+targetRadius, 0)); 
 
         Vector3 targetWP_local = myref.InverseTransformPoint(targetWP_Mark.transform.position);
 
-        targetDist = targetWP_local.magnitude;
-		if (targetDist < targetRadius)
-			targetDist = 0;	
+        targetDist = targetWP_local.magnitude; //Length of the vector
+        //Debug.Log("targetDist is:"+targetDist.ToString());
+
+		if (targetDist < targetRadius){
+            Debug.Log("00000 targetDist is zero:"+targetDist.ToString());
+        	targetDist = 0;	
+        }
         LinVelCmd = P_dist * targetDist;
 
-
         LinVelCmd = Mathf.Min(LinVelCmd, shahidTargetPoseAndVel.z);
-
 
         targetAzi = Mathf.Atan2(targetWP_local.x , targetWP_local.z);
 
@@ -67,6 +70,8 @@ public class ShahidWPController : MonoBehaviour {
 
         shahid.WalkingCommand = LinVelCmd;
         shahid.TurningCommand = AngVelCmd;
+        //Debug.Log("LinVelCmd is:"+LinVelCmd.ToString() + " and AngVelCmd is:" + AngVelCmd.ToString());
+
     }
 }
  

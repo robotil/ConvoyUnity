@@ -5,7 +5,7 @@ public class ShahidController : MonoBehaviour
 {
 
     public bool ManualInput = true;
-
+    [Tooltip("Inserted by the mouse for manual input")]
     public float TurningCommand = 0, WalkingCommand = 0;
 
 	public float MaxWalkingSpeed = 1, MaxTurningSpeed = 1; 
@@ -36,8 +36,12 @@ public class ShahidController : MonoBehaviour
             TurningCommand = MaxTurningSpeed * Mathf.Clamp(TurningCommand, -1, 1);
         }
 
+        //"Forward" and "Turn" are parameters of the animator controller: ThirdPersonAnimatorController
+        // There are 4 more parameters: "Crouch" (boolean), "OnGround" (boolean), "Jump" (float), "JumLeg" (float)
+        // You can access those parameters in the Unity3d Editor via the Animator states diagram
 		anim.SetFloat("Forward",WalkingCommand);
 		anim.SetFloat("Turn",TurningCommand);
+        
     }
 
     public void toggleManual(bool manual)

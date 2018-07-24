@@ -45,6 +45,7 @@ string CollisionTag = "GraderCollisionTag";
 				}
 		  }
 		MinDistToCollisionTxt.text = "Min Dist: " + MinDist.ToString("F2");  
+		Debug.Log(MinDistToCollisionTxt.text);
     }
 
 
@@ -60,9 +61,9 @@ string CollisionTag = "GraderCollisionTag";
 				scenFolderURI = args [i + 1];
  			}
 		}
-		string garadesFile = scenFolderURI + "/grades.txt";
+		string gradesFile = scenFolderURI + "/grades.txt";
 
-		StreamWriter writer = new StreamWriter(garadesFile, true);
+		StreamWriter writer = new StreamWriter(gradesFile, true);
 		writer.WriteLine("MinDist : " + MinDist);
         writer.Close();
 	}

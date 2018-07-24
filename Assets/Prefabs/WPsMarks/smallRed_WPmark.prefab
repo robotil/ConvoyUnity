@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23669797172226630}
   - component: {fileID: 114729016336477514}
   m_Layer: 0
-  m_Name: smallRead_WPmark
+  m_Name: smallRed_WPmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

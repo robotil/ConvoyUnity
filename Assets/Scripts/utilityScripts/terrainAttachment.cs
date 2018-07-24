@@ -9,8 +9,9 @@ public class terrainAttachment : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		//Set each object (gameObject) at its position
 		Vector3 tempPose = gameObject.transform.position; // + (new Vector3(10,0,10));
-		Debug.Log(tempPose);
+		Debug.Log(gameObject.name+":"+ tempPose);
 		moveTo(new Vector3(tempPose.x,tempPose.z,0.1f));
 	}
 	

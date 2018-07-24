@@ -27,7 +27,7 @@ public class scenWorldGenerator : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		SFVToLoad = "/home/robil/ws/src/SmARTest/work_space/scenario_10/scen.SFV";
+		SFVToLoad = "/home/robil/ws/src/SmARTest/work_space/scenario_1/scen.SFV";
 		loadInputArgs();
 
 		file = XDocument.Load(uri: SFVToLoad);
@@ -71,6 +71,7 @@ public class scenWorldGenerator : MonoBehaviour {
 			terrainAttachment LeaderVehiclePos = LeaderVehicle.GetComponent<terrainAttachment>();
 			LeaderVehiclePos.moveTo(new Vector3(LeaderPose.x, LeaderPose.y, 0.0f));
 			LeaderVehicle.transform.eulerAngles = new Vector3(0,LeaderAzimuth * Mathf.Rad2Deg,0);
+			Debug.Log("Leader position:"+LeaderPose.x.ToString()+","+ LeaderPose.y.ToString());
         }
     }
 

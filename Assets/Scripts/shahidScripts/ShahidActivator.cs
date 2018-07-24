@@ -10,7 +10,7 @@ public class ShahidActivator : MonoBehaviour {
 	
 	
 
-	public float activetionRadius;
+	public float activationRadius;
 	public float shahidVel = 3;
 	bool wasActivated = false;
 
@@ -22,6 +22,7 @@ public class ShahidActivator : MonoBehaviour {
 	void Start () {
 		myref = gameObject.transform;    
         shahidTargetWP = GetComponent<ShahidWPController>();
+		Debug.Log("targetVehicle="+targetVehicle.name);
 
 	}
 	
@@ -31,16 +32,18 @@ public class ShahidActivator : MonoBehaviour {
 	{
 		Vector3 targetWP_local = myref.InverseTransformPoint(targetVehicle.transform.position);
         targetVehicleDist = targetWP_local.magnitude;
+        //Debug.Log("targetVehicleDist:"+targetVehicleDist.ToString());
 
 		if (! wasActivated)
 		{
-			if (targetVehicleDist < activetionRadius) 
+			if (targetVehicleDist < activationRadius) 
 			{
 				Vector3 targetPos = targetVehicle.transform.position;
 				Vector3 targetPredictedPose = targetPos; 
 				
 				shahidTargetWP.shahidTargetPoseAndVel = new Vector3(targetPredictedPose.x, targetPredictedPose.z, shahidVel); 	
 				wasActivated = true;
+				Debug.Log("Shahid has been activated with activation radius="+activationRadius.ToString());
 			}
 		}
 
