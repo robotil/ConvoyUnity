@@ -277,11 +277,11 @@ public class IdanWrapper: IDisposable {
 	}
 
    /************************************************* IDAN Primary ********************************************/
-    public void SetIdanPrimSteerPos(int steerPose) {
+    public void SetIdanPrimSteerPos(float steerPose) {
 		SetIdanPrimSteerPos(this.m_nativeObject, steerPose);
 	}
 
-	public void SetIdanPrimGasPos(int gasPose) {
+	public void SetIdanPrimGasPos(float gasPose) {
 		SetIdanPrimGasPos(this.m_nativeObject, gasPose);
 	}
 

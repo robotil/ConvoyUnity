@@ -6,7 +6,10 @@ public class VelodyneWrapper : IDisposable {
 	const String DLL_LOCATION = "libvelodyne";
 
 	[DllImport (DLL_LOCATION)]
-	private static extern IntPtr VelodyneCreateObject(string confFilePath);
+	private static extern IntPtr Velodyne16CreateObject(string confFilePath);
+
+	[DllImport (DLL_LOCATION)]
+	private static extern IntPtr Velodyne32CreateObject(string confFilePath);
 
 	[DllImport (DLL_LOCATION)]
 	private static extern void VelodyneDeleteObject(IntPtr pObj);
@@ -28,8 +31,14 @@ public class VelodyneWrapper : IDisposable {
 
 	private IntPtr m_nativeObject;
 
-	public VelodyneWrapper(string confFilePath) {
-			this.m_nativeObject = VelodyneCreateObject(confFilePath);
+	public VelodyneWrapper(string confFilePath, bool isVelodyne16) {
+		if (isVelodyne16) {
+			this.m_nativeObject = Velodyne16CreateObject(confFilePath);
+		}
+		else {
+			this.m_nativeObject = Velodyne32CreateObject(confFilePath);
+		}
+			
 	}
 
 	~VelodyneWrapper() {Dispose(false);}
