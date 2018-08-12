@@ -75,7 +75,7 @@ public class GPU_Velodyne16 : MonoBehaviour
         // activtion of the ICD interface    
         if (sendDataOnICD)
         {
-            vel16ICDinterface = new VelodyneWrapper(ICD_ConfigFile);
+            vel16ICDinterface = new VelodyneWrapper(ICD_ConfigFile, true);
         }
     }
 

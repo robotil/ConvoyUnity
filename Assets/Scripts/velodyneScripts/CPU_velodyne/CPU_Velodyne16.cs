@@ -44,7 +44,7 @@ public class CPU_Velodyne16 : MonoBehaviour
         emitter = SensorRotator.Find("Emitter");
 
         horCurrentAngle = 0;
-        vc = new VelodyneWrapper("/home/robil/simConfigs/velodyne.conf");
+        vc = new VelodyneWrapper("/home/robil/simConfigs/velodyne.conf", true);
     }
 
     // Update is called once per frame
