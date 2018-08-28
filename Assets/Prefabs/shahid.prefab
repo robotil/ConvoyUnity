@@ -2588,7 +2588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MinDist: 30
-  dissResulution: 0.5
+  distResolution: 0.5
   MinDistToCollisionTxt: {fileID: 0}
   colliderOffset: {x: 0, y: 0.85, z: 0}
   ColliionTag: GraderCollisionTag

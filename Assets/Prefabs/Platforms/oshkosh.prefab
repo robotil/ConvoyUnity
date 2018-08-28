@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 114318270577521094}
   - component: {fileID: 114255180465210904}
   - component: {fileID: 114191049808408512}
+  - component: {fileID: 114318396511276570}
   - component: {fileID: 114076561217748786}
   - component: {fileID: 114166335828312772}
   - component: {fileID: 114455244818082722}
@@ -124,7 +125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1067486208210270
 GameObject:
   m_ObjectHideFlags: 1
@@ -162,7 +163,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1148588343199714
 GameObject:
   m_ObjectHideFlags: 1
@@ -395,7 +396,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1346314214980058
 GameObject:
   m_ObjectHideFlags: 1
@@ -839,7 +840,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1935622302154312
 GameObject:
   m_ObjectHideFlags: 1
@@ -1015,7 +1016,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1144396040664430}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: -0.5}
+  m_LocalPosition: {x: 0.05, y: 1.03, z: 4.21}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.2}
   m_Children: []
   m_Father: {fileID: 4841264264854602}
@@ -1160,7 +1161,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1345824454724338}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: 0}
+  m_LocalPosition: {x: 0, y: 2.87, z: 4.46}
   m_LocalScale: {x: 0.2, y: 0.03, z: 0.2}
   m_Children: []
   m_Father: {fileID: 4841264264854602}
@@ -1420,15 +1421,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1894290129814294}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 4.8}
+  m_LocalRotation: {x: 0.0061086393, y: 0, z: 0, w: 0.99998134}
+  m_LocalPosition: {x: 0, y: 1.55, z: 5.475}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4305179651840576}
   - {fileID: 4250095413569936}
   m_Father: {fileID: 4841264264854602}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.7, y: 0, z: 0}
 --- !u!4 &4777178527523704
 Transform:
   m_ObjectHideFlags: 1
@@ -1514,7 +1515,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1053339504900996}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: -210}
+  m_LocalPosition: {x: 0, y: -5, z: -230}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4702706044682110}
@@ -3304,11 +3305,11 @@ HingeJoint:
     freeSpin: 0
   m_UseLimits: 0
   m_Limits:
-    min: 0
-    max: 0
-    bounciness: 0
-    bounceMinVelocity: 0.2
-    contactDistance: 0
+    min: -15
+    max: 15
+    bounciness: 1
+    bounceMinVelocity: 5
+    contactDistance: 10
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_EnableCollision: 0
@@ -3338,11 +3339,11 @@ HingeJoint:
     freeSpin: 0
   m_UseLimits: 0
   m_Limits:
-    min: 0
-    max: 0
-    bounciness: 0
-    bounceMinVelocity: 0.2
-    contactDistance: 0
+    min: -15
+    max: 15
+    bounciness: 1
+    bounceMinVelocity: 5
+    contactDistance: 10
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_EnableCollision: 0
@@ -3372,11 +3373,11 @@ HingeJoint:
     freeSpin: 0
   m_UseLimits: 0
   m_Limits:
-    min: 0
-    max: 0
-    bounciness: 0
-    bounceMinVelocity: 0.2
-    contactDistance: 0
+    min: -15
+    max: 15
+    bounciness: 1
+    bounceMinVelocity: 5
+    contactDistance: 10
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_EnableCollision: 0
@@ -3406,11 +3407,11 @@ HingeJoint:
     freeSpin: 0
   m_UseLimits: 0
   m_Limits:
-    min: 0
-    max: 0
-    bounciness: 0
-    bounceMinVelocity: 0.2
-    contactDistance: 0
+    min: -15
+    max: 15
+    bounciness: 1
+    bounceMinVelocity: 5
+    contactDistance: 10
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_EnableCollision: 0
@@ -3440,11 +3441,11 @@ HingeJoint:
     freeSpin: 0
   m_UseLimits: 0
   m_Limits:
-    min: 0
-    max: 0
-    bounciness: 0
-    bounceMinVelocity: 0.2
-    contactDistance: 0
+    min: -15
+    max: 15
+    bounciness: 1
+    bounceMinVelocity: 5
+    contactDistance: 10
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_EnableCollision: 0
@@ -3474,11 +3475,11 @@ HingeJoint:
     freeSpin: 0
   m_UseLimits: 0
   m_Limits:
-    min: 0
-    max: 0
-    bounciness: 0
-    bounceMinVelocity: 0.2
-    contactDistance: 0
+    min: -15
+    max: 15
+    bounciness: 1
+    bounceMinVelocity: 5
+    contactDistance: 10
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_EnableCollision: 0
@@ -3508,11 +3509,11 @@ HingeJoint:
     freeSpin: 0
   m_UseLimits: 0
   m_Limits:
-    min: 0
-    max: 0
-    bounciness: 0
-    bounceMinVelocity: 0.2
-    contactDistance: 0
+    min: -15
+    max: 15
+    bounciness: 1
+    bounceMinVelocity: 5
+    contactDistance: 10
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_EnableCollision: 0
@@ -3542,11 +3543,11 @@ HingeJoint:
     freeSpin: 0
   m_UseLimits: 0
   m_Limits:
-    min: 0
-    max: 0
-    bounciness: 0
-    bounceMinVelocity: 0.2
-    contactDistance: 0
+    min: -15
+    max: 15
+    bounciness: 1
+    bounceMinVelocity: 5
+    contactDistance: 10
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_EnableCollision: 0
@@ -3709,6 +3710,7 @@ MonoBehaviour:
   P_ang: 1
   throttelCmd: 0
   SteerCmd: 0
+  displayText: {fileID: 0}
 --- !u!114 &114166335828312772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3738,12 +3740,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ManualInput: 0
   BreakOnNullThrottle: 1
-  gear: 1
-  MaxTorque: 1000000
+  Gear: 1
+  MaxTorque: 500000
   MaxBreakingTorque: 1000
-  VehicleWidth: 2
-  VehicleLength: 3
-  MaxSteering: 0.4
+  VehicleWidth: 2.5
+  VehicleLength: 4.85
+  MaxSteering: 0.32
   Wheels:
   - {fileID: 54309527846653606}
   - {fileID: 54066554527503090}
@@ -3753,6 +3755,15 @@ MonoBehaviour:
   - {fileID: 54604387571464196}
   - {fileID: 54499930177255800}
   - {fileID: 54527588239821004}
+  WheelsJoints:
+  - {fileID: 59743636524831888}
+  - {fileID: 59183178161509814}
+  - {fileID: 59740091664992410}
+  - {fileID: 59525657232097748}
+  - {fileID: 59686856229302848}
+  - {fileID: 59841587281978176}
+  - {fileID: 59751373299463992}
+  - {fileID: 59960052914728822}
   throttleCommand: 0
   steeringCommand: 0
   BreakCommand: 0
@@ -3763,6 +3774,7 @@ MonoBehaviour:
   leftWheelsSteer:
   - {fileID: 153869803579846624}
   - {fileID: 153608712593715166}
+  displayText: {fileID: 0}
 --- !u!114 &114221552537694404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3869,6 +3881,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CenterOfMassPos: {fileID: 4624503323259128}
+--- !u!114 &114318396511276570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1053339504900996}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a56a4c5924942c88dbac2012203de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ICD_ConfigFile: /home/robil/simConfigs/idan.conf
+  IsEngenOn: 0
+  KeySwitchApplied: 0
+  MotorStarterApplied: 0
+  GearStateRquesrt: 
+  GearState: 0
+  ParkingBrakeRwquest: 0
+  ParkingBrakeState: 0
+  ShutDownCmd: 0
+  EmergencyCmd: 0
+  SteerCmd: 0
+  SteerState: 0
+  GasCmd: 0
+  GasState: 0
+  EngineRPM: 0
+  EngineTemp: 30
+  displayText: {fileID: 0}
 --- !u!114 &114325978886609974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3900,6 +3940,7 @@ MonoBehaviour:
   AngularResolution: 0.2
   LowerAngle: -10
   HigherAngle: 10
+  RotationAngle: 360
   Channels: 16
   SuperSample: 1
   MeasurementRange: 120
@@ -3910,6 +3951,7 @@ MonoBehaviour:
   drawSize: 0.1
   drawTime: 0.1
   drawColor: {r: 1, g: 0, b: 0, a: 1}
+  displayText: {fileID: 0}
 --- !u!114 &114366554237446232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3937,7 +3979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WPController: {fileID: 114166335828312772}
   PathWPs_PosesAndVels: []
-  curentWP: 0
+  currentWPRange: 0
   WP_ReachRadius: 0
   PathWP_Mark: {fileID: 0}
 --- !u!114 &114496715194857372
@@ -3979,11 +4021,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5a7c7d1309846f9a06dc24f511090d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ICD_ConfigFile: /home/robil/simConfigs/novatel.conff
+  ICD_Active: 1
+  ICD_ConfigFile: /home/robil/simConfigs/novatel.conf
   LatLonAltPos0: {x: 32.0853, y: 34.7818, z: 0}
   LatLonAltPos: {x: 0, y: 0, z: 0}
   LatLonAltVel: {x: 0, y: 0, z: 0}
-  SensorPubFreq: 10
+  SensorPubFreq: 1
+  screnText: {fileID: 0}
 --- !u!114 &114709300404969074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3995,6 +4039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af0be4be46ad496280967d6460581e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ICD_Active: 1
   ICD_ConfigFile: /home/robil/simConfigs/tiltan.conf
   LatLonAltPos0: {x: 32.0853, y: 34.7818, z: 0}
   LatLonAltPos: {x: -0.00090177165, y: -0.0005998395, z: -9.580022}
@@ -4013,6 +4058,7 @@ MonoBehaviour:
   AzimuthPitchRollErrorSIGMA_mils: {x: 0, y: 0, z: 0}
   DataPubFreq: 50
   StatusPubFreq: 1
+  screnText: {fileID: 0}
 --- !u!114 &114739775571877816
 MonoBehaviour:
   m_ObjectHideFlags: 1

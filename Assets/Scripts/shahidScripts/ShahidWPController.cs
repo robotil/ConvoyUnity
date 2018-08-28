@@ -32,12 +32,12 @@ public class ShahidWPController : MonoBehaviour {
 
         targetWP_Mark = Instantiate(targetWP_Mark); // creating a private copy
         targetWP_Mark.name = shahidName + "Target" ;
-
-        TargetMarkPos = targetWP_Mark.GetComponent<terrainAttachment>();
+        TargetMarkPos = targetWP_Mark.GetComponent<terrainAttachment>(); 
 
         shahidTargetPoseAndVel = new Vector3(myref.position.x,myref.position.z,0);
+        
 
-        Debug.Log("targetRadius is:"+targetRadius.ToString());
+        Debug.Log("ShahidWPController::Start - targetRadius is:"+targetRadius.ToString()+" shahidTargetPoseAndVel:"+shahidTargetPoseAndVel); //+myref.position);
     }
 	
 
@@ -52,7 +52,7 @@ public class ShahidWPController : MonoBehaviour {
         //Debug.Log("targetDist is:"+targetDist.ToString());
 
 		if (targetDist < targetRadius){
-            Debug.Log("00000 targetDist is zero:"+targetDist.ToString());
+           // Debug.Log("00000 targetDist is zero:"+targetDist.ToString());
         	targetDist = 0;	
         }
         LinVelCmd = P_dist * targetDist;

@@ -32,7 +32,7 @@ public class scenWorldGenerator : MonoBehaviour {
 
 		file = XDocument.Load(uri: SFVToLoad);
         var xmlText = System.IO.File.ReadAllText(SFVToLoad);
-		Debug.Log(SFVToLoad);
+		Debug.Log("scenWorldGenerator:"+SFVToLoad);
 
 		LeaderSetup();
 		FollowerSetup();
@@ -86,7 +86,8 @@ public class scenWorldGenerator : MonoBehaviour {
 		terrainAttachment FollowerVehiclePos = FollowerVehicle.GetComponent<terrainAttachment>();
 	    FollowerVehiclePos.moveTo(new Vector3(FollowerPose.x, FollowerPose.y, 0.0f));
 		FollowerVehiclePos.transform.eulerAngles = new Vector3(0,FollowerAzimuth * Mathf.Rad2Deg,0);
-
+        Debug.Log("Follower position:"+FollowerPose.x.ToString()+","+ FollowerPose.y.ToString());
+		//FollowerVehicle = oshkosh
      	VehiclePathController FollowerPathController = FollowerVehicle.GetComponent<VehiclePathController>();
 		FollowerPathController.PathWPs_PosesAndVels.Clear(); 
 
@@ -122,44 +123,56 @@ public class scenWorldGenerator : MonoBehaviour {
 	void ShahidSetup() 
 	{
 		float AlongPath = 0 , PerpePath = 0;
+		//Note that if we have 3 obstacles in the XML file, then only the last coordinates are relevant!!!
         foreach (var shahidXML in file.Descendants("obstacles_on_path").Descendants("obstacle_on_path"))
         {		
-            AlongPath = float.Parse(shahidXML.Element("obstacle_on_path_i_location_along_the_path").Value); 
-			PerpePath = float.Parse(shahidXML.Element("obstacle_on_path_i_location_perpendicular_to_the_path").Value); 
+            AlongPath = float.Parse(shahidXML.Element("obstacle_on_path_i_location_along_the_path").Value); //Percentage of the entire path length
+			PerpePath = float.Parse(shahidXML.Element("obstacle_on_path_i_location_perpendicular_to_the_path").Value); //absolutely in meters
         }
-
-		float dissFromStart = 0;
-		Vector2 WPcurent = LeaderPose;
+        
+        Debug.Log("ShahidSetup:AlongPath:"+AlongPath.ToString()+",PerpePath"+ PerpePath.ToString());
+		float distFromStart = 0;
+		Vector2 WPcurrent = LeaderPose;
 		Vector2 WPnext = LeaderPose;
 
-		float WPdiss = 1, WPang=0;
+		float WPdist = 1, WPang=0;
+		int WPid = 0;
     	foreach (var wpXML in file.Descendants("Path").Descendants("WayPoint"))
 		{
-			WPdiss = float.Parse(wpXML.Element("wp_i_relative_distance").Value);
+			WPdist = float.Parse(wpXML.Element("wp_i_relative_distance").Value);
 			WPang = float.Parse(wpXML.Element("wp_i_relative_angle").Value);
+            WPid = int.Parse(wpXML.Attribute("ID").Value);
 
-			Vector2 vecToNextWP = new Vector2(Mathf.Sin(WPang),Mathf.Cos(WPang)) * WPdiss;
-			WPnext = WPcurent + vecToNextWP;
-			dissFromStart += WPdiss;
+			Vector2 vecToNextWP = new Vector2(Mathf.Sin(WPang),Mathf.Cos(WPang)) * WPdist;
+			WPnext = WPcurrent + vecToNextWP;
+			distFromStart += WPdist;
 
-			if (dissFromStart > pathLength * AlongPath) {
+			if (distFromStart > pathLength * AlongPath) {
+				Debug.Log("ShahidSetup: WP ID="+WPid.ToString()+" distFromStart="+distFromStart.ToString()+" pathLength="+pathLength.ToString()+" AlongPath="+AlongPath.ToString());
+				//The shahid should meet the oshkosh before this WP
 				break; 
+			} else {
+				Debug.Log("ShahidSetup: ELSE WP ID="+WPid.ToString()+" distFromStart="+distFromStart.ToString()+" pathLength="+pathLength.ToString()+" AlongPath="+AlongPath.ToString());
 			}
-			WPcurent = WPnext;
+			WPcurrent = WPnext;
 		}
+        
+		Debug.Log("ShahidSetup: WPcurrent="+WPcurrent.ToString()+" WPnext="+WPnext.ToString());
+		float rem_alo = ((AlongPath - distFromStart/pathLength)*pathLength)/WPdist;
+		Debug.Log("ShahidSetup: rem_alo="+rem_alo.ToString());
+		float shahid_x = WPcurrent.x + rem_alo * (WPnext.x - WPcurrent.x) - PerpePath*(WPnext.y - WPcurrent.y)/WPdist;
+		float shahid_y = WPcurrent.y + rem_alo * (WPnext.y - WPcurrent.y) + PerpePath*(WPnext.x - WPcurrent.x)/WPdist;
+		Vector2 ShahidPose = new Vector2(shahid_x, shahid_y);
 
-		float rem_alo = ((AlongPath - dissFromStart/pathLength)*pathLength)/WPdiss;
-		float shahid_x = WPcurent.x + rem_alo * (WPnext.x - WPcurent.x) - PerpePath*(WPnext.y - WPcurent.y)/WPdiss;
-		float shahid_y = WPcurent.y + rem_alo * (WPnext.y - WPcurent.y) + PerpePath*(WPnext.x - WPcurent.x)/WPdiss;
-		Vector2 shahidPose = new Vector2(shahid_x, shahid_y);
-
-		//Vector2 shahidPose = Vector2.Lerp(WPcurent,WPnext,rem_alo);
+		//Vector2 shahidPose = Vector2.Lerp(WPcurrent,WPnext,rem_alo);
 
 		terrainAttachment shahidPoseOnterrain = Shahid.GetComponent<terrainAttachment>();
 		ShahidWPController shahidWpController = Shahid.GetComponent<ShahidWPController>();
 
-		shahidPoseOnterrain.moveTo(new Vector3(shahidPose.x, shahidPose.y, 0.0f));
-		shahidWpController.shahidTargetPoseAndVel = new Vector3(shahidPose.x, shahidPose.y, 0.0f);
+		shahidPoseOnterrain.moveTo(new Vector3(ShahidPose.x, ShahidPose.y, 0.0f));
+		shahidWpController.shahidTargetPoseAndVel = new Vector3(ShahidPose.x, ShahidPose.y, 0.0f);
+        Debug.Log("ShahidSetup: Shahid position:"+ShahidPose.x.ToString()+","+ ShahidPose.y.ToString());
+
 	}
 
 

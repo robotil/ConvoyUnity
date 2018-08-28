@@ -22,6 +22,7 @@ public class ShahidController : MonoBehaviour
         myref = gameObject.transform;
 		rb = GetComponent<Rigidbody>();
 		anim = GetComponent<Animator>();
+        Debug.Log("ShahidController::Start has been called");
     }
 
     // Update is called once per frame

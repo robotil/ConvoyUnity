@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class grader : MonoBehaviour {
 
 
-public float MinDist, dissResulution;
+public float MinDist, distResolution;
 
 public Text MinDistToCollisionTxt;
 
@@ -30,7 +30,9 @@ string CollisionTag = "GraderCollisionTag";
 
 		CollisionTag = gameObject.tag;	
 
-		Debug.Log("Tag="+CollisionTag);
+		Debug.Log("grader::Start colliderOffset="+colliderOffset.ToString()+" Height="+graderCollider.height.ToString());
+
+		Debug.Log("grader::Start Tag="+CollisionTag+" MinDist="+MinDist.ToString());
 	}
 	
 
@@ -38,14 +40,17 @@ string CollisionTag = "GraderCollisionTag";
     {
 		if (other.gameObject.CompareTag(CollisionTag) )
 		  {
+			Debug.Log("Grader:OnTriggerEnter:Check collision with "+other.gameObject.name);
 			MinDist = graderCollider.radius;
-			if ( graderCollider.radius >= dissResulution )
+			Debug.Log("Grader:graderCollider.radius: "+graderCollider.radius + "-distResolution:"+distResolution );
+			if ( graderCollider.radius >= distResolution )
 				{
-					graderCollider.radius -= dissResulution;
+					graderCollider.radius -= distResolution;
 				}
 		  }
 		MinDistToCollisionTxt.text = "Min Dist: " + MinDist.ToString("F2");  
-		Debug.Log(MinDistToCollisionTxt.text);
+		//Debug.Log("Grader:OnTriggerEnter:"+MinDistToCollisionTxt.text);
+		
     }
 
 
@@ -66,6 +71,10 @@ string CollisionTag = "GraderCollisionTag";
 		StreamWriter writer = new StreamWriter(gradesFile, true);
 		writer.WriteLine("MinDist : " + MinDist);
         writer.Close();
+		string filename = scenFolderURI + "/record";
+		//EZReplayManager.get.stop();
+		//EZReplayManager.get.saveToFile(filename);
+		Debug.Log (filename + " has been saved... ");
 	}
 #endif	
 }
