@@ -2604,7 +2604,7 @@ MonoBehaviour:
   MaxBreakingTorque: 1000
   VehicleWidth: 2.5
   VehicleLength: 4.85
-  MaxSteering: 0.32
+  MaxSteering: 0.33
   Wheels:
   - {fileID: 1196729617}
   - {fileID: 1070418404}
@@ -7809,7 +7809,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1568893232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 549, y: 91.5, z: 0}
+  m_LocalPosition: {x: 766, y: 386.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1844902435}
@@ -9014,7 +9014,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1799274945}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -399, y: -8.5, z: 0}
+  m_LocalPosition: {x: -616, y: 286.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1703362559}
@@ -9383,7 +9383,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1844902434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 399, y: 91.5, z: 0}
+  m_LocalPosition: {x: 616, y: 386.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2146402929}

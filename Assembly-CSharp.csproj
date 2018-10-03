@@ -169,6 +169,7 @@
      <Compile Include="Assets\Scripts\LibWrappers\NovatelWrapper.cs" />
      <Compile Include="Assets\Scripts\LibWrappers\TiltanWrapper.cs" />
      <Compile Include="Assets\Scripts\LibWrappers\VelodyneWrapper.cs" />
+     <Compile Include="Assets\Scripts\NothingSelected.cs" />
      <Compile Include="Assets\Scripts\NovatelScripts\Novatel.cs" />
      <Compile Include="Assets\Scripts\RigidBodyIterations.cs" />
      <Compile Include="Assets\Scripts\shahidScripts\ShahidActivator.cs" />
@@ -186,6 +187,7 @@
      <Compile Include="Assets\Scripts\VehicleControllersScripts\VehicleWPController.cs" />
      <Compile Include="Assets\Scripts\vehicleDriveScripts\AntiRollBarConfigurableJoint.cs" />
      <Compile Include="Assets\Scripts\vehicleDriveScripts\CenterOfMass.cs" />
+     <Compile Include="Assets\Scripts\vehicleDriveScripts\IdanVehicleControl.cs" />
      <Compile Include="Assets\Scripts\vehicleDriveScripts\Vehicle.cs" />
      <Compile Include="Assets\Scripts\velodyneScripts\_YosiWork\RosUnityCoordinates.cs" />
      <Compile Include="Assets\Scripts\velodyneScripts\_YosiWork\UDPSend.cs" />
