@@ -27,7 +27,7 @@ public class scenWorldGenerator : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		SFVToLoad = "/home/robil/ws/src/SmARTest/work_space/scenario_1/scen.SFV";
+		SFVToLoad = "/home/robil/SmARTest/work_space/scenario_1/scen.SFV";
 		loadInputArgs();
 
 		file = XDocument.Load(uri: SFVToLoad);
@@ -76,7 +76,8 @@ public class scenWorldGenerator : MonoBehaviour {
     }
 
 	void FollowerSetup() {
-		float FollowerDiss = 30; 
+		float FollowerDiss = 20; //When inserted scenario doesn't exist, the distance between the two vehicle is 20 and the 
+		                         // lock works better  .... it was 30; 
 		Vector2 diffVec = new Vector2(Mathf.Sin(LeaderAzimuth), Mathf.Cos(LeaderAzimuth)) * FollowerDiss;
 		Vector2 FollowerPose = LeaderPose - diffVec;
 
