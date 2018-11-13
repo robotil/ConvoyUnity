@@ -46,12 +46,12 @@ public class ScenTimer : MonoBehaviour {
 
 		displayText.text = "Time to Start : " + LeaderMovementTimeLeft.ToString("0.00"); 
 
-		#if !UNITY_EDITOR
-			if (ScenTimeLeft <= 0){
+#if !UNITY_EDITOR
+		if (ScenTimeLeft <= 0){
 			Application.Quit();
 			Debug.Log("Aplication Quit");
 		}
-		#endif
+#endif
 		
 	}
 }
