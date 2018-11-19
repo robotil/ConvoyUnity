@@ -58,7 +58,7 @@ string CollisionTag = "GraderCollisionTag";
 	private void OnApplicationQuit() {
 		string[] args = System.Environment.GetCommandLineArgs ();
 	
-		string scenFolderURI = "";
+		string scenFolderURI = "/home/robil/SmARTest/work_space/scenario_1";
 		for (int i = 0; i < args.Length; i++) 
 		{
 			Debug.Log ("ARG " + i + ": " + args [i]);
