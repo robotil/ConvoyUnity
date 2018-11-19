@@ -75,33 +75,24 @@ string CollisionTag = "GraderCollisionTag";
 				}
  			}
 		}
- 
-		Debug.Log("This is the main folder - " +scenFolderURI);
-
+  
  		if(!showReplay)
 		{
+			string gradesFile = scenFolderURI + "/grades.txt";
+			StreamWriter writer = new StreamWriter(gradesFile, true);
+			writer.WriteLine("MinDist : " + MinDist);
+			writer.Close();
+			Debug.Log (gradesFile + " has been saved... ");
+			
+			Debug.Log("Stop Record");
 			EZReplayManager.get.stop();
 			string filename = scenFolderURI + "/record";
-			saveToFile(filename);
+			EZReplayManager.get.SendMessage("saveToTextFile", filename, SendMessageOptions.RequireReceiver);
 			Debug.Log (filename + " has been saved... ");
+			
 		}
-		 
-		 
-		string gradesFile = scenFolderURI + "/grades.txt";
-
-		StreamWriter writer = new StreamWriter(gradesFile, true);
-		writer.WriteLine("MinDist : " + MinDist);
-		writer.Close();
-		 
-
-		
 		
 	}
 
-
-	private void saveToFile(string filePath)
-	{
-		EZReplayManager.get.SendMessage("saveToTextFile", filePath, SendMessageOptions.RequireReceiver);
-	}
 #endif	
 }

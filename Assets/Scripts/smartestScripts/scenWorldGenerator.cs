@@ -40,15 +40,17 @@ public class scenWorldGenerator : MonoBehaviour {
 
 		if(showReplay)
 		{
+			Debug.Log("Start Replay"); 
 			EZReplayManager.get.SendMessage("loadFromTextFile", ReplayScenePath,  SendMessageOptions.RequireReceiver);
 		}
 		else
 		{  
+			Debug.Log("Start Record"); 
+			EZReplayManager.get.record();
 			LeaderSetup();
 			FollowerSetup();
 			PathSetup();
-			ShahidSetup();
-			EZReplayManager.get.record();
+			ShahidSetup(); 
 		}
 		
 	}
