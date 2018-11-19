@@ -9,7 +9,11 @@ using System.Xml.Linq;
 public class scenWorldGenerator : MonoBehaviour {
 
 
+    public string scenFolderURI="";
     public string SFVToLoad = "";
+	public string ReplayScenePath = "";
+	public bool showReplay =false;
+
 	XDocument file;
 
 	//public GameObject LeaderVehicleRef, FollowerVehicleRef, ShahidRef;
@@ -34,13 +38,21 @@ public class scenWorldGenerator : MonoBehaviour {
         var xmlText = System.IO.File.ReadAllText(SFVToLoad);
 		Debug.Log("scenWorldGenerator:"+SFVToLoad);
 
-		LeaderSetup();
-		FollowerSetup();
-		PathSetup();
-		ShahidSetup();
+		if(showReplay)
+		{
+			EZReplayManager.get.SendMessage("loadFromTextFile", ReplayScenePath,  SendMessageOptions.RequireReceiver);
+		}
+		else
+		{  
+			LeaderSetup();
+			FollowerSetup();
+			PathSetup();
+			ShahidSetup();
+			EZReplayManager.get.record();
+		}
+		
 	}
 	
-
 	void loadInputArgs()
 	{
 		string[] args = System.Environment.GetCommandLineArgs ();
@@ -48,15 +60,22 @@ public class scenWorldGenerator : MonoBehaviour {
 		for (int i = 0; i < args.Length; i++) {
 			Debug.Log ("ARG " + i + ": " + args [i]);
 			if (args [i] == "-scenfolder") {
-				string scenFolderURI = args [i + 1];
+				scenFolderURI = args [i + 1];
 				SFVToLoad = scenFolderURI + "/scen.SFV";
 				Debug.Log(SFVToLoad);
  			}
+			if (args [i] == "-scenReplay") {
+				string replay = args [i + 1];
+				if(replay == "1")
+				{
+					showReplay = true;
+					ReplayScenePath = scenFolderURI + "/record";
+				}
+				Debug.Log(ReplayScenePath); 
+ 			}
+ 		
 		}
 	}
-
-
-
 
     void LeaderSetup()
     {

@@ -56,25 +56,52 @@ string CollisionTag = "GraderCollisionTag";
 
 #if !UNITY_EDITOR
 	private void OnApplicationQuit() {
+			 
 		string[] args = System.Environment.GetCommandLineArgs ();
 	
 		string scenFolderURI = "";
+		bool showReplay = false;
 		for (int i = 0; i < args.Length; i++) 
 		{
 			Debug.Log ("ARG " + i + ": " + args [i]);
 			if (args [i] == "-scenfolder") {
 				scenFolderURI = args [i + 1];
  			}
+			 if (args [i] == "-scenReplay") {
+				string replay = args [i + 1];
+				if(replay == "1")
+				{
+					showReplay = true;
+				}
+ 			}
 		}
+ 
+		Debug.Log("This is the main folder - " +scenFolderURI);
+
+ 		if(!showReplay)
+		{
+			EZReplayManager.get.stop();
+			string filename = scenFolderURI + "/record";
+			saveToFile(filename);
+			Debug.Log (filename + " has been saved... ");
+		}
+		 
+		 
 		string gradesFile = scenFolderURI + "/grades.txt";
 
 		StreamWriter writer = new StreamWriter(gradesFile, true);
 		writer.WriteLine("MinDist : " + MinDist);
-        writer.Close();
-		string filename = scenFolderURI + "/record";
-		//EZReplayManager.get.stop();
-		//EZReplayManager.get.saveToFile(filename);
-		Debug.Log (filename + " has been saved... ");
+		writer.Close();
+		 
+
+		
+		
+	}
+
+
+	private void saveToFile(string filePath)
+	{
+		EZReplayManager.get.SendMessage("saveToTextFile", filePath, SendMessageOptions.RequireReceiver);
 	}
 #endif	
 }

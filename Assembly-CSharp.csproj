@@ -163,6 +163,24 @@
      <Compile Include="Assets\3rdParty\Standard Assets\CrossPlatformInput\Scripts\TiltInput.cs" />
      <Compile Include="Assets\3rdParty\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
      <Compile Include="Assets\3rdParty\Standard Assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
+     <Compile Include="Assets\EZReplayManager\extension\external\JSON.NET\JsonNetSample\JsonNetSample.cs" />
+     <Compile Include="Assets\EZReplayManager\extension\external\OrderedDictionary.cs" />
+     <Compile Include="Assets\EZReplayManager\extension\Public\EZR_Clone.cs" />
+     <Compile Include="Assets\EZReplayManager\extension\Public\EZReplayManager.cs" />
+     <Compile Include="Assets\EZReplayManager\extension\scripts\classes\EZR_Clone.cs" />
+     <Compile Include="Assets\EZReplayManager\extension\scripts\classes\EZR_ReflectionLibrary.cs" />
+     <Compile Include="Assets\EZReplayManager\extension\scripts\classes\EZReplayManager.cs" />
+     <Compile Include="Assets\EZReplayManager\extension\scripts\classes\Object2PropertiesMapping.cs" />
+     <Compile Include="Assets\EZReplayManager\extension\scripts\classes\Object2PropertiesMappingWrapper.cs" />
+     <Compile Include="Assets\EZReplayManager\extension\scripts\classes\OrderedDictionaryConverter.cs" />
+     <Compile Include="Assets\EZReplayManager\extension\scripts\classes\SavedState.cs" />
+     <Compile Include="Assets\EZReplayManager\extension\scripts\classes\SerQuaternion.cs" />
+     <Compile Include="Assets\EZReplayManager\extension\scripts\classes\SerVector3.cs" />
+     <Compile Include="Assets\EZReplayManager\extension\scripts\classes\StringCompression.cs" />
+     <Compile Include="Assets\EZReplayManager\extension\scripts\enums\ActionMode.cs" />
+     <Compile Include="Assets\EZReplayManager\extension\scripts\enums\ChildIdentificationMode.cs" />
+     <Compile Include="Assets\EZReplayManager\extension\scripts\enums\ViewMode.cs" />
+     <Compile Include="Assets\EZReplayManager\general\Object2Record.cs" />
      <Compile Include="Assets\Scripts\cameraSmoothFollow.cs" />
      <Compile Include="Assets\Scripts\grader.cs" />
      <Compile Include="Assets\Scripts\LibWrappers\IdanWrapper.cs" />
@@ -202,6 +220,7 @@
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\Fog.shader" />
      <None Include="Assets\3rdParty\PostProcessing\Editor Resources\Monitors\ParadeRender.shader" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\LutGen.shader" />
+     <None Include="Assets\EZReplayManager\extension\external\JSON.NET\License.Newtonsoft.txt" />
      <None Include="Assets\3rdParty\PostProcessing\Editor Resources\Monitors\HistogramRender.shader" />
      <None Include="Assets\3rdParty\PostProcessing\Editor Resources\UI\CurveBackground.shader" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\ScreenSpaceReflection.shader" />
@@ -220,6 +239,7 @@
      <None Include="Assets\3rdParty\PostProcessing\Resources\Bluenoise64\LICENSE.txt" />
      <None Include="Assets\3rdParty\Cinemachine\ReleaseNotes.txt" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\BuiltinDebugViews.shader" />
+     <None Include="Assets\EZReplayManager\extension\external\JSON.NET\License.SaladLab.txt" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Shaders\Common.cginc" />
      <None Include="Assets\3rdParty\PostProcessing\Resources\Bluenoise64\COPYING.txt" />
      <None Include="Assets\3rdParty\PostProcessing\Editor Resources\UI\Trackball.shader" />
@@ -272,6 +292,9 @@
  </Reference>
  <Reference Include="UnityEngine.SpatialTracking">
  <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+ </Reference>
+ <Reference Include="Newtonsoft.Json">
+ <HintPath>/home/robil/ConvoyUnity/Assets/EZReplayManager/extension/external/JSON.NET/JsonNet/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="websocket-sharp">
  <HintPath>/home/robil/ConvoyUnity/Assets/Plugins/websocket-sharp.dll</HintPath>
