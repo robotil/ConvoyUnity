@@ -54,6 +54,8 @@ public class ScenTimer : MonoBehaviour {
 		ScenTimeLeft = ScenDuration - Time.time;
 
 		displayText.text = "Time to Start : " + LeaderMovementTimeLeft.ToString("0.00"); 
+		//Debug.Log("Time ScenTimeLeft: "+ ScenTimeLeft.ToString());
+
 
 #if !UNITY_EDITOR
 		if (ScenTimeLeft <= 0){
