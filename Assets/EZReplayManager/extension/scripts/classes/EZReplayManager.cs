@@ -688,10 +688,36 @@ public sealed class EZReplayManager : SoftRare.Public.EZReplayManager {
 
             sendCallback2All("__EZR_play", null);
 
+            setTargetByName("oshkosh");
+
         }
         else
             if (showHints)
                 print("EZReplayManager HINT: Ordered to play when not in stopped or paused state.");
+    }
+
+    //Liran Added to set target when switch targets on the panel
+    public void setTarget(Transform target)
+    {
+      if (currentMode == ViewMode.REPLAY)
+             setTargetByName(target.name);
+
+    }
+    //Liran Added to set active target by name (on the replay the name gets extra values and that is why we use Contains(targetName))
+    public void setTargetByName(string targetName)
+    {
+         cameraSmoothFollow[] cameraSmoothFollows =   FindObjectsOfType<cameraSmoothFollow>(); 
+           GameObject[] gameObjects = (GameObject[])GameObject.FindObjectsOfType(typeof(GameObject));
+  
+            foreach(GameObject go in gameObjects)
+            { 
+                 if(go.name.Contains(targetName) &&  go.activeSelf )
+                 { 
+                   cameraSmoothFollows[0].target = go.transform; 
+                    break; 
+                 }
+            }
+
     }
 
     public int getCurrentPosition()

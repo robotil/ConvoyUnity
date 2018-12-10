@@ -89,7 +89,8 @@ string CollisionTag = "GraderCollisionTag";
 			Debug.Log("Stop Record");
 			EZReplayManager.get.stop();
 			string filename = scenFolderURI + "/record";
-			EZReplayManager.get.SendMessage("saveToTextFile", filename, SendMessageOptions.RequireReceiver);
+			//EZReplayManager.get.SendMessage("saveToTextFile", filename, SendMessageOptions.RequireReceiver);
+			EZReplayManager.get.saveToTextFile(filename);
 			Debug.Log (filename + " has been saved... ");
 			
 		}

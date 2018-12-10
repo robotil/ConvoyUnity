@@ -41,7 +41,8 @@ public class scenWorldGenerator : MonoBehaviour {
 		if(showReplay)
 		{
 			Debug.Log("Start Replay"); 
-			EZReplayManager.get.SendMessage("loadFromTextFile", ReplayScenePath,  SendMessageOptions.RequireReceiver);
+		//	EZReplayManager.get.SendMessage("loadFromTextFile", ReplayScenePath,  SendMessageOptions.RequireReceiver);
+			EZReplayManager.get.loadFromTextFile(ReplayScenePath);
 		}
 		else
 		{  
