@@ -30,6 +30,15 @@ public class ScenTimer : MonoBehaviour {
 		LeaderController.enabled = false;
 		FolowerController = Folower.GetComponent<VehiclePathController>();
 		FolowerController.enabled = false;
+		string[] args = System.Environment.GetCommandLineArgs ();
+	
+		for (int i = 0; i < args.Length; i++) 
+		{
+			Debug.Log ("ARG " + i + ": " + args [i]);
+			if (args [i] == "-scenDuration") {
+				ScenDuration = float.Parse(args [i + 1]);
+ 			}
+		}
 	}
 	
 	// Update is called once per frame
@@ -45,11 +54,13 @@ public class ScenTimer : MonoBehaviour {
 		ScenTimeLeft = ScenDuration - Time.time;
 
 		displayText.text = "Time to Start : " + LeaderMovementTimeLeft.ToString("0.00"); 
+		//Debug.Log("Time ScenTimeLeft: "+ ScenTimeLeft.ToString());
+
 
 #if !UNITY_EDITOR
 		if (ScenTimeLeft <= 0){
 			Application.Quit();
-			Debug.Log("Aplication Quit");
+			Debug.Log("Time over "+ ScenDuration+ "seconds ...Aplication Quit");
 		}
 #endif
 		
