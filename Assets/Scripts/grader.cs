@@ -13,6 +13,7 @@ public float MinDist, distResolution;
 
 public Text MinDistToCollisionTxt;
 
+public GameObject targetVehicle;
 
 CapsuleCollider graderCollider;
 
@@ -20,7 +21,7 @@ public Vector3 colliderOffset = new Vector3(0,0.85f,0);
 
 string CollisionTag = "GraderCollisionTag";
 
-
+public Vehicle vehicleTarget;
 	// Use this for initialization
 	void Start () {
 		graderCollider = gameObject.AddComponent<CapsuleCollider>();
@@ -33,6 +34,10 @@ string CollisionTag = "GraderCollisionTag";
 		Debug.Log("grader::Start colliderOffset="+colliderOffset.ToString()+" Height="+graderCollider.height.ToString());
 
 		Debug.Log("grader::Start Tag="+CollisionTag+" MinDist="+MinDist.ToString());
+
+		vehicleTarget = targetVehicle.GetComponent<Vehicle>();
+
+		Debug.Log("grader - vehicleTarget throttle="+vehicleTarget.throttleCommand.ToString());
 	}
 	
 
@@ -83,6 +88,8 @@ string CollisionTag = "GraderCollisionTag";
 			string gradesFile = scenFolderURI + "/grades.txt";
 			StreamWriter writer = new StreamWriter(gradesFile, true);
 			writer.WriteLine("MinDist : " + MinDist);
+			writer.WriteLine("Throttle : " + vehicleTarget.throttleCommand.ToString());
+			writer.WriteLine("Steering : " + vehicleTarget.steeringCommand.ToString());
 			writer.Close();
 			Debug.Log (gradesFile + " has been saved... ");
 			
