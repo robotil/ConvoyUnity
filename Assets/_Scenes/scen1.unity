@@ -1796,6 +1796,11 @@ Prefab:
       propertyPath: activationRadius
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 114684256738966398, guid: e71a18a84983942beb4cfc9def200c89,
+        type: 2}
+      propertyPath: ManualInput
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e71a18a84983942beb4cfc9def200c89, type: 2}
   m_IsPrefabParent: 0
@@ -6819,6 +6824,7 @@ MonoBehaviour:
   displayText: {fileID: 2083625736}
   Leader: {fileID: 815256226}
   Folower: {fileID: 683434758}
+  showReplay: 0
 --- !u!114 &1412723883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7918,7 +7924,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1568893232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 632, y: 94.5, z: 0}
+  m_LocalPosition: {x: 546.5, y: 113.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1844902435}
@@ -9123,7 +9129,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1799274945}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -482, y: -5.5, z: 0}
+  m_LocalPosition: {x: -396.5, y: 13.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1703362559}
@@ -9478,6 +9484,7 @@ GameObject:
   - component: {fileID: 1844902438}
   - component: {fileID: 1844902437}
   - component: {fileID: 1844902436}
+  - component: {fileID: 1844902439}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -9492,7 +9499,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1844902434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 482, y: 94.5, z: 0}
+  m_LocalPosition: {x: 396.5, y: 113.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2146402929}
@@ -9563,6 +9570,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1844902434}
+--- !u!114 &1844902439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1844902434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2199b1670f9f34c10bbf3d9dccd3b18c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1856920353
 GameObject:
   m_ObjectHideFlags: 0

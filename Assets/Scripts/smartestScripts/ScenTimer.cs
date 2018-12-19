@@ -23,6 +23,8 @@ public class ScenTimer : MonoBehaviour {
     public GameObject Leader, Folower;
 	VehiclePathController LeaderController, FolowerController;
 
+	public bool showReplay =false;
+
 	
 	// Use this for initialization
 	void Start () {
@@ -38,6 +40,13 @@ public class ScenTimer : MonoBehaviour {
 			if (args [i] == "-scenDuration") {
 				ScenDuration = float.Parse(args [i + 1]);
  			}
+			if (args [i] == "-scenReplay") {
+				string replay = args [i + 1];
+				if(replay == "1")
+				{
+					showReplay = true;
+				}
+ 			}
 		}
 	}
 	
@@ -50,12 +59,15 @@ public class ScenTimer : MonoBehaviour {
 			FolowerController.enabled = true;
 		}
 
+        if (showReplay == true) {
+			ScenTimeLeft = 1000;
+		}
+		else {
+			ScenTimeLeft = ScenDuration - Time.time;
 
-		ScenTimeLeft = ScenDuration - Time.time;
-
-		displayText.text = "Time to Start : " + LeaderMovementTimeLeft.ToString("0.00"); 
-		//Debug.Log("Time ScenTimeLeft: "+ ScenTimeLeft.ToString());
-
+			displayText.text = "Time to Start : " + LeaderMovementTimeLeft.ToString("0.00"); 
+			//Debug.Log("Time ScenTimeLeft: "+ ScenTimeLeft.ToString());
+		}
 
 #if !UNITY_EDITOR
 		if (ScenTimeLeft <= 0){
