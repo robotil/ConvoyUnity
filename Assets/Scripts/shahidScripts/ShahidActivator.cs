@@ -23,7 +23,6 @@ public class ShahidActivator : MonoBehaviour {
 		myref = gameObject.transform;    
         shahidTargetWP = GetComponent<ShahidWPController>();
 		Debug.Log("ShahidActivator:targetVehicle="+targetVehicle.name);
-
 	}
 	
 
@@ -40,8 +39,8 @@ public class ShahidActivator : MonoBehaviour {
 			{
 				Vector3 targetPos = targetVehicle.transform.position;
 				Vector3 targetPredictedPose = targetPos; 
-				
-				shahidTargetWP.shahidTargetPoseAndVel = new Vector3(targetPredictedPose.x, targetPredictedPose.z, shahidVel); 	
+
+				//shahidTargetWP.shahidTargetPoseAndVel = new Vector3(targetPredictedPose.x, targetPredictedPose.z, shahidVel); 	
 				wasActivated = true;
 				Debug.Log("ShahidActivator:Activated at distance="+targetVehicleDist.ToString()+" Goal is: "+shahidTargetWP.shahidTargetPoseAndVel.ToString());
 			}
