@@ -22,6 +22,8 @@ public class scenWorldGenerator : MonoBehaviour {
 	float MapSize = 250;
 
  	Vector2 LeaderPose;
+	Vector3 ShahidPosition;
+	bool isHummerAfter = false;
 	float pathLength = 0; 
 	float LeaderAzimuth; 
 	public VehiclePathController LeaderPathController;
@@ -169,7 +171,6 @@ public class scenWorldGenerator : MonoBehaviour {
 			Vector2 vecToNextWP = new Vector2(Mathf.Sin(WPang),Mathf.Cos(WPang)) * WPdist;
 			WPnext = WPcurrent + vecToNextWP;
 			distFromStart += WPdist;
-
 			if (distFromStart > pathLength * AlongPath) {
 				Debug.Log("ShahidSetup: WP ID="+WPid.ToString()+" distFromStart="+distFromStart.ToString()+" pathLength="+pathLength.ToString()+" AlongPath="+AlongPath.ToString());
 				//The shahid should meet the oshkosh before this WP
@@ -179,29 +180,41 @@ public class scenWorldGenerator : MonoBehaviour {
 			}
 			WPcurrent = WPnext;
 		}
-        
-		Debug.Log("ShahidSetup: WPcurrent="+WPcurrent.ToString()+" WPnext="+WPnext.ToString());
-		float rem_alo = ((AlongPath - distFromStart/pathLength)*pathLength)/WPdist;
-		Debug.Log("ShahidSetup: rem_alo="+rem_alo.ToString());
-		float shahid_x = WPcurrent.x + rem_alo * (WPnext.x - WPcurrent.x) - PerpePath*(WPnext.y - WPcurrent.y)/WPdist;
-		float shahid_y = WPcurrent.y + rem_alo * (WPnext.y - WPcurrent.y) + PerpePath*(WPnext.x - WPcurrent.x)/WPdist;
-		Vector2 ShahidPose = new Vector2(shahid_x, shahid_y);
 
-		//Vector2 shahidPose = Vector2.Lerp(WPcurrent,WPnext,rem_alo);
+		//Debug.Log("ShahidSetup: WPcurrent="+WPcurrent.ToString()+" WPnext="+WPnext.ToString());
+		//float rem_alo = ((AlongPath - distFromStart/pathLength)*pathLength)/WPdist;
+		//Debug.Log("ShahidSetup: rem_alo="+rem_alo.ToString());
+		//float shahid_x = WPcurrent.x + rem_alo * (WPnext.x - WPcurrent.x) - PerpePath*(WPnext.y - WPcurrent.y)/WPdist;
+		//float shahid_y = WPcurrent.y + rem_alo * (WPnext.y - WPcurrent.y) + PerpePath*(WPnext.x - WPcurrent.x)/WPdist;
 
 		terrainAttachment shahidPoseOnterrain = Shahid.GetComponent<terrainAttachment>();
 		ShahidWPController shahidWpController = Shahid.GetComponent<ShahidWPController>();
 
-		shahidPoseOnterrain.moveTo(new Vector3(ShahidPose.x, ShahidPose.y, 0.0f));
-		shahidWpController.shahidTargetPoseAndVel = new Vector3(ShahidPose.x, ShahidPose.y, 0.0f);
-        Debug.Log("ShahidSetup: Shahid position:"+ShahidPose.x.ToString()+","+ ShahidPose.y.ToString());
-
+		ShahidPosition = new Vector3(WPnext.x, WPnext.y, 0.0f);
+		shahidPoseOnterrain.moveTo(new Vector3(WPnext.x, WPnext.y, 0.0f));
+		shahidWpController.shahidTargetPoseAndVel = new Vector3(WPnext.x, WPnext.y, 0.0f);
+        Debug.Log("ShahidSetup: Shahid position:"+WPnext.x.ToString()+","+  WPnext.y.ToString());
+		Shahid.SetActive(false);
 	}
 
 
 
 	// Update is called once per frame
 	void Update () {
+		Transform myref = LeaderVehicle.transform;
+		Vector2 Hummer2 = new Vector2(myref.position.x, myref.position.z);
+		Vector2 Shahid2 = new Vector2(ShahidPosition.x, ShahidPosition.y);
+		float targetVehicleDist = Vector2.Distance(Shahid2, Hummer2);
+		Debug.Log("Update: Shahid distance:"+targetVehicleDist.ToString()+"Shahid: ("+ Shahid2.x.ToString()+", "+Shahid2.y.ToString()
+		+ ")" + "Hammer: ("+ Hummer2.x.ToString()+", "+Hummer2.y.ToString()+ ")");
 		
+		if((targetVehicleDist > 10f) && isHummerAfter){
+			Shahid.SetActive(true);
+			Debug.Log("Hummer is after");
+		}
+		else if (targetVehicleDist <= 10f){
+			isHummerAfter = true;
+			Debug.Log("Hummer is less then 10");
+		}	
 	}
 }
