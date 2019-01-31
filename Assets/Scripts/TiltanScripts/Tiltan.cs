@@ -69,8 +69,8 @@ public class Tiltan : MonoBehaviour {
 			screnText.text = "TILTAN : \n" +
 							 "	Pos (Lat, Lon, Alt) [deg] = " + LatLonAltPos.ToString("N5") + "\n" +
 							 "	Vel (North, East, Down) [m/sec] = " + NorthEastDownVel.ToString("N2") + "\n" +
-							 "	Orin (Azim, Pitch, Roll) [mils] = " + AzimuthPitchRoll_mils.ToString("N2") + "\n" + 	
-							 "	OrinVell (Azim, Pitch, Roll) [mils/sec] = " + AzimuthPitchRollVel_mils.ToString("N2") + "\n";
+							 "	Or (Azim, Pitch, Roll) [mils] = " + AzimuthPitchRoll_mils.ToString("N2") + "\n" + 	
+							 "	OrVel (Azim, Pitch, Roll) [mils/sec] = " + AzimuthPitchRollVel_mils.ToString("N2") + "\n";
 		}
 	}
 
