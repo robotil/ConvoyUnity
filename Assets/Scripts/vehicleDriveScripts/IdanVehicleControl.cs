@@ -165,8 +165,30 @@ void ApplyEngineAndGearLogic() {
         IdanInterface.SetIdanSecRepMotorStarter(MotorStarterApplied);
         IdanInterface.SetIdanSecRepRpm(EngineRPM);
 
+        int GearStateRquesrtCharN = IdanInterface.GetHLCSGear();
 
-        GearStateRquesrt = IdanInterface.GetHLCSGear();
+        switch (GearStateRquesrtCharN){
+            case 0x02:
+                GearStateRquesrt = "R";
+                break;
+            case 0x03:
+                GearStateRquesrt = "N";
+                break;
+            case 0x04:
+                GearStateRquesrt = "D1";
+                break;
+            case 0xF1:
+                GearStateRquesrt = "U";
+                break;
+            case 0xF2:
+                GearStateRquesrt = "DO";
+                break;
+            default:
+                GearStateRquesrt = "";
+                break;
+        }
+
+ 
         displayText.text = "gasCMD= " + GasCmd + "     steerCMD= " + SteerCmd + "   GearRequest: " + GearStateRquesrt;
 
         string gear= GearStateRquesrt;
@@ -174,8 +196,8 @@ void ApplyEngineAndGearLogic() {
             gear = "D1";
         }
 
-        IdanInterface.SetIdanSecRepRequestedGear(gear);
-        IdanInterface.SetIdanSecRepActualGear(gear);
+        IdanInterface.SetIdanSecRepRequestedGearInt(GearStateRquesrtCharN);
+        IdanInterface.SetIdanSecRepActualGearInt(GearStateRquesrtCharN);
 
         ParkingBrakeRwquest = IdanInterface.IsHLCSParkingBrakeReleased();
         IdanInterface.SetIdanSecRepParkingBrake(ParkingBrakeState ? "R" : "E");
