@@ -39,8 +39,9 @@ public class ShahidActivator : MonoBehaviour {
 			{
 				Vector3 targetPos = targetVehicle.transform.position;
 				Vector3 targetPredictedPose = targetPos; 
-
-				//shahidTargetWP.shahidTargetPoseAndVel = new Vector3(targetPredictedPose.x, targetPredictedPose.z, shahidVel); 	
+#if MOVINGSHAHID
+				shahidTargetWP.shahidTargetPoseAndVel = new Vector3(targetPredictedPose.x, targetPredictedPose.z, shahidVel); 	
+#endif
 				wasActivated = true;
 				Debug.Log("ShahidActivator:Activated at distance="+targetVehicleDist.ToString()+" Goal is: "+shahidTargetWP.shahidTargetPoseAndVel.ToString());
 			}

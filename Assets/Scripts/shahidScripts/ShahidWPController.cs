@@ -44,9 +44,9 @@ public class ShahidWPController : MonoBehaviour {
 	// Update is called once per frame
     void Update()
     {
-
-        //TargetMarkPos.moveTo(new Vector3(shahidTargetPoseAndVel.x+targetRadius, shahidTargetPoseAndVel.y+targetRadius, 0)); 
-
+#if MOVINGSHAHID
+        TargetMarkPos.moveTo(new Vector3(shahidTargetPoseAndVel.x+targetRadius, shahidTargetPoseAndVel.y+targetRadius, 0)); 
+#endif
         Vector3 targetWP_local = myref.InverseTransformPoint(targetWP_Mark.transform.position);
 
         targetDist = targetWP_local.magnitude; //Length of the vector
@@ -69,10 +69,11 @@ public class ShahidWPController : MonoBehaviour {
 
         AngVelCmd = P_azimuth * targetAzi;
 
-        //shahid.WalkingCommand = LinVelCmd;
-        //shahid.TurningCommand = AngVelCmd;
-        //Debug.Log("LinVelCmd is:"+LinVelCmd.ToString() + " and AngVelCmd is:" + AngVelCmd.ToString());
-
+#if MOVINGSHAHID
+        shahid.WalkingCommand = LinVelCmd;
+        shahid.TurningCommand = AngVelCmd;
+        Debug.Log("LinVelCmd is:"+LinVelCmd.ToString() + " and AngVelCmd is:" + AngVelCmd.ToString());
+#endif
     }
 }
  

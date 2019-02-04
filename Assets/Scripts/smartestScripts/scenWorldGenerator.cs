@@ -22,8 +22,11 @@ public class scenWorldGenerator : MonoBehaviour {
 	float MapSize = 250;
 
  	Vector2 LeaderPose;
+#if MOVINGSHAHID
+#else
 	Vector3 ShahidPosition;
 	bool isHummerAfter = false;
+#endif
 	float pathLength = 0; 
 	float LeaderAzimuth; 
 	public VehiclePathController LeaderPathController;
@@ -180,27 +183,38 @@ public class scenWorldGenerator : MonoBehaviour {
 			}
 			WPcurrent = WPnext;
 		}
-
-		//Debug.Log("ShahidSetup: WPcurrent="+WPcurrent.ToString()+" WPnext="+WPnext.ToString());
-		//float rem_alo = ((AlongPath - distFromStart/pathLength)*pathLength)/WPdist;
-		//Debug.Log("ShahidSetup: rem_alo="+rem_alo.ToString());
-		//float shahid_x = WPcurrent.x + rem_alo * (WPnext.x - WPcurrent.x) - PerpePath*(WPnext.y - WPcurrent.y)/WPdist;
-		//float shahid_y = WPcurrent.y + rem_alo * (WPnext.y - WPcurrent.y) + PerpePath*(WPnext.x - WPcurrent.x)/WPdist;
-
+#if MOVINGSHAHID
+		Debug.Log("ShahidSetup: WPcurrent="+WPcurrent.ToString()+" WPnext="+WPnext.ToString());
+		float rem_alo = ((AlongPath - distFromStart/pathLength)*pathLength)/WPdist;
+		Debug.Log("ShahidSetup: rem_alo="+rem_alo.ToString());
+		float shahid_x = WPcurrent.x + rem_alo * (WPnext.x - WPcurrent.x) - PerpePath*(WPnext.y - WPcurrent.y)/WPdist;
+		float shahid_y = WPcurrent.y + rem_alo * (WPnext.y - WPcurrent.y) + PerpePath*(WPnext.x - WPcurrent.x)/WPdist;
+		Vector2 ShahidPose = new Vector2(shahid_x, shahid_y);
+ 
+-		//Vector2 shahidPose = Vector2.Lerp(WPcurrent,WPnext,rem_alo);
+#endif
 		terrainAttachment shahidPoseOnterrain = Shahid.GetComponent<terrainAttachment>();
 		ShahidWPController shahidWpController = Shahid.GetComponent<ShahidWPController>();
 
+#if MOVINGSHAHID
+        shahidPoseOnterrain.moveTo(new Vector3(ShahidPose.x, ShahidPose.y, 0.0f));
+-		shahidWpController.shahidTargetPoseAndVel = new Vector3(ShahidPose.x, ShahidPose.y, 0.0f);
+-       Debug.Log("ShahidSetup: Shahid position:"+ShahidPose.x.ToString()+","+ ShahidPose.y.ToString());
+#else
 		ShahidPosition = new Vector3(WPnext.x, WPnext.y, 0.0f);
 		shahidPoseOnterrain.moveTo(new Vector3(WPnext.x, WPnext.y, 0.0f));
 		shahidWpController.shahidTargetPoseAndVel = new Vector3(WPnext.x, WPnext.y, 0.0f);
         Debug.Log("ShahidSetup: Shahid position:"+WPnext.x.ToString()+","+  WPnext.y.ToString());
 		Shahid.SetActive(false);
+#endif
 	}
 
 
 
 	// Update is called once per frame
 	void Update () {
+#if MOVINGSHAHID
+#else
 		Transform myref = LeaderVehicle.transform;
 		Vector2 Hummer2 = new Vector2(myref.position.x, myref.position.z);
 		Vector2 Shahid2 = new Vector2(ShahidPosition.x, ShahidPosition.y);
@@ -215,6 +229,7 @@ public class scenWorldGenerator : MonoBehaviour {
 		else if (targetVehicleDist <= 10f){
 			isHummerAfter = true;
 			Debug.Log("Hummer is less then 10");
-		}	
+		}
+#endif	
 	}
 }

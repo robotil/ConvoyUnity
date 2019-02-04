@@ -31,12 +31,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             {
                 Vector3 distToTarget = Vector3.Scale(targetWP - myref.position, new Vector3(1, 0, 1));
                 Vector3 velocityCommand = distToTarget * Speed;
-
-                //if (MoveToTarget)
-                //    character.Move(velocityCommand, false, false);
-                //else
-                //    character.Move(Vector3.zero, false, false);
-
+#if MOVINGSHAHID
+                if (MoveToTarget)
+                    character.Move(velocityCommand, false, false);
+                else
+                    character.Move(Vector3.zero, false, false);
+#endif
                 if (distToTarget.magnitude < StopThreshold)
                     MoveToTarget = false;
             } 
