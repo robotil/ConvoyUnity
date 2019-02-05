@@ -196,6 +196,7 @@ MonoBehaviour:
   AngularResolution: 0.2
   LowerAngle: -10
   HigherAngle: 10
+  RotationAngle: 360
   Channels: 16
   SuperSample: 1
   MeasurementRange: 120
@@ -206,6 +207,7 @@ MonoBehaviour:
   drawSize: 0.1
   drawTime: 0.1
   drawColor: {r: 1, g: 0, b: 0, a: 1}
+  displayText: {fileID: 0}
 --- !u!114 &114674357098856250
 MonoBehaviour:
   m_ObjectHideFlags: 1

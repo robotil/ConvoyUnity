@@ -1,9 +1,7 @@
 fileFormatVersion: 2
 guid: b98af3e3a4c80478591740bb1816f119
-timeCreated: 1510226866
-licenseType: Free
 ModelImporter:
-  serializedVersion: 22
+  serializedVersion: 23
   fileIDToRecycleName:
     100000: Cab
     100002: Cab_COVER
@@ -136,87 +134,88 @@ ModelImporter:
     4300048: Wheel_Model
     7400000: Default Take
     9500000: //RootNode
+    2186277476908879412: ImportLogs
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Glass
-    second: {fileID: 2100000, guid: 2224fc08083394615aaede498bba247e, type: 2}
+    second: {fileID: 2100000, guid: db696dba4e3144ecdb0063243e682ab4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Leather__fabric_bump_png
-    second: {fileID: 2100000, guid: 6c34f6e71a92c47c2a88575d5c74648e, type: 2}
+    second: {fileID: 2100000, guid: 74962e239ba6343c2bb21ad18fb40c08, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Light
-    second: {fileID: 2100000, guid: d7c5063a32fd1453aa9bc48703bc7483, type: 2}
+    second: {fileID: 2100000, guid: dd3b6492479d94b459feff8a5f320a95, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Rubber
-    second: {fileID: 2100000, guid: db2fc71426a174b269b65795d98173b4, type: 2}
+    second: {fileID: 2100000, guid: 98fb8c942dac74cd294b9b4d5d2d4a95, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Rubber__DeckGrid3_png
-    second: {fileID: 2100000, guid: fb545936b7b964a58915d1bd3475bc51, type: 2}
+    second: {fileID: 2100000, guid: 98b441b9e7cae49b39e568e69ad01170, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Rubber__fabric_bump_png
-    second: {fileID: 2100000, guid: bd8a78669f3f540cdb60fd605fe35b0f, type: 2}
+    second: {fileID: 2100000, guid: a7d59da3a8b06471ca9f730ba4b28b2f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Silver
-    second: {fileID: 2100000, guid: ce7c73dc86bc24315a95be5294ca140e, type: 2}
+    second: {fileID: 2100000, guid: 15a2a86c21fcb4d1c983d1275077f3d3, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: amber
-    second: {fileID: 2100000, guid: 294f50994d9b745d6a2d55ae02778529, type: 2}
+    second: {fileID: 2100000, guid: 4820e5333b614417ea47c38358564560, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: amber__DeckGrid3_png
-    second: {fileID: 2100000, guid: a92c76fe1b75642668d561b45ac3b126, type: 2}
+    second: {fileID: 2100000, guid: c989b48c6fa6d482fa55eb92c0bfecb8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: black
-    second: {fileID: 2100000, guid: d09a076b202bdaa4cb985e9663b8a159, type: 2}
+    second: {fileID: 2100000, guid: 2d81b31d231aa4f8390fca317aa586c8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: black__DeckGrid3_png
-    second: {fileID: 2100000, guid: f387684495709471ba7c044fad5b45e2, type: 2}
+    second: {fileID: 2100000, guid: ec12a9b85ea7d4fa08374dce276b8104, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: red
-    second: {fileID: 2100000, guid: 9424abf9052d14490b87add3751cb1a7, type: 2}
+    second: {fileID: 2100000, guid: c81bc1004ecd54e66a972bc0dc18427e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: tan
-    second: {fileID: 2100000, guid: 163e10715b48a4e198c8b2f2e52f0291, type: 2}
+    second: {fileID: 2100000, guid: 98a09d93867704615b8fd18e27597483, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: tan__DeckGrid3_png
-    second: {fileID: 2100000, guid: e7b1263b7aeab48eea0979c2fb32c0b3, type: 2}
+    second: {fileID: 2100000, guid: 65cc6c4843d354bd5b6a7d673066a141, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: tan_darker__DeckGrid2_png
-    second: {fileID: 2100000, guid: ebd91b21fc2fb4f628d15ef14fb440db, type: 2}
+    second: {fileID: 2100000, guid: 42a43797ccf534f96a3b196000aa4cf4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: unnamed
-    second: {fileID: 2100000, guid: 1e8fbce234f004fcaad4503b1f20cd25, type: 2}
+    second: {fileID: 2100000, guid: 94c89b3c83ef44cfa86192a730371dec, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -235,6 +234,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -259,11 +259,15 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0

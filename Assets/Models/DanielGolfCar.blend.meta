@@ -1,9 +1,7 @@
 fileFormatVersion: 2
 guid: e0b49caf66ea84ca98b5c43326ca7099
-timeCreated: 1513164332
-licenseType: Free
 ModelImporter:
-  serializedVersion: 22
+  serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     100002: Plane
@@ -56,6 +54,7 @@ ModelImporter:
     2300024: bodyVisual_MeshPart2
     2300026: frontLeftWheel
     2300028: frontRightWheel
+    2300030: bodyVisual
     3300000: Plane
     3300002: untitled_001
     3300004: untitled_002
@@ -71,6 +70,7 @@ ModelImporter:
     3300024: bodyVisual_MeshPart2
     3300026: frontLeftWheel
     3300028: frontRightWheel
+    3300030: bodyVisual
     4300000: Plane
     4300002: untitled_004
     4300004: untitled_003
@@ -86,6 +86,7 @@ ModelImporter:
     4300024: bodyVisual_MeshPart0
     4300026: bodyVisual_MeshPart1
     4300028: bodyVisual_MeshPart2
+    4300030: bodyVisual
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
@@ -142,6 +143,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -166,11 +168,15 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
