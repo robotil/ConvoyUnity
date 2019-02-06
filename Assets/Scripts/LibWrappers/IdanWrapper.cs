@@ -71,7 +71,7 @@ public class IdanWrapper: IDisposable {
 	private static extern bool IsHLCSHazardsApplied(IntPtr pObj);
 
 	[DllImport (DLL_LOCATION)]
-	private static extern string GetHLCSGear(IntPtr pObj);
+	private static extern int GetHLCSGear(IntPtr pObj);
 
 	[DllImport (DLL_LOCATION)]
 	private static extern bool IsHLCSParkingBrakeReleased(IntPtr pObj);
@@ -120,10 +120,10 @@ public class IdanWrapper: IDisposable {
 
 	// gear map: "R"= reverse, "N" = neutral, D1, D2, D3, D4, D5, "PROG"= in progress
     [DllImport (DLL_LOCATION)]
-	private static extern void SetIdanSecRepRequestedGear(IntPtr pObj, string requestedGear);
+	private static extern void SetIdanSecRepRequestedGearInt(IntPtr pObj, int requestedGear);
 
     [DllImport (DLL_LOCATION)]
-	private static extern void SetIdanSecRepActualGear(IntPtr pObj, string actualGear);
+	private static extern void SetIdanSecRepActualGearInt(IntPtr pObj, int actualGear);
 
 	// parking map: "R"= released, "E" = engaged, "P" = in progress
     [DllImport (DLL_LOCATION)]
@@ -260,7 +260,7 @@ public class IdanWrapper: IDisposable {
 		return IsHLCSHazardsApplied(this.m_nativeObject);
 	}
 
-	public string GetHLCSGear() {
+	public int GetHLCSGear() {
 		return GetHLCSGear(this.m_nativeObject);
 	}
 
@@ -322,12 +322,12 @@ public class IdanWrapper: IDisposable {
 		SetIdanSecRepHazards(this.m_nativeObject, hazards);
 	}
 
-	public void SetIdanSecRepRequestedGear(string requestedGear) {
-		SetIdanSecRepRequestedGear(this.m_nativeObject, requestedGear);
+	public void SetIdanSecRepRequestedGearInt(int requestedGear) {
+		SetIdanSecRepRequestedGearInt(this.m_nativeObject, requestedGear);
 	}
 
-	public void SetIdanSecRepActualGear(string actualGear) {
-		SetIdanSecRepActualGear(this.m_nativeObject, actualGear);
+	public void SetIdanSecRepActualGearInt(int actualGear) {
+		SetIdanSecRepActualGearInt(this.m_nativeObject, actualGear);
 	}
 
 	public void SetIdanSecRepParkingBrake(string parkingBrake) {
