@@ -36,7 +36,6 @@ public class IdanVehicleControl : MonoBehaviour
     void Start()
     {  
         Oshkosh = GetComponent<Vehicle>();
-
   		IdanInterface = new IdanWrapper(ICD_ConfigFile);
         //Invokes the method methodName in time seconds, then repeatedly every repeatRate seconds.
         InvokeRepeating("UpdateIdanPrimary", 3.0f, 1/IdanPrimFreq);
