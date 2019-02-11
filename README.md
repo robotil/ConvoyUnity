@@ -33,3 +33,5 @@ Notes:
     
     -Blender should be installed before the Project is opened.
     -In the case you openned without the PPA blender installed and having missing models, install blender and do Right-Click ->     "reimport assets" on the models folder.
+
+## 10.2.19 Explanation regarding to new multiplatform code is attached in "ChangeLog" file.

@@ -1,0 +1,34 @@
+Assets:
+	Prefabs:
+		Sensors:
+			"Velodyne16_GPU":
+				RotationAngle = 360 was added.(option to set in unity)
+
+	Scripts:
+		LibWrrapers:
+			"IdanWrraper":
+				gear functions changed to use int and not string
+				new display text, check if neede - displayText:#####
+		vehicleDriversScrips:
+			"IdanVehicleControl":
+				translate gear int to string in unity and other updates related to the new gear functions.
+		velodyneScripts:
+			GPU_velodyne:
+				"GPU_Velodyne16":##########
+					function changed from "FixedUpdate" to "Update". for this frameTime = 0.01f was added (experimental).
+					"horizontalFOV = Time.fixedDeltaTime * 360.0f * RotateFrequency / SuperSample;" because we don't use FixedUpdate changed to : 
+					"horizontalFOV = frameTime * RotationAngle * RotateFrequency / SuperSample;" 
+					" ColumnsPerPhysStep = Mathf.RoundToInt(Time.fixedDeltaTime * RotationAngle * RotateFrequency / AngularResolution) / SuperSample;" changed to: 
+					" ColumnsPerPhysStep = Mathf.RoundToInt(horizontalFOV / AngularResolution);"
+ProjectSettings:
+	"GraphicsSetting":
+		shader was added
+	"PresetManager":########new file check what is this
+	"ProjectSettings":
+		windows default graphics setting changed not to use default, use OpenGLCore (4.5) 
+	"QualitySettings":#######
+		m_CurrentQuality: changed to 0 from 5. check #####
+		quality use ultra now (looks like it used before check differences)###
+		Standalone: 0 ####new, check
+	
+
