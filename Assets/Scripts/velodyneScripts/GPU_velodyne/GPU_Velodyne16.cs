@@ -49,7 +49,7 @@ public class GPU_Velodyne16 : MonoBehaviour
         // Calculation of FOV 
         verticalFOV = HigherAngle - LowerAngle;
         verticalAngularResolution = verticalFOV / (Channels - 1f);
-        horizontalFOV = frameTime * RotationAngle * RotateFrequency / SuperSample;
+        horizontalFOV = Time.fixedDeltaTime * RotationAngle * RotateFrequency / SuperSample;
 
         // Calculation of the Camera Projection Mat 
         Matrix4x4 projMat = depthCam.projectionMatrix;
@@ -82,7 +82,7 @@ public class GPU_Velodyne16 : MonoBehaviour
 
 
     Color[] ranges;
-    void Update()
+    void FixedUpdate()
     {
         RenderTexture currentActiveRT = RenderTexture.active;
         for (int s = 0; s < SuperSample; s++)
