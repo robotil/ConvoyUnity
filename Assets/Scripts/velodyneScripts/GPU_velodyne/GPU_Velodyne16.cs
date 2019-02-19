@@ -27,6 +27,7 @@ public class GPU_Velodyne16 : MonoBehaviour
     int ColumnsPerPhysStep;
     float verticalAngularResolution;
     float cameraRotationAngle;
+    float frameTime = 0.01f;
 
 
     private int blocksCounter = 0;
@@ -48,7 +49,7 @@ public class GPU_Velodyne16 : MonoBehaviour
         // Calculation of FOV 
         verticalFOV = HigherAngle - LowerAngle;
         verticalAngularResolution = verticalFOV / (Channels - 1f);
-        horizontalFOV = Time.fixedDeltaTime * 360.0f * RotateFrequency / SuperSample;
+        horizontalFOV = Time.fixedDeltaTime * RotationAngle * RotateFrequency / SuperSample;
 
         // Calculation of the Camera Projection Mat 
         Matrix4x4 projMat = depthCam.projectionMatrix;
@@ -59,7 +60,7 @@ public class GPU_Velodyne16 : MonoBehaviour
         depthCam.projectionMatrix = projMat;
 
         // target Texture size calculation 
-        ColumnsPerPhysStep = Mathf.RoundToInt(Time.fixedDeltaTime * RotationAngle * RotateFrequency / AngularResolution) / SuperSample;
+        ColumnsPerPhysStep = Mathf.RoundToInt(horizontalFOV / AngularResolution);
         ResWidth = ColumnsPerPhysStep;
         ResHeight = Channels;
         depthCam.targetTexture = new RenderTexture(ResWidth, ResHeight, 1, RenderTextureFormat.RFloat, RenderTextureReadWrite.Default);
